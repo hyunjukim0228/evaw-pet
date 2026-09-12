@@ -1,0 +1,283 @@
+/* 애견미용학원 대전점 — 디자인 시스템: 사용자가 전달한 Airbnb 스타일 가이드 기반.
+   단일 액센트(Rausch #ff385c) + 흰 캔버스 + 잉크 텍스트, 얇은 헤어라인, 완만한 라운드, 단일 섀도우 계층.
+   로고 확정 전 임시 값 — 로고 오면 --primary 등만 바꾸면 전체 반영됩니다. */
+
+:root{
+  /* 브랜드 액센트 — 전 사이트에서 유일한 강조색(CTA·브랜드 링크·강조 숫자에만 사용) */
+  --primary:#ff385c;
+  --primary-active:#e00b41;
+  --primary-disabled:#ffd1da;
+
+  /* 표면 */
+  --canvas:#ffffff;
+  --surface-soft:#f7f7f7;
+  --surface-strong:#f2f2f2;
+  --card:#ffffff;
+
+  /* 헤어라인 */
+  --hairline:#dddddd;
+  --hairline-soft:#ebebeb;
+  --border-strong:#c1c1c1;
+
+  /* 텍스트 */
+  --ink:#222222;
+  --body:#3f3f3f;
+  --muted:#6a6a6a;
+  --muted-soft:#929292;
+  --error:#c13515;
+
+  /* 이전 이름 호환용(코드 곳곳에서 var(--line) 등으로 참조) */
+  --bg:var(--canvas);
+  --line:var(--hairline);
+  --ink-soft:var(--muted);
+  --ph-bg:var(--surface-soft);
+  --ph-line:var(--border-strong);
+
+  --radius:14px;       /* 카드 (rounded.md) */
+  --radius-sm:8px;      /* 버튼 (rounded.sm) */
+  --radius-full:9999px; /* 필·아이콘버튼 (rounded.full) */
+  --shadow-1:0 0 0 1px rgba(0,0,0,.02), 0 2px 6px rgba(0,0,0,.04), 0 4px 8px rgba(0,0,0,.1);
+  --wrap:1160px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:hidden; max-width:100%}
+body{
+  margin:0; background:var(--canvas); color:var(--ink);
+  font-family:var(--font-inter),var(--font-noto-sans-kr),system-ui,-apple-system,sans-serif;
+  line-height:1.6;
+}
+.wrap{max-width:var(--wrap); margin:0 auto; padding:0 20px}
+img{max-width:100%; display:block}
+a{color:inherit; text-decoration:none}
+h1,h2,h3{line-height:1.3; margin:0 0 12px}
+.sec-title{font-size:clamp(1.25rem,2.4vw,1.5rem); font-weight:600; text-align:center; margin-bottom:8px; letter-spacing:-.2px}
+.sec-sub{text-align:center; color:var(--muted); margin:0 0 28px}
+.note{font-size:.82rem; color:var(--muted); text-align:center; margin-top:18px}
+.tbd{color:var(--error); font-weight:600; font-size:.85em}
+
+/* 실제 사진용 비율·스타일 — 실사진이 없는 자리는 이제 사진 영역 자체를 생략하고 글로만 구성(placeholder 박스 폐기) */
+.ph-course{aspect-ratio:600/412}
+.photo{width:100%; height:100%; object-fit:cover; display:block; border-radius:var(--radius-sm)}
+.highlight-photo{max-width:480px; width:100%; margin:0 auto; display:block; border-radius:var(--radius); box-shadow:var(--shadow-1)}
+
+/* 버튼 — button-primary(8px, Rausch) / button-secondary(8px, ink outline) */
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:6px;
+  border-radius:var(--radius-sm); font-weight:500; cursor:pointer; border:none; white-space:nowrap;
+  transition:background-color .15s ease, border-color .15s ease;}
+.btn-primary{background:var(--primary); color:#fff}
+.btn-primary:hover,.btn-primary:active{background:var(--primary-active)}
+.btn-outline{background:var(--canvas); border:1px solid var(--ink); color:var(--ink)}
+.btn-outline:hover{background:var(--surface-soft)}
+.btn-sm{padding:8px 16px; font-size:.85rem}
+.btn-lg{padding:15px 28px; font-size:1.02rem}
+.btn-full{width:100%}
+
+/* 헤더 */
+.site-header{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--hairline); transition:box-shadow .2s ease, background-color .2s ease}
+.site-header.scrolled{background:rgba(255,255,255,.98); box-shadow:0 1px 8px rgba(0,0,0,.06)}
+.header-inner{display:flex; align-items:center; gap:24px; height:68px}
+.logo-slot{flex:none}
+.logo-text{font-weight:700; font-size:1.15rem; color:var(--ink)}
+.logo-text em{font-style:normal; color:var(--primary); margin-left:4px}
+.nav-links{display:flex; gap:22px; margin-left:8px; flex:1}
+.nav-links a{font-size:.92rem; font-weight:600; color:var(--muted)}
+.nav-links a:hover, .nav-links a.active{color:var(--ink); text-decoration:underline; text-underline-offset:6px}
+.mobile-only-cta{display:none}
+.header-cta{display:flex; align-items:center; gap:14px; margin-left:auto}
+.call-slot{font-size:.82rem; color:var(--muted); border:1px dashed var(--border-strong); border-radius:var(--radius-full); padding:6px 12px}
+.nav-toggle{display:none; flex-direction:column; gap:4px; background:none; border:none; cursor:pointer; padding:8px}
+.nav-toggle span{width:22px; height:2px; background:var(--ink)}
+
+/* 히어로 캐러셀 (홈) — 사진이 무게를 지고, 헤드라인은 담담하게(28px대)
+   이바우펫(evaw-pet-grooming.co.kr) 참고: PC에서 본문처럼 좌우 여백을 줘서 가독성 확보 —
+   나머지 섹션(.wrap)과 같은 폭으로 맞춰서 1160px 넘는 화면에서만 자연스럽게 여백 생김. */
+.hero{position:relative; max-width:var(--wrap); margin:0 auto; padding:0}
+.hero-carousel{position:relative; overflow:hidden; border-radius:var(--radius); aspect-ratio:1920/850; min-height:220px; background:var(--surface-strong); touch-action:pan-y; cursor:grab; user-select:none}
+.hero-carousel:active{cursor:grabbing}
+/* 슬라이드 전환 — 직전 슬라이드(.prev)를 불투명하게 그대로 깔아두고 그 위에서만 새 슬라이드가 페이드인.
+   양쪽을 동시에 opacity로 넘기면 전환 중간에 둘 다 반투명해져서 뒤 배경(회색)이 비쳐 보임 — 그래서 이 구조로 변경. */
+.hero-slide{position:absolute; inset:0; opacity:0; z-index:0}
+.hero-slide.prev{opacity:1; z-index:1}
+.hero-slide.active{opacity:1; z-index:2; animation:heroFadeIn .6s ease forwards}
+@keyframes heroFadeIn{from{opacity:0} to{opacity:1}}
+.hero-img{width:100%; height:100%; object-fit:cover; display:block}
+.hero-img.mo{display:none}
+.hero-arrow{
+  position:absolute; top:50%; transform:translateY(-50%); z-index:2;
+  width:40px; height:40px; border-radius:var(--radius-full); border:none; cursor:pointer;
+  background:rgba(255,255,255,.85); color:var(--ink); font-size:1.5rem; line-height:1;
+  display:flex; align-items:center; justify-content:center; transition:background-color .15s ease;
+}
+.hero-arrow:hover{background:#fff}
+.hero-arrow.prev{left:14px}
+.hero-arrow.next{right:14px}
+.hero-dots{position:absolute; left:50%; bottom:16px; transform:translateX(-50%); display:flex; gap:8px; z-index:2}
+.hero-dot{width:8px; height:8px; border-radius:var(--radius-full); background:rgba(255,255,255,.55); border:none; padding:0; cursor:pointer; transition:width .2s ease,background-color .2s ease}
+.hero-dot.active{width:22px; border-radius:4px; background:#fff}
+.hero-copy{
+  position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center;
+  padding:0 8%; color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.35); pointer-events:none;
+  background:linear-gradient(90deg, rgba(20,20,20,.45), rgba(20,20,20,.05) 70%);
+}
+.hero-copy a{pointer-events:auto}
+.hero-copy .eyebrow{font-weight:700; letter-spacing:.05em; margin-bottom:10px; opacity:.9}
+.hero-copy h1{font-size:clamp(1.5rem,3.2vw,1.9rem); font-weight:700}
+.hero-copy .lead{margin:0 0 20px; font-size:1.05rem}
+
+/* 서브페이지 상단 배너 (학원소개·커리큘럼 등) */
+.page-hero{padding:56px 0 40px; text-align:center; border-bottom:1px solid var(--hairline); background:var(--canvas)}
+.page-hero .eyebrow{color:var(--primary); font-weight:700; letter-spacing:.05em; display:block; margin-bottom:10px}
+.page-hero h1{font-size:clamp(1.5rem,3.4vw,2.1rem)}
+.page-hero p{color:var(--muted); max-width:52ch; margin:12px auto 0}
+.breadcrumb{font-size:.82rem; color:var(--muted); margin-bottom:14px}
+.breadcrumb a{color:var(--primary)}
+
+section{padding:64px 0}
+section:nth-of-type(even){background:var(--surface-soft)}
+
+/* 강점 */
+.benefit-grid{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center}
+.benefit-grid li b{display:block; margin-bottom:4px; color:var(--ink); font-weight:600}
+.benefit-grid li p{margin:0; color:var(--muted); font-size:.88rem}
+/* 강점·차별점 아이콘 — evaw 사이트의 "차별점" 섹션(아이콘+텍스트) 구조 참고, 이모지 대신 인라인 SVG로 통일 */
+.benefit-icon{width:56px; height:56px; margin:0 auto 14px; border-radius:var(--radius-full); background:var(--surface-soft); display:flex; align-items:center; justify-content:center; color:var(--ink)}
+.benefit-icon svg{width:26px; height:26px}
+
+/* 2단 레이아웃 */
+.two-col{display:grid; grid-template-columns:1.1fr 1fr; gap:40px; align-items:center}
+
+/* 분야별 특강 */
+.special-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:720px; margin:0 auto}
+.special-grid img{aspect-ratio:1/1; object-fit:cover; border-radius:var(--radius); display:block; width:100%}
+
+/* 커리큘럼 — property-card 톤(사진 우선, 호버 시 단일 섀도우 계층) */
+.course-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+.course-card{background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); padding:18px; text-align:center; transition:box-shadow .15s ease}
+.course-card:hover{box-shadow:var(--shadow-1)}
+.course-card h3{font-size:1.05rem; margin:14px 0 6px; font-weight:600; color:var(--ink)}
+.course-card p{font-size:.88rem; color:var(--muted); margin:0 0 10px}
+.course-card .price{font-weight:700; color:var(--ink)}
+
+/* 커리큘럼 상세 */
+.course-detail-points{list-style:none; margin:20px 0 0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.course-detail-points li{background:var(--canvas); border:1px solid var(--hairline); border-radius:var(--radius-sm); padding:12px 14px; font-size:.9rem}
+
+/* 커리큘럼 단계 (과정상세) */
+.curri-steps{list-style:none; margin:0 auto; padding:0; max-width:640px; display:flex; flex-direction:column; gap:12px}
+.curri-steps li{display:flex; align-items:center; gap:14px; background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); padding:14px 18px}
+.curri-step-num{flex:none; width:32px; height:32px; border-radius:var(--radius-full); background:var(--primary); color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center; font-size:.9rem}
+
+/* 퀵메뉴 (헤더 바로 아래 상시 유틸리티 바) */
+.quick-menu{position:sticky; top:68px; z-index:40; background:var(--card); border-bottom:1px solid var(--hairline)}
+.quick-menu-inner{display:flex; justify-content:center; gap:8px; padding:8px 20px; flex-wrap:wrap}
+.quick-menu-inner button,.quick-menu-inner a{
+  background:none; border:1px solid var(--hairline); border-radius:var(--radius-full); padding:7px 16px;
+  font-size:.85rem; font-weight:600; color:var(--muted); cursor:pointer;
+}
+.quick-menu-inner button:hover,.quick-menu-inner a:hover{color:var(--ink); border-color:var(--ink)}
+
+/* 상담 모달 */
+.modal-overlay{
+  position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:100;
+  display:flex; align-items:center; justify-content:center; padding:20px;
+}
+.modal-panel{
+  position:relative; background:var(--canvas); border-radius:var(--radius); padding:28px;
+  max-width:480px; width:100%; max-height:90vh; overflow-y:auto; box-shadow:var(--shadow-1);
+}
+.modal-close{
+  position:absolute; top:12px; right:14px; background:none; border:none; cursor:pointer;
+  font-size:1.6rem; line-height:1; color:var(--muted); padding:4px;
+}
+.interest-checks{display:flex; flex-direction:column; gap:8px}
+.interest-check{display:flex; align-items:center; gap:8px; font-size:.9rem; font-weight:400; color:var(--body)}
+
+/* FAQ */
+.faq-list{max-width:760px; margin:0 auto}
+.faq-item{background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius-sm); margin-bottom:10px; padding:14px 18px}
+.faq-item summary{cursor:pointer; font-weight:600; list-style:none; color:var(--ink)}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+"; float:right; color:var(--ink); font-weight:800}
+.faq-item[open] summary::after{content:"–"}
+.faq-item p{margin:10px 0 0; color:var(--body); font-size:.92rem}
+
+/* 오시는길 */
+.location-info p{margin:0 0 16px}
+
+/* 상담 폼 — Airbnb는 대비되는 어두운 CTA 밴드를 쓰지 않으므로 옅은 surface-soft 밴드 위 흰 카드로 구성 */
+.consult{background:var(--surface-soft)}
+.consult-form{max-width:480px; margin:0 auto; background:var(--canvas); color:var(--ink); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow-1)}
+.field{margin-bottom:16px}
+.field label{display:block; font-weight:600; font-size:.88rem; margin-bottom:6px; color:var(--ink)}
+.field-input,.consult-form input[type=text],.consult-form input[type=tel]{
+  width:100%; padding:13px 14px; border:1px solid var(--hairline); border-radius:var(--radius-sm); font-size:.95rem;
+}
+.field-input:focus,.consult-form input:focus{outline:2px solid var(--ink); outline-offset:-1px; border-color:var(--ink)}
+.agree{display:flex; align-items:flex-start; gap:8px; font-size:.82rem; color:var(--muted); margin:14px 0}
+.agree input{margin-top:3px}
+.form-note{font-size:.76rem; color:var(--muted); text-align:center; margin-top:12px}
+
+/* 푸터 — Airbnb는 대비 없는 흰 푸터(다크모드 없음) */
+.site-footer{background:var(--canvas); color:var(--muted); padding:36px 0; font-size:.85rem; border-top:1px solid var(--hairline)}
+.site-footer b{color:var(--ink)}
+.site-footer a:hover{color:var(--ink)}
+.copyright{margin-top:10px; color:var(--muted-soft)}
+
+/* 플로팅 CTA */
+.floating-cta{position:fixed; right:18px; bottom:18px; display:flex; flex-direction:column; gap:10px; z-index:60}
+.fab{width:60px; height:60px; border-radius:var(--radius-full); display:flex; align-items:center; justify-content:center;
+  font-size:.85rem; font-weight:700; box-shadow:0 6px 18px rgba(0,0,0,.18); border:none; cursor:pointer}
+.fab-primary{background:var(--primary); color:#fff}
+.fab-disabled{background:var(--surface-strong); color:var(--muted-soft); cursor:not-allowed}
+
+/* 맨 위로 가기 — 플로팅 CTA(우하단)와 안 겹치게 좌하단 */
+.scroll-top-btn{
+  position:fixed; left:18px; bottom:18px; z-index:60;
+  width:44px; height:44px; border-radius:var(--radius-full); border:none; cursor:pointer;
+  background:var(--ink); color:#fff; font-size:1.1rem; box-shadow:0 6px 18px rgba(0,0,0,.18);
+  opacity:0; visibility:hidden; transform:translateY(8px);
+  transition:opacity .2s ease, transform .2s ease, visibility .2s ease;
+}
+.scroll-top-btn.visible{opacity:1; visibility:visible; transform:translateY(0)}
+
+/* 스크롤 리빌 — 섹션이 화면에 들어올 때 스무스하게 나타남(히어로 제외) */
+main section:not(.hero){opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease}
+main section:not(.hero).in-view{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){
+  main section:not(.hero){opacity:1; transform:none; transition:none}
+}
+
+/* ===== 반응형 (켈리스 기준: 1024px에서 PC/모바일 배너 전환) ===== */
+@media (max-width:1024px){
+  .hero-img.pc{display:none}
+  .hero-img.mo{display:block}
+  /* aspect-ratio + max-height를 같이 쓰면 브라우저가 폭을 세로 720:1080 비율에 맞춰 좁혀버려서
+     배너가 화면 오른쪽 절반을 남기고 좁은 세로 조각으로 쪼그라드는 버그가 있었음(캡처로 확인) —
+     aspect-ratio를 꺼서 폭은 100% 그대로 두고 높이만 직접 지정하도록 수정. */
+  .hero-carousel{aspect-ratio:unset; height:62vh; max-height:620px; min-height:320px}
+}
+@media (max-width:900px){
+  .two-col{grid-template-columns:1fr}
+  .benefit-grid{grid-template-columns:repeat(2,1fr)}
+  .course-grid{grid-template-columns:1fr}
+  .course-detail-points{grid-template-columns:1fr}
+}
+@media (max-width:768px){
+  .header-inner{gap:10px}
+  .nav-links{
+    position:fixed; top:68px; left:0; right:0; background:var(--canvas); border-bottom:1px solid var(--hairline);
+    flex-direction:column; padding:16px 20px; gap:14px; transform:translateY(-120%); transition:transform .2s ease;
+  }
+  .nav-links.open{transform:translateY(0)}
+  .nav-toggle{display:flex}
+  .header-cta{display:none}
+  .logo-text{font-size:1rem}
+  .nav-toggle{margin-left:auto}
+  .mobile-only-cta{display:flex; margin-top:6px}
+}
+@media (max-width:480px){
+  .benefit-grid{grid-template-columns:1fr 1fr}
+  section{padding:44px 0}
+}
