@@ -6,6 +6,7 @@ import HeroCarousel from "@/components/HeroCarousel";
 import BenefitIcon from "@/components/BenefitIcon";
 import CtaBanner from "@/components/CtaBanner";
 import { courses } from "@/lib/courses";
+import { branches } from "@/lib/branches";
 
 const FAQS = [
   { q: "초보자도 수강 가능한가요?", a: "네, 대부분 처음 시작하시는 분들이며 기초 과정부터 차근차근 진행합니다." },
@@ -16,7 +17,7 @@ const FAQS = [
   { q: "수강료는 얼마인가요?", a: "과정별로 상이하며, 상담을 통해 정확히 안내해 드립니다." },
   { q: "온라인으로도 배울 수 있나요?", a: "실습 중심 과정 특성상 오프라인 수업이 기본이며, 자세한 사항은 상담 시 안내합니다." },
   { q: "국비지원과 교육지원의 차이가 뭔가요?", a: "지원 제도별로 대상과 조건이 다릅니다. 상담 시 어떤 제도에 해당하는지 확인해 드립니다." },
-  { q: "지점이 어디에 있나요?", a: "대전 서구 둔산동에 위치한 대전점 1곳을 운영하고 있습니다. 자세한 위치는 아래 오시는길을 참고해 주세요." },
+  { q: "지점이 어디에 있나요?", a: "전국 19개 지점 네트워크 중 하나로 대전점을 운영하고 있습니다. 다른 지역 지점은 아래 전국 지점 안내에서 확인하실 수 있습니다." },
 ];
 
 export default function HomePage() {
@@ -175,15 +176,39 @@ export default function HomePage() {
           <p>
             <b>주소</b>
             <br />
-            대전광역시 서구 대덕대로 182 10층{" "}
-            <span className="tbd">(지번 둔산동 1160 — 시·구 표기는 확인 후 확정)</span>
+            대전광역시 서구 대덕대로 182 10층 (지번 둔산동 1160)
           </p>
           <p>
             <b>전화</b>
             <br />
             <span className="tbd">전화번호 등록 예정</span>
           </p>
-          <p className="note">※ 지도·주차·대중교통 안내는 주소 확정 후 추가합니다.</p>
+          <p className="note">※ 지도·주차·대중교통 안내는 추후 추가합니다.</p>
+        </div>
+      </section>
+
+      {/* 전국 지점 */}
+      <section id="branches">
+        <div className="wrap" style={{ textAlign: "center" }}>
+          <h2 className="sec-title">전국 지점</h2>
+          <p className="sec-sub">애견미용학원 대전점은 전국 19개 지점 네트워크 중 하나입니다.</p>
+          <div className="branch-grid">
+            {branches.map((b) => (
+              <div key={b.region + b.name} className={`branch-card${b.isCurrent ? " current" : ""}`}>
+                <span className="branch-region">{b.region}</span>
+                <b className="branch-name">
+                  {b.name} 애견미용학원
+                  {b.isCurrent && <span className="branch-current-badge">지금 보고 계신 지점</span>}
+                </b>
+                <p className="branch-addr">{b.address}</p>
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: 24 }}>
+            <Link href="/branches" className="btn btn-outline btn-sm">
+              전국 지점 전체보기
+            </Link>
+          </div>
         </div>
       </section>
 

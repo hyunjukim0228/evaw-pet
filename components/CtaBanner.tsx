@@ -10,7 +10,7 @@ export default function CtaBanner({ text, presetSlug }: Props) {
   return (
     <section className="cta-banner">
       <div className="wrap">
-        <p className="cta-banner-trust">전국 18개 지점 운영</p>
+        <p className="cta-banner-trust">전국 19개 지점 운영</p>
         <h2 className="cta-banner-text">{text}</h2>
         <ConsultCtaButton className="btn btn-primary btn-lg" presetSlug={presetSlug}>
           무료 상담 신청하기

@@ -11,6 +11,7 @@ const NAV = [
   { href: "/#gallery", label: "시설·실습" },
   { href: "/#faq", label: "FAQ" },
   { href: "/#location", label: "오시는길" },
+  { href: "/branches", label: "전국 지점" },
 ];
 
 // nav 항목이 가리키는 "섹션 id" — 앵커면 # 뒤, 페이지 링크면 경로 첫 세그먼트(홈에도 같은 id의 섹션이 있음).

@@ -206,6 +206,15 @@ section:nth-of-type(even){background:var(--surface-soft)}
 /* 오시는길 */
 .location-info p{margin:0 0 16px}
 
+/* 전국 지점 */
+.branch-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; text-align:left}
+.branch-card{background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); padding:16px 18px}
+.branch-card.current{border-color:var(--primary); border-width:2px}
+.branch-region{display:inline-block; font-size:.72rem; font-weight:700; color:var(--muted); background:var(--surface-soft); border-radius:var(--radius-full); padding:2px 10px; margin-bottom:8px}
+.branch-name{display:block; font-size:.98rem; margin-bottom:4px}
+.branch-current-badge{display:inline-block; margin-left:6px; font-size:.68rem; font-weight:700; color:var(--primary)}
+.branch-addr{margin:0; font-size:.85rem; color:var(--muted)}
+
 /* 상담 폼 — Airbnb는 대비되는 어두운 CTA 밴드를 쓰지 않으므로 옅은 surface-soft 밴드 위 흰 카드로 구성 */
 .consult{background:var(--surface-soft)}
 .consult-form{max-width:480px; margin:0 auto; background:var(--canvas); color:var(--ink); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow-1)}
@@ -271,6 +280,7 @@ main section:not(.hero).in-view{opacity:1; transform:none}
   .benefit-grid{grid-template-columns:repeat(2,1fr)}
   .course-grid{grid-template-columns:1fr}
   .course-detail-points{grid-template-columns:1fr}
+  .branch-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:768px){
   .header-inner{gap:10px}

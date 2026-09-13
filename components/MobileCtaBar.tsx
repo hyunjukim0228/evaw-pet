@@ -8,7 +8,7 @@ export default function MobileCtaBar() {
   const { open } = useConsultModal();
   return (
     <div className="mobile-cta-bar">
-      <span className="mobile-cta-bar-trust">전국 18개 지점 운영 애견미용학원</span>
+      <span className="mobile-cta-bar-trust">전국 19개 지점 운영 애견미용학원</span>
       <button type="button" className="btn btn-primary btn-full" onClick={() => open()}>
         무료 상담 신청하기
       </button>
