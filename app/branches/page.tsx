@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ConsultCtaButton from "@/components/ConsultCtaButton";
+import BranchCard from "@/components/BranchCard";
 import { branches } from "@/lib/branches";
 
 export const metadata: Metadata = {
@@ -26,14 +27,7 @@ export default function BranchesPage() {
         <div className="wrap">
           <div className="branch-grid">
             {branches.map((b) => (
-              <div key={b.region + b.name} className={`branch-card${b.isCurrent ? " current" : ""}`}>
-                <span className="branch-region">{b.region}</span>
-                <b className="branch-name">
-                  {b.name} 애견미용학원
-                  {b.isCurrent && <span className="branch-current-badge">지금 보고 계신 지점</span>}
-                </b>
-                <p className="branch-addr">{b.address}</p>
-              </div>
+              <BranchCard key={b.region + b.name} branch={b} />
             ))}
           </div>
           <p className="note">※ 신규 지점이 순차적으로 오픈 예정입니다. 지점별 상세 정보는 상담 시 안내해 드립니다.</p>

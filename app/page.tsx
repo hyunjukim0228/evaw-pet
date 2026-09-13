@@ -5,6 +5,7 @@ import ConsultCtaButton from "@/components/ConsultCtaButton";
 import HeroCarousel from "@/components/HeroCarousel";
 import BenefitIcon from "@/components/BenefitIcon";
 import CtaBanner from "@/components/CtaBanner";
+import BranchCard from "@/components/BranchCard";
 import { courses } from "@/lib/courses";
 import { branches } from "@/lib/branches";
 
@@ -194,14 +195,7 @@ export default function HomePage() {
           <p className="sec-sub">애견미용학원 대전점은 전국 19개 지점 네트워크 중 하나입니다.</p>
           <div className="branch-grid">
             {branches.map((b) => (
-              <div key={b.region + b.name} className={`branch-card${b.isCurrent ? " current" : ""}`}>
-                <span className="branch-region">{b.region}</span>
-                <b className="branch-name">
-                  {b.name} 애견미용학원
-                  {b.isCurrent && <span className="branch-current-badge">지금 보고 계신 지점</span>}
-                </b>
-                <p className="branch-addr">{b.address}</p>
-              </div>
+              <BranchCard key={b.region + b.name} branch={b} />
             ))}
           </div>
           <div style={{ marginTop: 24 }}>

@@ -7,7 +7,7 @@ import { useConsultModal } from "./ConsultModalContext";
 // TODO: 제출 처리(문자·이메일·카톡·시트 연동)는 수신 방식 확정 후 이 함수 안에서 실제 전송으로 교체.
 // 정적 export라 Next.js API 라우트는 못 씀 — 외부 폼 수신 서비스 연동 예정. (ConsultForm.tsx와 동일한 제약)
 export default function ConsultModal() {
-  const { isOpen, presetSlug, close } = useConsultModal();
+  const { isOpen, presetSlug, presetBranch, close } = useConsultModal();
   const [submitted, setSubmitted] = useState(false);
   const [interests, setInterests] = useState<string[]>([]);
 
@@ -53,6 +53,13 @@ export default function ConsultModal() {
             <p className="sec-sub" style={{ marginBottom: 18 }}>
               관심 있는 과정을 선택해 주시면 더 정확히 안내해 드립니다.
             </p>
+
+            {presetBranch && (
+              <div className="field">
+                <label>관심 지점</label>
+                <p className="preset-branch-chip">{presetBranch}</p>
+              </div>
+            )}
 
             <div className="field">
               <label>관심 과정 (선택)</label>

@@ -13,7 +13,7 @@ type Props = {
 export default function ConsultCtaButton({ children, className, presetSlug }: Props) {
   const { open } = useConsultModal();
   return (
-    <button type="button" className={className} onClick={() => open(presetSlug)}>
+    <button type="button" className={className} onClick={() => open({ courseSlug: presetSlug })}>
       {children}
     </button>
   );
