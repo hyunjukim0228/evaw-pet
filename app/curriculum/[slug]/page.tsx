@@ -134,6 +134,25 @@ export default async function CourseDetailPage({
         </div>
       </section>
 
+      {/* 가정견미용 과정 한정 — 취미로 시작해 진로까지 이어질 수 있음을 보여주는 마무리 섹션 */}
+      {course.slug === "home-grooming" && (
+        <section>
+          <div className="wrap" style={{ maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
+            <span className="eyebrow" style={{ color: "var(--primary)" }}>
+              지금은 가정견미용과정
+            </span>
+            <h2 className="sec-title">미래엔 유망 직종으로 꼽히는 펫잡까지</h2>
+            <p className="sec-sub">
+              취미로 시작해도 자격증 과정과 취업·창업 과정으로 이어갈 수 있습니다.{" "}
+              <span className="tbd">(직종 순위·통계는 확인 후 구체적으로 안내)</span>
+            </p>
+            <Link href="/curriculum/level-3" className="btn btn-outline btn-sm">
+              자격증 과정 알아보기
+            </Link>
+          </div>
+        </section>
+      )}
+
       <section className="consult">
         <div className="wrap" style={{ textAlign: "center" }}>
           <h2 className="sec-title">{course.title}이 궁금하신가요?</h2>
