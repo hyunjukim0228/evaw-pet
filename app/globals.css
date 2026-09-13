@@ -260,6 +260,13 @@ section:nth-of-type(even){background:var(--surface-soft)}
 .site-footer{background:var(--canvas); color:var(--muted); padding:36px 0; font-size:.85rem; border-top:1px solid var(--hairline)}
 .site-footer b{color:var(--ink)}
 .site-footer a:hover{color:var(--ink)}
+.footer-biz-info{line-height:1.7; margin:12px 0}
+.footer-links{display:flex; flex-wrap:wrap; gap:6px 16px; margin:16px 0}
+.footer-links a, .footer-links button{
+  background:none; border:none; padding:0; font:inherit; color:var(--muted); cursor:pointer;
+}
+.footer-links a:hover, .footer-links button:hover{color:var(--ink); text-decoration:underline}
+.footer-links .tbd{cursor:default}
 .copyright{margin-top:10px; color:var(--muted-soft)}
 
 /* 플로팅 CTA */
