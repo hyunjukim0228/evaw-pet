@@ -50,7 +50,7 @@ export const courses: Course[] = [
     points: ["가정에서 바로 쓰는 손질법", "목욕·빗질 기본기", "부분 클리핑 실습", "반려견 스트레스 줄이는 법"],
     steps: ["도구·안전 기본기", "목욕·드라이 실습", "빗질·엉킴 관리", "부분 클리핑 실습"],
     // 2026-09-11: 사용자가 타사(EVAW/이바우펫) 브랜드·수상 문구 포함 사실을 인지한 상태에서 그대로 사용하기로 확정(상호명은 "애견미용학원 대전점" 유지).
-    cardImage: "/images/courses/home-grooming-card.webp",
+    // 2026-09-13: cardImage(커리큘럼 카드용 "현장 경험은 어떻게 진행될까요?" 콜라주)만 사용자 요청으로 제거 — detailImage/detailImageMo(홈 하이라이트·상세페이지용)는 유지.
     detailImage: "/images/courses/home-grooming-detail-pc.webp",
     detailImageMo: "/images/courses/home-grooming-detail-mo.webp",
   },
