@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingCta from "@/components/FloatingCta";
+import MobileCtaBar from "@/components/MobileCtaBar";
 import QuickMenu from "@/components/QuickMenu";
 import ConsultModal from "@/components/ConsultModal";
 import ScrollTopButton from "@/components/ScrollTopButton";
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <Footer />
           <FloatingCta />
+          <MobileCtaBar />
           <ScrollTopButton />
           <ConsultModal />
           <ScrollReveal />

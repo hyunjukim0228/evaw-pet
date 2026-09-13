@@ -242,6 +242,14 @@ section:nth-of-type(even){background:var(--surface-soft)}
 }
 .scroll-top-btn.visible{opacity:1; visibility:visible; transform:translateY(0)}
 
+/* 모바일 하단 고정 CTA 바 — 데스크톱에서는 header-cta가 그 역할을 하므로 숨김 */
+.mobile-cta-bar{display:none}
+
+/* CTA 배너 — 콘텐츠 블록 사이에 넣는 슬림 유도 섹션 */
+section.cta-banner{padding:48px 0; background:var(--surface-soft); text-align:center}
+.cta-banner-trust{font-size:.78rem; font-weight:700; color:var(--primary); letter-spacing:.03em; margin-bottom:8px}
+.cta-banner-text{font-size:1.15rem; font-weight:600; margin-bottom:20px}
+
 /* 스크롤 리빌 — 섹션이 화면에 들어올 때 스무스하게 나타남(히어로 제외) */
 main section:not(.hero){opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease}
 main section:not(.hero).in-view{opacity:1; transform:none}
@@ -276,6 +284,18 @@ main section:not(.hero).in-view{opacity:1; transform:none}
   .logo-text{font-size:1rem}
   .nav-toggle{margin-left:auto}
   .mobile-only-cta{display:flex; margin-top:6px}
+
+  /* 모바일 하단 고정 CTA 바 등장 — 대신 원형 플로팅 버튼은 숨기고(겹침 방지), 맨위로가기 버튼은 바 위로 올림 */
+  .mobile-cta-bar{
+    display:block; position:fixed; left:0; right:0; bottom:0; z-index:70;
+    background:var(--canvas); border-top:1px solid var(--hairline);
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+    box-shadow:0 -2px 12px rgba(0,0,0,.06);
+  }
+  .mobile-cta-bar-trust{display:block; text-align:center; font-size:.72rem; font-weight:600; color:var(--muted); margin-bottom:6px}
+  .floating-cta{display:none}
+  .scroll-top-btn{bottom:92px}
+  body{padding-bottom:88px}
 }
 @media (max-width:480px){
   .benefit-grid{grid-template-columns:1fr 1fr}

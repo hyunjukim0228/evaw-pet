@@ -4,6 +4,7 @@ import ConsultForm from "@/components/ConsultForm";
 import ConsultCtaButton from "@/components/ConsultCtaButton";
 import HeroCarousel from "@/components/HeroCarousel";
 import BenefitIcon from "@/components/BenefitIcon";
+import CtaBanner from "@/components/CtaBanner";
 import { courses } from "@/lib/courses";
 
 const FAQS = [
@@ -129,6 +130,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <CtaBanner text="궁금한 과정이 있으신가요? 지금 무료로 상담받아보세요." />
+
       {/* 분야별 특강 */}
       <section id="special">
         <div className="wrap" style={{ textAlign: "center" }}>
@@ -162,6 +165,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <CtaBanner text="더 궁금한 점은 상담을 통해 자세히 안내해 드립니다." />
 
       {/* 오시는길 */}
       <section id="location" className="location">
