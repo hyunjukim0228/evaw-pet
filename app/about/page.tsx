@@ -70,6 +70,23 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* 강사진 — 실제 프로필 확보 전까지 구조만 설계, 예시 문구로 명시 */}
+      <section id="faculty">
+        <div className="wrap" style={{ textAlign: "center" }}>
+          <h2 className="sec-title">강사진</h2>
+          <p className="sec-sub">※ 아래는 구성 예시이며, 실제 강사진 소개로 교체될 예정입니다.</p>
+          <div className="faculty-grid">
+            {["대표 강사", "수석 강사", "실습 강사"].map((role) => (
+              <div key={role} className="faculty-card">
+                <b>○○○</b>
+                <span className="faculty-role">{role}</span>
+                <p>[예시] 경력·자격 소개가 들어갈 자리입니다.</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="consult">
         <div className="wrap" style={{ textAlign: "center" }}>
           <h2 className="sec-title">더 궁금하신 점이 있으신가요?</h2>

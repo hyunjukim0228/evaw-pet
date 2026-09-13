@@ -8,6 +8,7 @@ import { useConsultModal } from "./ConsultModalContext";
 const NAV = [
   { href: "/about", label: "학원소개" },
   { href: "/curriculum", label: "커리큘럼" },
+  { href: "/guide", label: "가이드" },
   { href: "/#gallery", label: "시설·실습" },
   { href: "/#faq", label: "FAQ" },
   { href: "/#location", label: "오시는길" },

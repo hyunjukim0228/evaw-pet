@@ -204,6 +204,27 @@ section:nth-of-type(even){background:var(--surface-soft)}
 .faq-item[open] summary::after{content:"–"}
 .faq-item p{margin:10px 0 0; color:var(--body); font-size:.92rem}
 
+/* 수강생 후기 */
+.review-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px}
+.review-card{background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); padding:20px; text-align:left}
+.review-stars{color:var(--primary); letter-spacing:2px; margin-bottom:8px}
+.review-text{margin:0 0 12px; color:var(--body); font-size:.92rem; line-height:1.6}
+.review-meta{margin:0; font-size:.82rem; color:var(--muted)}
+
+/* 가이드 콘텐츠 */
+.guide-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px; text-align:left}
+.guide-card{display:block; background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); padding:20px; transition:border-color .15s ease, box-shadow .15s ease}
+.guide-card:hover, .guide-card:focus-visible{border-color:var(--primary); box-shadow:var(--shadow-1)}
+.guide-card b{display:block; margin-bottom:6px; color:var(--ink); font-size:.98rem}
+.guide-card p{margin:0; color:var(--muted); font-size:.85rem}
+
+/* 강사진 */
+.faculty-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px}
+.faculty-card{background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); padding:20px; text-align:center}
+.faculty-card b{display:block; margin:4px 0 2px; color:var(--ink)}
+.faculty-card .faculty-role{display:block; font-size:.82rem; color:var(--primary); margin-bottom:8px}
+.faculty-card p{margin:0; color:var(--muted); font-size:.85rem}
+
 /* 오시는길 */
 .location-info p{margin:0 0 16px}
 
@@ -288,6 +309,9 @@ main section:not(.hero).in-view{opacity:1; transform:none}
   .course-grid{grid-template-columns:1fr}
   .course-detail-points{grid-template-columns:1fr}
   .branch-grid{grid-template-columns:repeat(2,1fr)}
+  .review-grid{grid-template-columns:1fr}
+  .guide-grid{grid-template-columns:repeat(2,1fr)}
+  .faculty-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:768px){
   .header-inner{gap:10px}

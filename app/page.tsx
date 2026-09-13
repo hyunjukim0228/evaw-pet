@@ -8,6 +8,8 @@ import CtaBanner from "@/components/CtaBanner";
 import BranchCard from "@/components/BranchCard";
 import { courses } from "@/lib/courses";
 import { branches } from "@/lib/branches";
+import { reviews } from "@/lib/reviews";
+import { guideTopics } from "@/lib/guides";
 
 const FAQS = [
   { q: "초보자도 수강 가능한가요?", a: "네, 대부분 처음 시작하시는 분들이며 기초 과정부터 차근차근 진행합니다." },
@@ -132,6 +134,25 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 수강생 후기 — 실제 후기 없어 구조만 설계, 예시 문구로 명시 */}
+      <section id="reviews">
+        <div className="wrap" style={{ textAlign: "center" }}>
+          <h2 className="sec-title">수강생 후기</h2>
+          <p className="sec-sub">※ 아래는 구성 예시이며, 실제 수강생 후기로 교체될 예정입니다.</p>
+          <div className="review-grid">
+            {reviews.map((r) => (
+              <div key={r.name + r.course} className="review-card">
+                <div className="review-stars">{"★".repeat(r.rating)}</div>
+                <p className="review-text">{r.text}</p>
+                <p className="review-meta">
+                  <b>{r.name}</b> · {r.course}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <CtaBanner text="궁금한 과정이 있으신가요? 지금 무료로 상담받아보세요." />
 
       {/* 분야별 특강 */}
@@ -164,6 +185,27 @@ export default function HomePage() {
                 <p>{item.a}</p>
               </details>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 가이드 콘텐츠 미리보기 */}
+      <section id="guide-preview">
+        <div className="wrap" style={{ textAlign: "center" }}>
+          <h2 className="sec-title">궁금할 때 보는 가이드</h2>
+          <p className="sec-sub">자격증·비용·취업·창업까지, 자주 궁금해하시는 내용을 정리했습니다.</p>
+          <div className="guide-grid">
+            {guideTopics.slice(0, 3).map((g) => (
+              <div key={g.slug} className="guide-card">
+                <b>{g.title}</b>
+                <p>{g.teaser}</p>
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: 24 }}>
+            <Link href="/guide" className="btn btn-outline btn-sm">
+              가이드 전체보기
+            </Link>
           </div>
         </div>
       </section>
