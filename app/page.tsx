@@ -164,10 +164,6 @@ export default function HomePage() {
             <br />
             주제·일정은 <span className="tbd">상담 시 안내</span>해 드립니다.
           </p>
-          <div className="special-grid">
-            <img src="/images/special/special-1.webp" alt="분야별 특강" />
-            <img src="/images/special/special-2.webp" alt="분야별 특강" />
-          </div>
           <div style={{ marginTop: 24 }}>
             <ConsultCtaButton className="btn btn-outline btn-sm">특강 문의하기</ConsultCtaButton>
           </div>

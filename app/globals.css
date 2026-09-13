@@ -148,10 +148,6 @@ section:nth-of-type(even){background:var(--surface-soft)}
 /* 2단 레이아웃 */
 .two-col{display:grid; grid-template-columns:1.1fr 1fr; gap:40px; align-items:center}
 
-/* 분야별 특강 */
-.special-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:720px; margin:0 auto}
-.special-grid img{aspect-ratio:1/1; object-fit:cover; border-radius:var(--radius); display:block; width:100%}
-
 /* 커리큘럼 — property-card 톤(사진 우선, 호버 시 단일 섀도우 계층) */
 .course-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
 .course-card{background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); padding:18px; text-align:center; transition:box-shadow .15s ease}
