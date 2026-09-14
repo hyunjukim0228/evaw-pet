@@ -4,6 +4,7 @@ import ConsultForm from "@/components/ConsultForm";
 import ConsultCtaButton from "@/components/ConsultCtaButton";
 import HeroCarousel from "@/components/HeroCarousel";
 import HeroCtaRow from "@/components/HeroCtaRow";
+import QuickCourseNav from "@/components/QuickCourseNav";
 import BenefitIcon from "@/components/BenefitIcon";
 import CtaBanner from "@/components/CtaBanner";
 import BranchCard from "@/components/BranchCard";
@@ -60,24 +61,7 @@ export default function HomePage() {
               <span>가정견 실습</span>
             </div>
           </div>
-          <div className="quick-course-nav">
-            <Link href="/curriculum" className="quick-course-card">
-              <BenefitIcon name="certificate" />
-              자격증
-            </Link>
-            <Link href="/curriculum/behavior" className="quick-course-card">
-              <BenefitIcon name="chat" />
-              행동교정
-            </Link>
-            <Link href="/curriculum/home-grooming" className="quick-course-card">
-              <BenefitIcon name="heart" />
-              가정견미용
-            </Link>
-            <Link href="/curriculum/career" className="quick-course-card">
-              <BenefitIcon name="briefcase" />
-              취업창업
-            </Link>
-          </div>
+          <QuickCourseNav />
         </div>
       </section>
 

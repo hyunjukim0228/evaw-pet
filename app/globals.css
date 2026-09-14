@@ -151,11 +151,26 @@ h1,h2,h3{line-height:1.3; margin:0 0 12px}
 .trust-stat span{font-size:.78rem; color:var(--muted)}
 .quick-course-nav{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; max-width:760px; margin:0 auto}
 .quick-course-card{
-  display:flex; flex-direction:column; align-items:center; gap:8px; padding:20px 8px; text-align:center;
+  display:flex; flex-direction:column; align-items:center; gap:8px; width:100%; padding:20px 8px; text-align:center;
   background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); color:var(--ink);
-  font-weight:600; font-size:.9rem; text-decoration:none; transition:border-color .15s ease, box-shadow .15s ease;
+  font-weight:600; font-size:.9rem; text-decoration:none; font-family:inherit; cursor:pointer;
+  transition:border-color .15s ease, box-shadow .15s ease;
 }
 .quick-course-card:hover, .quick-course-card:focus-visible{border-color:var(--primary); box-shadow:var(--shadow-1)}
+
+/* 과정 미리보기 팝업 (evaw-pet-grooming.co.kr 아이콘퀵메뉴 팝업 구조 참고) */
+.course-preview-panel{padding:0; overflow:hidden}
+.course-preview-header{background:var(--ink); color:#fff; padding:28px 24px 20px; position:relative}
+.course-preview-header .modal-close{color:#fff; opacity:.85}
+.course-preview-header .benefit-icon{margin:0 0 12px}
+.course-preview-header h3{margin:0 0 4px; font-size:1.15rem}
+.course-preview-header p{margin:0; font-size:.85rem; opacity:.8}
+.course-preview-body{padding:8px 24px 4px}
+.course-preview-row{display:flex; gap:14px; padding:12px 0; border-bottom:1px solid var(--hairline-soft)}
+.course-preview-row:last-child{border-bottom:none}
+.course-preview-label{flex:0 0 44px; font-size:.8rem; font-weight:700; color:var(--muted)}
+.course-preview-row p{margin:0; font-size:.88rem; color:var(--body); line-height:1.5}
+.course-preview-actions{padding:20px 24px 24px; display:flex; flex-direction:column; gap:8px}
 
 /* 서브페이지 상단 배너 (학원소개·커리큘럼 등) */
 .page-hero{padding:56px 0 40px; text-align:center; border-bottom:1px solid var(--hairline); background:var(--canvas)}
@@ -368,7 +383,9 @@ main section:not(.hero).in-view{opacity:1; transform:none}
     padding:10px 16px calc(10px + env(safe-area-inset-bottom));
     box-shadow:0 -2px 12px rgba(0,0,0,.06);
   }
-  .mobile-cta-bar-trust{display:block; text-align:center; font-size:.72rem; font-weight:600; color:var(--muted); margin-bottom:6px}
+  .mobile-cta-bar-row{display:flex; gap:6px}
+  .mobile-cta-bar-row .btn-channel{font-size:.74rem; padding:11px 4px}
+  .btn-channel-consult{background:var(--primary); color:#fff}
   .floating-cta{display:none}
   .scroll-top-btn{bottom:92px}
   body{padding-bottom:88px}
