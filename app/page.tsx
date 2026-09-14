@@ -3,6 +3,7 @@ import CourseThumb from "@/components/CourseThumb";
 import ConsultForm from "@/components/ConsultForm";
 import ConsultCtaButton from "@/components/ConsultCtaButton";
 import HeroCarousel from "@/components/HeroCarousel";
+import HeroCtaRow from "@/components/HeroCtaRow";
 import BenefitIcon from "@/components/BenefitIcon";
 import CtaBanner from "@/components/CtaBanner";
 import BranchCard from "@/components/BranchCard";
@@ -30,7 +31,7 @@ export default function HomePage() {
       <section className="hero" aria-label="메인 배너">
         <HeroCarousel />
         <div className="hero-copy">
-          <p className="eyebrow">대전 · 애견미용학원</p>
+          <p className="eyebrow hero-badge">대전 · 애견미용학원</p>
           <h1>
             처음 배우는 애견미용,
             <br />
@@ -40,6 +41,43 @@ export default function HomePage() {
           <Link href="#consult" className="btn btn-primary btn-lg">
             무료 상담 신청하기
           </Link>
+        </div>
+      </section>
+
+      {/* 히어로 보조 CTA·신뢰지표·빠른 과정 탐색 — evaw-pet-grooming.co.kr 홈 히어로 구조(CTA행·신뢰바·아이콘퀵메뉴)를
+          참고하되, 문구·수치는 우리 실제 데이터만 쓰고 비주얼은 사이트 단일 액센트 디자인을 그대로 유지(레퍼런스의
+          다색 파스텔 카드는 따라가지 않음). 전화·카톡·네이버 채널은 아직 없어 HeroCtaRow가 상담모달로 대체 처리. */}
+      <section id="hero-extras">
+        <div className="wrap">
+          <HeroCtaRow />
+          <div className="hero-trust-bar">
+            <div className="trust-stat">
+              <b>전국 19개</b>
+              <span>직영지점 운영</span>
+            </div>
+            <div className="trust-stat">
+              <b>100%</b>
+              <span>가정견 실습</span>
+            </div>
+          </div>
+          <div className="quick-course-nav">
+            <Link href="/curriculum" className="quick-course-card">
+              <BenefitIcon name="certificate" />
+              자격증
+            </Link>
+            <Link href="/curriculum/behavior" className="quick-course-card">
+              <BenefitIcon name="chat" />
+              행동교정
+            </Link>
+            <Link href="/curriculum/home-grooming" className="quick-course-card">
+              <BenefitIcon name="heart" />
+              가정견미용
+            </Link>
+            <Link href="/curriculum/career" className="quick-course-card">
+              <BenefitIcon name="briefcase" />
+              취업창업
+            </Link>
+          </div>
         </div>
       </section>
 

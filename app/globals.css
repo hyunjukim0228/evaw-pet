@@ -125,6 +125,37 @@ h1,h2,h3{line-height:1.3; margin:0 0 12px}
 .hero-copy .eyebrow{font-weight:700; letter-spacing:.05em; margin-bottom:10px; opacity:.9}
 .hero-copy h1{font-size:clamp(1.5rem,3.2vw,1.9rem); font-weight:700}
 .hero-copy .lead{margin:0 0 20px; font-size:1.05rem}
+.hero-copy .eyebrow.hero-badge{
+  display:inline-flex; width:fit-content; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.4);
+  border-radius:var(--radius-full); padding:6px 14px; opacity:1; backdrop-filter:blur(2px);
+}
+
+/* 히어로 보조 CTA·신뢰지표·빠른 과정 탐색 (evaw-pet-grooming.co.kr 히어로 구조 참고 — 문구/색은 우리 시스템) */
+#hero-extras{padding:28px 0 48px}
+.hero-channel-row{display:flex; gap:10px; max-width:520px; margin:0 auto 20px}
+.btn-channel{
+  flex:1; text-align:center; padding:12px 8px; border-radius:var(--radius-sm); font-size:.88rem; font-weight:700;
+  border:none; cursor:pointer; font-family:inherit; transition:filter .15s ease;
+}
+.btn-channel:hover{filter:brightness(.96)}
+.btn-channel-phone{background:var(--ink); color:#fff}
+.btn-channel-kakao{background:#fee500; color:#3c1e1e}
+.btn-channel-naver{background:#03c75a; color:#fff}
+.hero-trust-bar{
+  display:flex; max-width:420px; margin:0 auto 32px; background:var(--surface-soft); border-radius:var(--radius);
+  overflow:hidden;
+}
+.trust-stat{flex:1; text-align:center; padding:16px 8px}
+.trust-stat + .trust-stat{border-left:1px solid var(--hairline)}
+.trust-stat b{display:block; font-size:1.15rem; color:var(--primary); margin-bottom:2px}
+.trust-stat span{font-size:.78rem; color:var(--muted)}
+.quick-course-nav{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; max-width:760px; margin:0 auto}
+.quick-course-card{
+  display:flex; flex-direction:column; align-items:center; gap:8px; padding:20px 8px; text-align:center;
+  background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); color:var(--ink);
+  font-weight:600; font-size:.9rem; text-decoration:none; transition:border-color .15s ease, box-shadow .15s ease;
+}
+.quick-course-card:hover, .quick-course-card:focus-visible{border-color:var(--primary); box-shadow:var(--shadow-1)}
 
 /* 서브페이지 상단 배너 (학원소개·커리큘럼 등) */
 .page-hero{padding:56px 0 40px; text-align:center; border-bottom:1px solid var(--hairline); background:var(--canvas)}
@@ -315,6 +346,7 @@ main section:not(.hero).in-view{opacity:1; transform:none}
   .review-grid{grid-template-columns:1fr}
   .guide-grid{grid-template-columns:repeat(2,1fr)}
   .faculty-grid{grid-template-columns:repeat(2,1fr)}
+  .quick-course-nav{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:768px){
   .header-inner{gap:10px}
@@ -344,4 +376,6 @@ main section:not(.hero).in-view{opacity:1; transform:none}
 @media (max-width:480px){
   .benefit-grid{grid-template-columns:1fr 1fr}
   section{padding:44px 0}
+  .hero-channel-row{gap:6px}
+  .btn-channel{font-size:.78rem; padding:10px 4px}
 }
