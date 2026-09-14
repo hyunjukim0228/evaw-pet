@@ -2,19 +2,21 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { courses } from "@/lib/courses";
+import { supabase } from "@/lib/supabase";
 import { useConsultModal } from "./ConsultModalContext";
 
-// TODO: 제출 처리(문자·이메일·카톡·시트 연동)는 수신 방식 확정 후 이 함수 안에서 실제 전송으로 교체.
-// 정적 export라 Next.js API 라우트는 못 씀 — 외부 폼 수신 서비스 연동 예정. (ConsultForm.tsx와 동일한 제약)
 export default function ConsultModal() {
   const { isOpen, presetSlug, presetBranch, close } = useConsultModal();
   const [submitted, setSubmitted] = useState(false);
   const [interests, setInterests] = useState<string[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   // 퀵메뉴·과정상세 등에서 특정 과정을 지정해 열었을 때 그 과정을 미리 체크.
   useEffect(() => {
     if (isOpen) {
       setSubmitted(false);
+      setError(null);
       setInterests(presetSlug ? [presetSlug] : []);
     }
   }, [isOpen, presetSlug]);
@@ -25,8 +27,33 @@ export default function ConsultModal() {
     setInterests((prev) => (prev.includes(slug) ? prev.filter((s) => s !== slug) : [...prev, slug]));
   }
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setError(null);
+
+    if (!supabase) {
+      setError("지금은 상담 신청을 접수할 수 없습니다. 잠시 후 다시 시도해 주세요.");
+      return;
+    }
+
+    const form = e.currentTarget;
+    const name = (form.elements.namedItem("name") as HTMLInputElement).value;
+    const phone = (form.elements.namedItem("phone") as HTMLInputElement).value;
+
+    setLoading(true);
+    const { error: dbError } = await supabase.from("consult_requests").insert({
+      name,
+      phone,
+      course_interests: interests,
+      branch_interest: presetBranch ?? null,
+      source_page: presetSlug ? `curriculum/${presetSlug}` : "modal",
+    });
+    setLoading(false);
+
+    if (dbError) {
+      setError("접수 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+      return;
+    }
     setSubmitted(true);
   }
 
@@ -42,7 +69,7 @@ export default function ConsultModal() {
             상담 신청이 접수되었습니다.
             <br />
             <span style={{ fontWeight: 400, fontSize: ".88rem", color: "var(--ink-soft)" }}>
-              (초안 화면 — 실제 담당자 알림 연동 전입니다)
+              담당자가 확인 후 연락드리겠습니다.
             </span>
           </p>
         ) : (
@@ -100,10 +127,14 @@ export default function ConsultModal() {
               <input type="checkbox" required />
               개인정보 수집·이용에 동의합니다. <span className="tbd">[약관 내용 확정 필요]</span>
             </label>
-            <button type="submit" className="btn btn-primary btn-lg btn-full">
-              상담 신청하기
+            {error && (
+              <p className="form-note" style={{ color: "var(--error)" }}>
+                {error}
+              </p>
+            )}
+            <button type="submit" className="btn btn-primary btn-lg btn-full" disabled={loading}>
+              {loading ? "접수 중..." : "상담 신청하기"}
             </button>
-            <p className="form-note">※ 제출 처리(문자·이메일·카톡·시트 연동)는 아직 연결 전입니다. 지금은 화면 안내만 표시됩니다.</p>
           </form>
         )}
       </div>
