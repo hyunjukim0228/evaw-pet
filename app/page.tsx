@@ -49,25 +49,30 @@ export default function HomePage() {
       </section>
 
       {/* 히어로 보조 CTA·신뢰지표·빠른 과정 탐색 — evaw-pet-grooming.co.kr 홈 히어로 구조(큰 CTA버튼·채널행·신뢰바·
-          아이콘퀵메뉴)를 참고하되, 문구·수치는 우리 실제 데이터만 쓰고 비주얼은 사이트 단일 액센트 디자인을 그대로
-          유지(레퍼런스의 다색 파스텔 카드·네이비는 따라가지 않음). 전화 채널은 아직 없어 HeroCtaRow가 상담모달로
-          대체 처리(2026-09-15). */}
+          아이콘퀵메뉴 + 오른쪽 사진)를 그대로 배치까지 참고, 문구·수치는 우리 실제 데이터만 쓰고 비주얼은 사이트
+          단일 액센트 디자인을 그대로 유지(레퍼런스의 다색 파스텔 카드·네이비는 따라가지 않음). 전화 채널은 아직
+          없어 HeroCtaRow가 상담모달로 대체 처리. 왼쪽 텍스트·CTA / 오른쪽 사진 슬라이드쇼 2단 배치(2026-09-15,
+          "반투명 배경" 시도 대신 레퍼런스처럼 실제 사진 컬럼으로 교체). */}
       <section id="hero-extras">
-        <PhotoSlideshow images={galleryPhotos} intervalMs={2000} alt="" className="hero-extras-bg" />
         <div className="wrap">
-          <ConsultCtaButton className="btn btn-primary btn-lg btn-full hero-main-cta">
-            🎓 무료 상담 + 수강료 확인하기
-          </ConsultCtaButton>
-          <HeroCtaRow />
-          <div className="hero-trust-bar">
-            <div className="trust-stat">
-              <b>전국 19개</b>
-              <span>직영지점 운영</span>
+          <div className="hero-extras-grid">
+            <div>
+              <ConsultCtaButton className="btn btn-primary btn-lg btn-full hero-main-cta">
+                🎓 무료 상담 + 수강료 확인하기
+              </ConsultCtaButton>
+              <HeroCtaRow />
+              <div className="hero-trust-bar">
+                <div className="trust-stat">
+                  <b>전국 19개</b>
+                  <span>직영지점 운영</span>
+                </div>
+                <div className="trust-stat">
+                  <b>100%</b>
+                  <span>가정견 실습</span>
+                </div>
+              </div>
             </div>
-            <div className="trust-stat">
-              <b>100%</b>
-              <span>가정견 실습</span>
-            </div>
+            <PhotoSlideshow images={galleryPhotos} intervalMs={2000} alt="애견미용학원 대전점" className="hero-extras-photo" />
           </div>
           <QuickCourseNav />
         </div>
