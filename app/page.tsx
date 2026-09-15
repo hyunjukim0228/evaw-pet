@@ -13,6 +13,7 @@ import { branches } from "@/lib/branches";
 import { reviews } from "@/lib/reviews";
 import { guideTopics } from "@/lib/guides";
 import { galleryPhotos } from "@/lib/galleryPhotos";
+import GalleryCarousel from "@/components/GalleryCarousel";
 
 const FAQS = [
   { q: "초보자도 수강 가능한가요?", a: "네, 대부분 처음 시작하시는 분들이며 기초 과정부터 차근차근 진행합니다." },
@@ -133,6 +134,7 @@ export default function HomePage() {
           <span className="sec-tag">📸 수업 현장</span>
           <h2 className="sec-title">시설·실습 사진</h2>
           <p className="sec-sub">실제 실습 현장과 완성 사진입니다.</p>
+          <GalleryCarousel />
           <div className="photo-grid">
             {galleryPhotos.map((src) => (
               <img key={src} src={src} alt="애견미용 실습 현장" loading="lazy" />
