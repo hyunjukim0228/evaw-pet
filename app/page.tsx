@@ -125,12 +125,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 시설·실습 */}
+      {/* 시설·실습 — 네이버 플레이스에 등록된 실제 실습 사진 1장(브랜드 문구·수상 그래픽은 제외하고 순수 실습 사진만 사용) */}
       <section id="gallery" className="gallery">
         <div className="wrap" style={{ textAlign: "center" }}>
           <span className="sec-tag">📸 수업 현장</span>
           <h2 className="sec-title">시설·실습 사진</h2>
-          <p className="sec-sub">실제 수업·시설 사진은 촬영 후 업로드 예정입니다.</p>
+          <p className="sec-sub">실제 실습 현장의 모습입니다. 추가 사진은 촬영 후 업데이트 예정입니다.</p>
+          <img src="/images/gallery/facility-1.jpg" alt="애견미용 실습 현장" className="highlight-photo" />
         </div>
       </section>
 
