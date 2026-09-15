@@ -396,6 +396,9 @@ main section:not(.hero).in-view{opacity:1; transform:none}
      배너가 화면 오른쪽 절반을 남기고 좁은 세로 조각으로 쪼그라드는 버그가 있었음(캡처로 확인) —
      aspect-ratio를 꺼서 폭은 100% 그대로 두고 높이만 직접 지정하도록 수정. */
   .hero-carousel{aspect-ratio:unset; height:62vh; max-height:620px; min-height:320px}
+  /* 2026-09-15: 모바일에서는 메인배너(사진 캐러셀) 자체를 없애자는 요청 — 아래 .hero-copy가 이제
+     흰 배경 블록으로 따로 흐르니 사진 없이도 자연스럽게 헤드라인부터 시작됨. */
+  .hero-carousel{display:none}
 
   /* 모바일 가독성 — 레퍼런스(evaw-pet-grooming.co.kr) 모바일 화면 참고(2026-09-15, 카톡 캡처로 비교):
      사진 위에 흰 글씨를 얹는 대신, 사진 아래에 흰 배경+진한 글씨 블록을 따로 둬서 대비를 확실히 확보.
