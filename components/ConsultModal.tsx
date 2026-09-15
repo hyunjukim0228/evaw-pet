@@ -2,24 +2,37 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { courses } from "@/lib/courses";
+import { branches } from "@/lib/branches";
 import { supabase } from "@/lib/supabase";
 import { useConsultModal } from "./ConsultModalContext";
 
+const branchLabel = (b: (typeof branches)[number]) => `${b.name} 애견미용학원 (${b.region})`;
+const defaultBranchLabel = branchLabel(branches.find((b) => b.isCurrent) ?? branches[0]);
+
+const INTENT_COPY = {
+  consult: { title: "상담 신청", lead: "관심 있는 과정을 선택해 주시면 더 정확히 안내해 드립니다.", submit: "상담 신청하기" },
+  tuition: { title: "간편 수강료 조회", lead: "관심 과정과 지점을 선택해 주시면 수강료를 안내해 드립니다.", submit: "수강료 조회하기" },
+};
+
 export default function ConsultModal() {
-  const { isOpen, presetSlug, presetBranch, close } = useConsultModal();
+  const { isOpen, presetSlug, presetBranch, intent, close } = useConsultModal();
   const [submitted, setSubmitted] = useState(false);
   const [interests, setInterests] = useState<string[]>([]);
+  const [branch, setBranch] = useState(defaultBranchLabel);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const copy = INTENT_COPY[intent];
 
-  // 퀵메뉴·과정상세 등에서 특정 과정을 지정해 열었을 때 그 과정을 미리 체크.
+  // 퀵메뉴·과정상세 등에서 특정 과정을 지정해 열었을 때 그 과정을 미리 체크. 지점은 카드 클릭 프리셋이 있으면 그걸,
+  // 없으면 이 사이트 기본 지점(대전)을 기본값으로 — 어느 쪽이든 사용자가 드롭다운에서 직접 바꿀 수 있음.
   useEffect(() => {
     if (isOpen) {
       setSubmitted(false);
       setError(null);
       setInterests(presetSlug ? [presetSlug] : []);
+      setBranch(presetBranch ?? defaultBranchLabel);
     }
-  }, [isOpen, presetSlug]);
+  }, [isOpen, presetSlug, presetBranch]);
 
   if (!isOpen) return null;
 
@@ -45,8 +58,8 @@ export default function ConsultModal() {
       name,
       phone,
       course_interests: interests,
-      branch_interest: presetBranch ?? null,
-      source_page: presetSlug ? `curriculum/${presetSlug}` : "modal",
+      branch_interest: branch,
+      source_page: presetSlug ? `curriculum/${presetSlug}` : intent === "tuition" ? "modal-tuition" : "modal",
     });
     setLoading(false);
 
@@ -75,18 +88,23 @@ export default function ConsultModal() {
         ) : (
           <form className="consult-form" style={{ padding: 0 }} onSubmit={handleSubmit}>
             <h3 className="sec-title" style={{ fontSize: "1.2rem", marginBottom: 4 }}>
-              상담 신청
+              {copy.title}
             </h3>
             <p className="sec-sub" style={{ marginBottom: 18 }}>
-              관심 있는 과정을 선택해 주시면 더 정확히 안내해 드립니다.
+              {copy.lead}
             </p>
 
-            {presetBranch && (
-              <div className="field">
-                <label>관심 지점</label>
-                <p className="preset-branch-chip">{presetBranch}</p>
-              </div>
-            )}
+            <div className="field">
+              <label htmlFor="m-branch">지점 선택</label>
+              <select id="m-branch" name="branch" className="field-input" value={branch} onChange={(e) => setBranch(e.target.value)}>
+                {branches.map((b) => (
+                  <option key={b.name} value={branchLabel(b)}>
+                    {branchLabel(b)}
+                    {b.isCurrent ? " · 지금 보고 계신 지점" : ""}
+                  </option>
+                ))}
+              </select>
+            </div>
 
             <div className="field">
               <label>관심 과정 (선택)</label>
@@ -133,7 +151,7 @@ export default function ConsultModal() {
               </p>
             )}
             <button type="submit" className="btn btn-primary btn-lg btn-full" disabled={loading}>
-              {loading ? "접수 중..." : "상담 신청하기"}
+              {loading ? "접수 중..." : copy.submit}
             </button>
           </form>
         )}

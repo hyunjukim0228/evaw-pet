@@ -315,10 +315,11 @@ section:nth-of-type(even){background:var(--surface-soft)}
 .consult-form{max-width:480px; margin:0 auto; background:var(--canvas); color:var(--ink); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow-1)}
 .field{margin-bottom:16px}
 .field label{display:block; font-weight:600; font-size:.88rem; margin-bottom:6px; color:var(--ink)}
-.field-input,.consult-form input[type=text],.consult-form input[type=tel]{
+.field-input,.consult-form input[type=text],.consult-form input[type=tel],.consult-form select{
   width:100%; padding:13px 14px; border:1px solid var(--hairline); border-radius:var(--radius-sm); font-size:.95rem;
+  background:var(--canvas); color:var(--ink); font-family:inherit;
 }
-.field-input:focus,.consult-form input:focus{outline:2px solid var(--ink); outline-offset:-1px; border-color:var(--ink)}
+.field-input:focus,.consult-form input:focus,.consult-form select:focus{outline:2px solid var(--ink); outline-offset:-1px; border-color:var(--ink)}
 .agree{display:flex; align-items:flex-start; gap:8px; font-size:.82rem; color:var(--muted); margin:14px 0}
 .agree input{margin-top:3px}
 .form-note{font-size:.76rem; color:var(--muted); text-align:center; margin-top:12px}

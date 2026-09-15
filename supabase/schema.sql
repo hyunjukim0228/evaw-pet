@@ -10,7 +10,7 @@ create table if not exists consult_requests (
   name text not null,
   phone text not null,
   course_interests text[] not null default '{}',  -- 선택한 과정 slug 배열 (예: ["level-3","home-grooming"])
-  branch_interest text,                             -- 지점 카드에서 열었을 때만 채워짐 (예: "대전 애견미용학원 (대전)")
+  branch_interest text,                             -- 상담·수강료조회 폼의 지점 선택 드롭다운 값 (예: "대전 애견미용학원 (대전)", 2026-09-15부터 상시 필드)
   source_page text                                  -- 어느 화면에서 신청했는지 (예: "home", "curriculum/level-3")
 );
 

@@ -1,10 +1,15 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { branches } from "@/lib/branches";
 import { supabase } from "@/lib/supabase";
+
+const branchLabel = (b: (typeof branches)[number]) => `${b.name} 애견미용학원 (${b.region})`;
+const defaultBranchLabel = branchLabel(branches.find((b) => b.isCurrent) ?? branches[0]);
 
 export default function ConsultForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [branch, setBranch] = useState(defaultBranchLabel);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -26,6 +31,7 @@ export default function ConsultForm() {
       name,
       phone,
       course_interests: [],
+      branch_interest: branch,
       source_page: "home",
     });
     setLoading(false);
@@ -51,6 +57,17 @@ export default function ConsultForm() {
 
   return (
     <form className="consult-form" onSubmit={handleSubmit}>
+      <div className="field">
+        <label htmlFor="f-branch">지점 선택</label>
+        <select id="f-branch" name="branch" className="field-input" value={branch} onChange={(e) => setBranch(e.target.value)}>
+          {branches.map((b) => (
+            <option key={b.name} value={branchLabel(b)}>
+              {branchLabel(b)}
+              {b.isCurrent ? " · 지금 보고 계신 지점" : ""}
+            </option>
+          ))}
+        </select>
+      </div>
       <div className="field">
         <label htmlFor="f-name">이름</label>
         <input id="f-name" name="name" type="text" placeholder="이름을 입력해 주세요" required />
