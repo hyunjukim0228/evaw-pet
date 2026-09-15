@@ -12,7 +12,9 @@ import { courses } from "@/lib/courses";
 import { branches } from "@/lib/branches";
 import { reviews } from "@/lib/reviews";
 import { guideTopics } from "@/lib/guides";
+import { galleryPhotos } from "@/lib/galleryPhotos";
 import GalleryCarousel from "@/components/GalleryCarousel";
+import PhotoSlideshow from "@/components/PhotoSlideshow";
 
 const FAQS = [
   { q: "초보자도 수강 가능한가요?", a: "네, 대부분 처음 시작하시는 분들이며 기초 과정부터 차근차근 진행합니다." },
@@ -71,7 +73,7 @@ export default function HomePage() {
         <div className="wrap" style={{ textAlign: "center" }}>
           <h2 className="sec-title">🛁 가정견미용 과정</h2>
           <p className="sec-sub">내 반려견을 집에서 직접 관리하고 싶은 분들을 위한 과정입니다.</p>
-          <img src="/images/gallery/facility-12.jpg" alt="가정견미용 과정" className="highlight-photo" />
+          <PhotoSlideshow images={galleryPhotos} intervalMs={2000} alt="가정견미용 과정" />
           <div style={{ marginTop: 20 }}>
             <Link href="/curriculum/home-grooming" className="btn btn-outline btn-sm">
               가정견미용 과정 자세히 보기
