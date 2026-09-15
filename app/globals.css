@@ -206,12 +206,19 @@ section:nth-of-type(even){background:var(--surface-soft)}
 .two-col{display:grid; grid-template-columns:1.1fr 1fr; gap:40px; align-items:center}
 
 /* 커리큘럼 — property-card 톤(사진 우선, 호버 시 단일 섀도우 계층) */
-.course-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
-.course-card{background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); padding:18px; text-align:center; transition:box-shadow .15s ease}
+.course-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:start}
+/* flex column 필수 — grid 아이템(article)이 block 레이아웃일 때 다른 열의 카드가 더 길면
+   이 카드의 이미지·텍스트가 카드 박스 바깥(다음 행)으로 흘러넘쳐 겹쳐 보이는 버그가 있었음(캡처로 확인).
+   flex column으로 바꾸면 카드 자신의 콘텐츠 높이만큼만 박스가 정확히 감싸서 다음 행과 겹치지 않음. */
+.course-card{
+  display:flex; flex-direction:column;
+  background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); padding:18px; text-align:center; transition:box-shadow .15s ease;
+}
 .course-card:hover{box-shadow:var(--shadow-1)}
 .course-card h3{font-size:1.05rem; margin:14px 0 6px; font-weight:600; color:var(--ink)}
 .course-card p{font-size:.88rem; color:var(--muted); margin:0 0 10px}
 .course-card .price{font-weight:700; color:var(--ink)}
+.course-card .btn{margin-top:auto}
 
 /* 커리큘럼 상세 */
 .course-detail-points{list-style:none; margin:20px 0 0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:12px}

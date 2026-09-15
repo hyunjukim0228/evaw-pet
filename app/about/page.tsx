@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ConsultCtaButton from "@/components/ConsultCtaButton";
 import BenefitIcon from "@/components/BenefitIcon";
-import { galleryPhotos } from "@/lib/galleryPhotos";
 import GalleryCarousel from "@/components/GalleryCarousel";
 
 export const metadata: Metadata = {
@@ -73,11 +72,6 @@ export default function AboutPage() {
           <h2 className="sec-title">시설·실습 사진</h2>
           <p className="sec-sub">실제 실습 현장과 완성 사진입니다.</p>
           <GalleryCarousel />
-          <div className="photo-grid">
-            {galleryPhotos.map((src) => (
-              <img key={src} src={src} alt="애견미용 실습 현장" loading="lazy" />
-            ))}
-          </div>
         </div>
       </section>
 

@@ -12,7 +12,6 @@ import { courses } from "@/lib/courses";
 import { branches } from "@/lib/branches";
 import { reviews } from "@/lib/reviews";
 import { guideTopics } from "@/lib/guides";
-import { galleryPhotos } from "@/lib/galleryPhotos";
 import GalleryCarousel from "@/components/GalleryCarousel";
 
 const FAQS = [
@@ -135,11 +134,6 @@ export default function HomePage() {
           <h2 className="sec-title">시설·실습 사진</h2>
           <p className="sec-sub">실제 실습 현장과 완성 사진입니다.</p>
           <GalleryCarousel />
-          <div className="photo-grid">
-            {galleryPhotos.map((src) => (
-              <img key={src} src={src} alt="애견미용 실습 현장" loading="lazy" />
-            ))}
-          </div>
         </div>
       </section>
 
