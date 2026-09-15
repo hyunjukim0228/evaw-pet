@@ -70,7 +70,6 @@ export default function HomePage() {
         <div className="wrap" style={{ textAlign: "center" }}>
           <h2 className="sec-title">🛁 가정견미용 과정</h2>
           <p className="sec-sub">내 반려견을 집에서 직접 관리하고 싶은 분들을 위한 과정입니다.</p>
-          <img src="/images/courses/home-grooming-detail-pc.webp" alt="가정견미용 과정" className="highlight-photo" />
           <div style={{ marginTop: 20 }}>
             <Link href="/curriculum/home-grooming" className="btn btn-outline btn-sm">
               가정견미용 과정 자세히 보기
