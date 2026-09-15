@@ -412,7 +412,8 @@ main section:not(.hero).in-view{opacity:1; transform:none}
   .hero-copy .eyebrow.hero-badge{
     background:var(--primary-disabled); border:none; color:var(--primary); backdrop-filter:none;
   }
-  .hero-copy .btn-lg{width:100%}
+  /* 2026-09-15: 처음 보이는 이 CTA버튼은 삭제 요청 — 바로 아래 hero-extras의 큰 CTA버튼과 중복이라 정리 */
+  .hero-copy .btn-lg{display:none}
 }
 @media (max-width:900px){
   .two-col{grid-template-columns:1fr}
