@@ -8,7 +8,7 @@ import QuickCourseNav from "@/components/QuickCourseNav";
 import BenefitIcon from "@/components/BenefitIcon";
 import CtaBanner from "@/components/CtaBanner";
 import BranchCard from "@/components/BranchCard";
-import { courses } from "@/lib/courses";
+import { featuredCourses } from "@/lib/courses";
 import { branches } from "@/lib/branches";
 import { reviews } from "@/lib/reviews";
 import { guideTopics } from "@/lib/guides";
@@ -155,7 +155,7 @@ export default function HomePage() {
           <span className="sec-tag">📚 커리큘럼</span>
           <h2 className="sec-title">수강 과정 안내</h2>
           <div className="course-grid">
-            {courses.map((course) => (
+            {featuredCourses.map((course) => (
               <article key={course.slug} className="course-card">
                 <CourseThumb src={course.cardImage} alt={course.title} className="ph-course" />
                 <h3>{course.title}</h3>

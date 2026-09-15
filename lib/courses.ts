@@ -91,6 +91,13 @@ export function getCourse(slug: string): Course | undefined {
   return courses.find((c) => c.slug === slug);
 }
 
+// 2026-09-15: "수강 과정 안내" 그리드(홈+/curriculum)에서만 가정견미용·행동교정 카드를 뺌(사용자 요청).
+// 과정 데이터 자체는 courses에 그대로 둬서 상세페이지(/curriculum/home-grooming, /curriculum/behavior)와
+// 빠른 과정 탐색(QuickCourseNav)·퀵메뉴 링크는 그대로 살아있음 — 이 목록에만 안 보이는 것.
+export const featuredCourses = courses.filter(
+  (c) => c.slug !== "home-grooming" && c.slug !== "behavior"
+);
+
 // 과정 상세 페이지마다 반복 노출하는 공통 신뢰 섹션 — 켈리스 과정 상세("이 일이 좋은 이유"/"차별점")를 참고해 애견미용사 진로에 맞게 재작성.
 // [미검증] 실제 취업 데이터 아님, 일반적인 업계 특징 소개 문구 — 과장 표현(취업 보장·100% 등) 없이 완충 서술.
 export const careerBenefits = [
