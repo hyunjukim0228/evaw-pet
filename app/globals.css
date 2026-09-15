@@ -148,6 +148,7 @@ h1,h2,h3{line-height:1.3; margin:0 0 12px}
 
 /* 히어로 보조 CTA·신뢰지표·빠른 과정 탐색 (evaw-pet-grooming.co.kr 히어로 구조 참고 — 문구/색은 우리 시스템) */
 #hero-extras{padding:28px 0 48px}
+.hero-main-cta{display:flex; max-width:520px; margin:0 auto 14px}
 .hero-channel-row{display:flex; gap:10px; max-width:520px; margin:0 auto 20px}
 .btn-channel{
   flex:1; text-align:center; padding:12px 8px; border-radius:var(--radius-sm); font-size:.88rem; font-weight:700;
@@ -338,7 +339,8 @@ section:nth-of-type(even){background:var(--surface-soft)}
 .copyright{margin-top:10px; color:var(--muted-soft)}
 
 /* 플로팅 CTA */
-.floating-cta{position:fixed; right:18px; bottom:18px; display:flex; flex-direction:column; gap:10px; z-index:60}
+.floating-cta{position:fixed; right:18px; bottom:18px; display:flex; flex-direction:column; gap:10px; z-index:60; transition:opacity .2s ease, visibility .2s ease}
+.floating-cta.cta-bar-active{opacity:0; visibility:hidden; pointer-events:none}
 .fab{width:60px; height:60px; border-radius:var(--radius-full); display:flex; align-items:center; justify-content:center;
   font-size:.85rem; font-weight:700; box-shadow:0 6px 18px rgba(0,0,0,.18); border:none; cursor:pointer}
 .fab-primary{background:var(--primary); color:#fff}
@@ -354,8 +356,19 @@ section:nth-of-type(even){background:var(--surface-soft)}
 }
 .scroll-top-btn.visible{opacity:1; visibility:visible; transform:translateY(0)}
 
-/* 모바일 하단 고정 CTA 바 — 데스크톱에서는 header-cta가 그 역할을 하므로 숨김 */
-.mobile-cta-bar{display:none}
+/* 하단 고정 CTA 바 — 모바일은 항상 노출(아래 max-width:768px에서 강제), PC는 기본 숨김 상태로 있다가
+   스크롤을 내리면(MobileCtaBar.tsx의 useScrolledPast) .visible이 붙어 슬라이드업(evaw-pet-grooming.co.kr
+   PC 스크롤 시 하단 CTA 참고, 2026-09-15). */
+.mobile-cta-bar{
+  position:fixed; left:0; right:0; bottom:0; z-index:70;
+  background:var(--canvas); border-top:1px solid var(--hairline);
+  padding:12px 20px calc(12px + env(safe-area-inset-bottom));
+  box-shadow:0 -2px 12px rgba(0,0,0,.08);
+  transform:translateY(100%); transition:transform .25s ease;
+}
+.mobile-cta-bar.visible{transform:translateY(0)}
+.mobile-cta-bar-row{display:flex; gap:10px; max-width:640px; margin:0 auto}
+.btn-channel-consult{background:var(--primary); color:#fff}
 
 /* CTA 배너 — 콘텐츠 블록 사이에 넣는 슬림 유도 섹션 */
 section.cta-banner{padding:48px 0; background:var(--surface-soft); text-align:center}
@@ -403,16 +416,13 @@ main section:not(.hero).in-view{opacity:1; transform:none}
   .nav-toggle{margin-left:auto}
   .mobile-only-cta{display:flex; margin-top:6px}
 
-  /* 모바일 하단 고정 CTA 바 등장 — 대신 원형 플로팅 버튼은 숨기고(겹침 방지), 맨위로가기 버튼은 바 위로 올림 */
+  /* 모바일 하단 고정 CTA 바 등장 — 스크롤과 무관하게 항상 표시(PC의 scroll-visible 동작과 다름).
+     대신 원형 플로팅 버튼은 숨기고(겹침 방지), 맨위로가기 버튼은 바 위로 올림 */
   .mobile-cta-bar{
-    display:block; position:fixed; left:0; right:0; bottom:0; z-index:70;
-    background:var(--canvas); border-top:1px solid var(--hairline);
-    padding:10px 16px calc(10px + env(safe-area-inset-bottom));
-    box-shadow:0 -2px 12px rgba(0,0,0,.06);
+    transform:translateY(0); padding:10px 16px calc(10px + env(safe-area-inset-bottom));
   }
-  .mobile-cta-bar-row{display:flex; gap:6px}
+  .mobile-cta-bar-row{gap:6px}
   .mobile-cta-bar-row .btn-channel{font-size:.74rem; padding:11px 4px}
-  .btn-channel-consult{background:var(--primary); color:#fff}
   .floating-cta{display:none}
   .scroll-top-btn{bottom:92px}
   body{padding-bottom:88px}
