@@ -28,6 +28,9 @@ export const courses: Course[] = [
     steps: ["도구 사용법과 커트의 원리", "목욕·드라이 기초 실습", "기초 클리핑 실습", "보호자 상담부터 인계까지 현장 실무", "자격증 3급 대비 실기"],
     duration: "1:1 개별 맞춤 진도로 필수 교육기간 없이 진행",
     recommendFor: "애견미용을 처음 시작하는 분",
+    // 2026-09-15: 네이버 플레이스 공식블로그에서 확보한 실제 사진(lib/galleryPhotos.ts와 동일 출처)으로 배정.
+    cardImage: "/images/gallery/facility-2.jpg",
+    detailImage: "/images/gallery/facility-6.jpg",
   },
   {
     slug: "level-2",
@@ -39,6 +42,8 @@ export const courses: Course[] = [
     steps: ["견종별 스타일링 이론", "심화 클리핑·가위컷 실습", "보호자 상담부터 인계까지 현장 실무", "자격증 2급 대비 실기"],
     duration: "1:1 개별 맞춤 진도로 필수 교육기간 없이 진행",
     recommendFor: "3급 취득 후 심화 실습을 원하는 분",
+    cardImage: "/images/gallery/facility-9.jpg",
+    detailImage: "/images/gallery/facility-13.jpg",
   },
   {
     slug: "career",
@@ -49,6 +54,8 @@ export const courses: Course[] = [
     points: ["실무 역량 강화", "취업 연계 안내", "창업 준비 안내", "포트폴리오 준비"],
     steps: ["실무 역량 점검·보강", "포트폴리오 준비", "취업 연계 안내", "창업 준비 안내"],
     recommendFor: "자격증 취득 후 취업·창업을 준비하는 분",
+    cardImage: "/images/gallery/facility-10.jpg",
+    detailImage: "/images/gallery/facility-15.jpg",
   },
   {
     slug: "home-grooming",
@@ -60,9 +67,11 @@ export const courses: Course[] = [
     steps: ["도구·안전 기본기", "목욕·드라이 실습", "빗질·엉킴 관리", "부분 클리핑 실습"],
     recommendFor: "내 반려견을 직접 관리하고 싶은 분",
     // 2026-09-11: 사용자가 타사(EVAW/이바우펫) 브랜드·수상 문구 포함 사실을 인지한 상태에서 그대로 사용하기로 확정(상호명은 "애견미용학원 대전점" 유지).
-    // 2026-09-13: cardImage(커리큘럼 카드용 "현장 경험은 어떻게 진행될까요?" 콜라주)만 사용자 요청으로 제거 — detailImage/detailImageMo(홈 하이라이트·상세페이지용)는 유지.
-    detailImage: "/images/courses/home-grooming-detail-pc.webp",
-    detailImageMo: "/images/courses/home-grooming-detail-mo.webp",
+    // 2026-09-13: cardImage(커리큘럼 카드용 "현장 경험은 어떻게 진행될까요?" 콜라주)만 사용자 요청으로 제거.
+    // 2026-09-15: 남아있던 detailImage/detailImageMo(브랜드 콜라주)도 네이버 플레이스에서 확보한 실제 사진으로 교체 — 브랜드 문구 없는 순수 사진으로 완전히 전환.
+    cardImage: "/images/gallery/facility-7.jpg",
+    detailImage: "/images/gallery/facility-3.jpg",
+    detailImageMo: "/images/gallery/facility-8.jpg",
   },
   {
     slug: "behavior",
@@ -73,6 +82,8 @@ export const courses: Course[] = [
     points: ["문제행동 원인 이해", "교정 실습", "보호자 상담법", "행동교정 세미나 연계"],
     steps: ["반려견 행동 이해 기초", "문제행동 유형별 접근법", "교정 실습", "보호자 상담·사후관리"],
     recommendFor: "반려견 문제행동으로 고민 중인 분",
+    cardImage: "/images/gallery/facility-14.jpg",
+    detailImage: "/images/gallery/facility-17.jpg",
   },
 ];
 
