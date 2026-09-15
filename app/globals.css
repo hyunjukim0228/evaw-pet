@@ -397,6 +397,20 @@ main section:not(.hero).in-view{opacity:1; transform:none}
      배너가 화면 오른쪽 절반을 남기고 좁은 세로 조각으로 쪼그라드는 버그가 있었음(캡처로 확인) —
      aspect-ratio를 꺼서 폭은 100% 그대로 두고 높이만 직접 지정하도록 수정. */
   .hero-carousel{aspect-ratio:unset; height:62vh; max-height:620px; min-height:320px}
+
+  /* 모바일 가독성 — 레퍼런스(evaw-pet-grooming.co.kr) 모바일 화면 참고(2026-09-15, 카톡 캡처로 비교):
+     사진 위에 흰 글씨를 얹는 대신, 사진 아래에 흰 배경+진한 글씨 블록을 따로 둬서 대비를 확실히 확보.
+     .hero-copy는 DOM상 이미 사진(.hero-carousel) 다음이라 position만 absolute→static으로 바꾸면
+     자연스럽게 사진 아래로 흐름(overlay 관련 스타일도 전부 해제). */
+  .hero-copy{
+    position:static; inset:auto; display:block; padding:28px 20px 8px; color:var(--ink);
+    text-shadow:none; background:var(--canvas); pointer-events:auto;
+  }
+  .hero-copy .lead{color:var(--muted)}
+  .hero-copy .eyebrow.hero-badge{
+    background:var(--primary-disabled); border:none; color:var(--primary); backdrop-filter:none;
+  }
+  .hero-copy .btn-lg{width:100%}
 }
 @media (max-width:900px){
   .two-col{grid-template-columns:1fr}
