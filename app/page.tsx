@@ -176,6 +176,7 @@ export default function HomePage() {
           <div className="review-grid">
             {reviews.map((r) => (
               <div key={r.name + r.course} className="review-card">
+                {r.photo && <img src={r.photo} alt="" className="review-photo" loading="lazy" />}
                 <div className="review-stars">{"★".repeat(r.rating)}</div>
                 <p className="review-text">{r.text}</p>
                 <p className="review-meta">
