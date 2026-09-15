@@ -162,7 +162,7 @@ h1,h2,h3{line-height:1.3; margin:0 0 12px}
 .course-preview-panel{padding:0; overflow:hidden}
 .course-preview-header{background:var(--ink); color:#fff; padding:28px 24px 20px; position:relative}
 .course-preview-header .modal-close{color:#fff; opacity:.85}
-.course-preview-header .benefit-icon{margin:0 0 12px}
+.course-preview-icon-img{width:48px; height:48px; margin:0 0 12px; display:block}
 .course-preview-header h3{margin:0 0 4px; font-size:1.15rem}
 .course-preview-header p{margin:0; font-size:.85rem; opacity:.8}
 .course-preview-body{padding:8px 24px 4px}
@@ -189,7 +189,8 @@ section:nth-of-type(even){background:var(--surface-soft)}
 .benefit-grid li p{margin:0; color:var(--muted); font-size:.88rem}
 /* 강점·차별점 아이콘 — evaw 사이트의 "차별점" 섹션(아이콘+텍스트) 구조 참고, 이모지 대신 인라인 SVG로 통일 */
 .benefit-icon{width:56px; height:56px; margin:0 auto 14px; border-radius:var(--radius-full); background:var(--surface-soft); display:flex; align-items:center; justify-content:center; color:var(--ink)}
-.benefit-icon svg{width:26px; height:26px}
+.benefit-emoji{font-size:1.6rem; line-height:1}
+.quick-course-icon{width:44px; height:44px}
 
 /* 2단 레이아웃 */
 .two-col{display:grid; grid-template-columns:1.1fr 1fr; gap:40px; align-items:center}

@@ -32,7 +32,7 @@ export default function HomePage() {
       <section className="hero" aria-label="메인 배너">
         <HeroCarousel />
         <div className="hero-copy">
-          <p className="eyebrow hero-badge">대전 · 애견미용학원</p>
+          <p className="eyebrow hero-badge">📍 대전 · 애견미용학원</p>
           <h1>
             처음 배우는 애견미용,
             <br />
@@ -40,7 +40,7 @@ export default function HomePage() {
           </h1>
           <p className="lead">애견미용학원 대전점에서 기초부터 차근차근 시작하세요.</p>
           <Link href="#consult" className="btn btn-primary btn-lg">
-            무료 상담 신청하기
+            🎓 무료 상담 신청하기
           </Link>
         </div>
       </section>
@@ -68,7 +68,7 @@ export default function HomePage() {
       {/* 가정견미용 과정 하이라이트 사진 */}
       <section id="home-grooming-highlight">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">가정견미용 과정</h2>
+          <h2 className="sec-title">🛁 가정견미용 과정</h2>
           <p className="sec-sub">내 반려견을 집에서 직접 관리하고 싶은 분들을 위한 과정입니다.</p>
           <img src="/images/courses/home-grooming-detail-pc.webp" alt="가정견미용 과정" className="highlight-photo" />
           <div style={{ marginTop: 20 }}>
@@ -82,7 +82,7 @@ export default function HomePage() {
       {/* 강점 섹션 */}
       <section className="benefits">
         <div className="wrap">
-          <h2 className="sec-title">애견미용학원 대전점, 이런 점이 다릅니다</h2>
+          <h2 className="sec-title">✨ 애견미용학원 대전점, 이런 점이 다릅니다</h2>
           <ul className="benefit-grid">
             <li>
               <BenefitIcon name="certificate" />
@@ -111,7 +111,7 @@ export default function HomePage() {
       {/* 학원 소개 (요약 — 전체 내용은 /about) */}
       <section id="about" className="about">
         <div className="wrap" style={{ maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
-          <h2 className="sec-title">학원소개</h2>
+          <h2 className="sec-title">🏫 학원소개</h2>
           <p>
             애견미용학원 대전점은 기초부터 실전까지, 자격증 취득과 실무 역량을 함께 준비하는 애견미용 전문
             교육 공간입니다.
@@ -128,7 +128,7 @@ export default function HomePage() {
       {/* 시설·실습 */}
       <section id="gallery" className="gallery">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">시설·실습 사진</h2>
+          <h2 className="sec-title">📸 시설·실습 사진</h2>
           <p className="sec-sub">실제 수업·시설 사진은 촬영 후 업로드 예정입니다.</p>
         </div>
       </section>
@@ -136,7 +136,7 @@ export default function HomePage() {
       {/* 커리큘럼 (요약 — 전체 내용은 /curriculum) */}
       <section id="curriculum" className="curriculum">
         <div className="wrap">
-          <h2 className="sec-title">수강 과정 안내</h2>
+          <h2 className="sec-title">📚 수강 과정 안내</h2>
           <div className="course-grid">
             {courses.map((course) => (
               <article key={course.slug} className="course-card">
@@ -159,7 +159,7 @@ export default function HomePage() {
       {/* 수강생 후기 — 실제 후기 없어 구조만 설계, 예시 문구로 명시 */}
       <section id="reviews">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">수강생 후기</h2>
+          <h2 className="sec-title">⭐ 수강생 후기</h2>
           <p className="sec-sub">※ 아래는 구성 예시이며, 실제 수강생 후기로 교체될 예정입니다.</p>
           <div className="review-grid">
             {reviews.map((r) => (
@@ -180,7 +180,7 @@ export default function HomePage() {
       {/* 분야별 특강 */}
       <section id="special">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">분야별 특강</h2>
+          <h2 className="sec-title">🎯 분야별 특강</h2>
           <p className="sec-sub">
             정규 과정과 별도로, 관심 있는 주제만 짧게 배워보는 특강도 준비되어 있습니다.
             <br />
@@ -195,7 +195,7 @@ export default function HomePage() {
       {/* FAQ */}
       <section id="faq" className="faq">
         <div className="wrap">
-          <h2 className="sec-title">자주 묻는 질문</h2>
+          <h2 className="sec-title">❓ 자주 묻는 질문</h2>
           <div className="faq-list">
             {FAQS.map((item) => (
               <details key={item.q} className="faq-item">
@@ -210,7 +210,7 @@ export default function HomePage() {
       {/* 가이드 콘텐츠 미리보기 */}
       <section id="guide-preview">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">궁금할 때 보는 가이드</h2>
+          <h2 className="sec-title">💡 궁금할 때 보는 가이드</h2>
           <p className="sec-sub">자격증·비용·취업·창업까지, 자주 궁금해하시는 내용을 정리했습니다.</p>
           <div className="guide-grid">
             {guideTopics.slice(0, 3).map((g) => (
@@ -233,7 +233,7 @@ export default function HomePage() {
       {/* 오시는길 */}
       <section id="location" className="location">
         <div className="wrap location-info" style={{ maxWidth: 480, margin: "0 auto" }}>
-          <h2 className="sec-title">오시는길</h2>
+          <h2 className="sec-title">📍 오시는길</h2>
           <p>
             <b>주소</b>
             <br />
@@ -251,7 +251,7 @@ export default function HomePage() {
       {/* 전국 지점 */}
       <section id="branches">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">전국 지점</h2>
+          <h2 className="sec-title">🗺️ 전국 지점</h2>
           <p className="sec-sub">애견미용학원 대전점은 전국 19개 지점 네트워크 중 하나입니다.</p>
           <div className="branch-grid">
             {branches.map((b) => (
@@ -269,7 +269,7 @@ export default function HomePage() {
       {/* 상담 신청 CTA */}
       <section id="consult" className="consult">
         <div className="wrap">
-          <h2 className="sec-title">지금 바로 무료 상담 받으세요</h2>
+          <h2 className="sec-title">🎓 지금 바로 무료 상담 받으세요</h2>
           <p className="sec-sub">이름과 연락처만 남겨주시면 담당자가 안내해 드립니다.</p>
           <ConsultForm />
         </div>

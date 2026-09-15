@@ -1,9 +1,7 @@
 "use client";
 
-import BenefitIcon from "./BenefitIcon";
 import { getCourse } from "@/lib/courses";
 import { useConsultModal } from "./ConsultModalContext";
-import type { IconName } from "./icons";
 
 // evaw-pet-grooming.co.kr 홈 아이콘퀵메뉴를 누르면 뜨는 과정 소개 팝업(cModal) 구조 참고.
 // 기존 Course 데이터(summary/description/points)만으로 채우고, 없는 정보(기간)는 "상담 시 안내"로 정직하게 표시.
@@ -13,7 +11,7 @@ export default function CoursePreviewModal({
   onClose,
 }: {
   slug: string | null;
-  icon: IconName;
+  icon: string;
   onClose: () => void;
 }) {
   const { open } = useConsultModal();
@@ -28,7 +26,7 @@ export default function CoursePreviewModal({
           <button className="modal-close" aria-label="닫기" onClick={onClose}>
             ×
           </button>
-          <BenefitIcon name={icon} />
+          <img src={icon} alt="" className="course-preview-icon-img" />
           <h3>{course.title}</h3>
           <p>{course.summary}</p>
         </div>
@@ -61,7 +59,7 @@ export default function CoursePreviewModal({
               open({ courseSlug: course.slug });
             }}
           >
-            무료 상담 + 수강료 확인하기
+            🎓 무료 상담 + 수강료 확인하기
           </button>
           <button type="button" className="btn btn-outline btn-full" onClick={onClose}>
             닫기

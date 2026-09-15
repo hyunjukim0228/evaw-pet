@@ -12,15 +12,15 @@ export default function QuickMenu() {
   return (
     <div className="quick-menu">
       <div className="wrap quick-menu-inner">
-        <Link href="/curriculum">자격증</Link>
-        <Link href="/curriculum/behavior">행동교정</Link>
-        <Link href="/curriculum">펫뷰티</Link>
-        <Link href="/curriculum/home-grooming">취미반</Link>
+        <Link href="/curriculum">🏅 자격증</Link>
+        <Link href="/curriculum/behavior">🐾 행동교정</Link>
+        <Link href="/curriculum">✂️ 펫뷰티</Link>
+        <Link href="/curriculum/home-grooming">🛁 취미반</Link>
         <button type="button" onClick={() => open()}>
-          수강료안내
+          💰 수강료안내
         </button>
         <button type="button" onClick={() => open()}>
-          상담신청
+          🎓 상담신청
         </button>
       </div>
     </div>

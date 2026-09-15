@@ -38,9 +38,9 @@ export default function GuidePage() {
 
       <section className="consult">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">더 궁금하신 점이 있으신가요?</h2>
+          <h2 className="sec-title">💡 더 궁금하신 점이 있으신가요?</h2>
           <p className="sec-sub">이름과 연락처만 남겨주시면 담당자가 안내해 드립니다.</p>
-          <ConsultCtaButton className="btn btn-primary btn-lg">무료 상담 신청하기</ConsultCtaButton>
+          <ConsultCtaButton className="btn btn-primary btn-lg">🎓 무료 상담 신청하기</ConsultCtaButton>
         </div>
       </section>
     </main>

@@ -24,7 +24,7 @@ export default function AboutPage() {
 
       <section className="about">
         <div className="wrap" style={{ maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
-          <h2 className="sec-title">기초부터 실전까지</h2>
+          <h2 className="sec-title">🏫 기초부터 실전까지</h2>
           <p>
             애견미용학원 대전점은 기초부터 실전까지, 자격증 취득과 실무 역량을 함께 준비하는 애견미용 전문
             교육 공간입니다.
@@ -37,7 +37,7 @@ export default function AboutPage() {
 
       <section>
         <div className="wrap">
-          <h2 className="sec-title">이런 점이 다릅니다</h2>
+          <h2 className="sec-title">✨ 이런 점이 다릅니다</h2>
           <ul className="benefit-grid">
             <li>
               <BenefitIcon name="certificate" />
@@ -65,7 +65,7 @@ export default function AboutPage() {
 
       <section id="gallery">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">시설·실습 사진</h2>
+          <h2 className="sec-title">📸 시설·실습 사진</h2>
           <p className="sec-sub">실제 수업·시설 사진은 촬영 후 업로드 예정입니다.</p>
         </div>
       </section>
@@ -73,7 +73,7 @@ export default function AboutPage() {
       {/* 강사진 — 실제 프로필 확보 전까지 구조만 설계, 예시 문구로 명시 */}
       <section id="faculty">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">강사진</h2>
+          <h2 className="sec-title">🧑‍🏫 강사진</h2>
           <p className="sec-sub">※ 아래는 구성 예시이며, 실제 강사진 소개로 교체될 예정입니다.</p>
           <div className="faculty-grid">
             {["대표 강사", "수석 강사", "실습 강사"].map((role) => (
@@ -89,9 +89,9 @@ export default function AboutPage() {
 
       <section className="consult">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">더 궁금하신 점이 있으신가요?</h2>
+          <h2 className="sec-title">🎓 더 궁금하신 점이 있으신가요?</h2>
           <p className="sec-sub">이름과 연락처만 남겨주시면 담당자가 안내해 드립니다.</p>
-          <ConsultCtaButton className="btn btn-primary btn-lg">무료 상담 신청하기</ConsultCtaButton>
+          <ConsultCtaButton className="btn btn-primary btn-lg">🎓 무료 상담 신청하기</ConsultCtaButton>
         </div>
       </section>
     </main>

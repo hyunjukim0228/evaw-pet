@@ -62,7 +62,7 @@ export default async function CourseDetailPage({
             </div>
           )}
           <div className="about-text">
-            <h2 className="sec-title">과정 소개</h2>
+            <h2 className="sec-title">📌 과정 소개</h2>
             <p>{course.description}</p>
             <p className="price" style={{ margin: "16px 0" }}>
               수강료 <span className="tbd">상담 시 안내</span>
@@ -79,7 +79,7 @@ export default async function CourseDetailPage({
       {/* 커리큘럼 단계 — 켈리스 과정상세 구조 참고, 실제 진도는 확정 필요 */}
       <section>
         <div className="wrap">
-          <h2 className="sec-title">커리큘럼 단계</h2>
+          <h2 className="sec-title">📚 커리큘럼 단계</h2>
           <p className="sec-sub">아래 순서로 진행합니다. (실제 진도·회차는 상담 시 안내)</p>
           <ol className="curri-steps">
             {course.steps.map((step, i) => (
@@ -95,7 +95,7 @@ export default async function CourseDetailPage({
       {/* 진로·혜택 — 과정 공통 신뢰 섹션 */}
       <section>
         <div className="wrap">
-          <h2 className="sec-title">이 과정을 마치면</h2>
+          <h2 className="sec-title">🏅 이 과정을 마치면</h2>
           <ul className="benefit-grid">
             {careerBenefits.map((b) => (
               <li key={b.title}>
@@ -111,7 +111,7 @@ export default async function CourseDetailPage({
       {/* 차별점 — 과정 공통 신뢰 섹션 */}
       <section>
         <div className="wrap">
-          <h2 className="sec-title">애견미용학원 대전점의 차별점</h2>
+          <h2 className="sec-title">✨ 애견미용학원 대전점의 차별점</h2>
           <ul className="benefit-grid">
             {courseDifferentiators.map((d) => (
               <li key={d.title}>
@@ -127,7 +127,7 @@ export default async function CourseDetailPage({
       {/* 시설 안내 — 학원소개 갤러리로 연결 */}
       <section>
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">수업이 진행되는 곳</h2>
+          <h2 className="sec-title">📸 수업이 진행되는 곳</h2>
           <p className="sec-sub">
             시설·실습 사진은 <Link href="/about#gallery">학원소개</Link>에서 확인하실 수 있습니다.
           </p>
@@ -141,7 +141,7 @@ export default async function CourseDetailPage({
             <span className="eyebrow" style={{ color: "var(--primary)" }}>
               지금은 가정견미용과정
             </span>
-            <h2 className="sec-title">미래엔 유망 직종으로 꼽히는 펫잡까지</h2>
+            <h2 className="sec-title">🐾 미래엔 유망 직종으로 꼽히는 펫잡까지</h2>
             <p className="sec-sub">
               취미로 시작해도 자격증 과정과 취업·창업 과정으로 이어갈 수 있습니다.{" "}
               <span className="tbd">(직종 순위·통계는 확인 후 구체적으로 안내)</span>
@@ -155,10 +155,10 @@ export default async function CourseDetailPage({
 
       <section className="consult">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">{course.title}이 궁금하신가요?</h2>
+          <h2 className="sec-title">🎓 {course.title}이 궁금하신가요?</h2>
           <p className="sec-sub">이름과 연락처만 남겨주시면 담당자가 안내해 드립니다.</p>
           <ConsultCtaButton className="btn btn-primary btn-lg" presetSlug={course.slug}>
-            무료 상담 신청하기
+            🎓 무료 상담 신청하기
           </ConsultCtaButton>
         </div>
       </section>

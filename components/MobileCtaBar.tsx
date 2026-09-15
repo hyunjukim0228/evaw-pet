@@ -16,7 +16,7 @@ export default function MobileCtaBar() {
         <ChannelButton channel="kakao" value={contactLinks.kakaoUrl} />
         <ChannelButton channel="naver" value={contactLinks.naverUrl} />
         <button type="button" onClick={() => open()} className="btn-channel btn-channel-consult">
-          무료상담신청
+          🎓 무료상담신청
         </button>
       </div>
     </div>

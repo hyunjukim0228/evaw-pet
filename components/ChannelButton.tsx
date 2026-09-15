@@ -5,9 +5,9 @@ import { useConsultModal } from "./ConsultModalContext";
 type Channel = "phone" | "kakao" | "naver";
 
 const CONFIG: Record<Channel, { label: string; className: string; toHref: (v: string) => string; external?: boolean }> = {
-  phone: { label: "전화상담", className: "btn-channel-phone", toHref: (v) => `tel:${v}` },
-  kakao: { label: "카톡문의", className: "btn-channel-kakao", toHref: (v) => v, external: true },
-  naver: { label: "네이버문의", className: "btn-channel-naver", toHref: (v) => v, external: true },
+  phone: { label: "📞 전화상담", className: "btn-channel-phone", toHref: (v) => `tel:${v}` },
+  kakao: { label: "💬 카톡문의", className: "btn-channel-kakao", toHref: (v) => v, external: true },
+  naver: { label: "🅽 네이버문의", className: "btn-channel-naver", toHref: (v) => v, external: true },
 };
 
 // 전화/카톡/네이버 채널 버튼 — HeroCtaRow·MobileCtaBar 공용.
