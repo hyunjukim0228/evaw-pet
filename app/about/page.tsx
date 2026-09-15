@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ConsultCtaButton from "@/components/ConsultCtaButton";
 import BenefitIcon from "@/components/BenefitIcon";
+import { galleryPhotos } from "@/lib/galleryPhotos";
 
 export const metadata: Metadata = {
   title: "학원소개 | 애견미용학원 대전점",
@@ -69,8 +70,12 @@ export default function AboutPage() {
         <div className="wrap" style={{ textAlign: "center" }}>
           <span className="sec-tag">📸 수업 현장</span>
           <h2 className="sec-title">시설·실습 사진</h2>
-          <p className="sec-sub">실제 실습 현장의 모습입니다. 추가 사진은 촬영 후 업데이트 예정입니다.</p>
-          <img src="/images/gallery/facility-1.jpg" alt="애견미용 실습 현장" className="highlight-photo" />
+          <p className="sec-sub">실제 실습 현장과 완성 사진입니다.</p>
+          <div className="photo-grid">
+            {galleryPhotos.map((src) => (
+              <img key={src} src={src} alt="애견미용 실습 현장" loading="lazy" />
+            ))}
+          </div>
         </div>
       </section>
 
