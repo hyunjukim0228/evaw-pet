@@ -82,7 +82,8 @@ export default function HomePage() {
       {/* 강점 섹션 */}
       <section className="benefits">
         <div className="wrap">
-          <h2 className="sec-title">✨ 애견미용학원 대전점, 이런 점이 다릅니다</h2>
+          <span className="sec-tag">✨ 애견미용학원 대전점만의 차이</span>
+          <h2 className="sec-title">이런 점이 다릅니다</h2>
           <ul className="benefit-grid">
             <li>
               <BenefitIcon name="certificate" />
@@ -128,7 +129,8 @@ export default function HomePage() {
       {/* 시설·실습 */}
       <section id="gallery" className="gallery">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">📸 시설·실습 사진</h2>
+          <span className="sec-tag">📸 수업 현장</span>
+          <h2 className="sec-title">시설·실습 사진</h2>
           <p className="sec-sub">실제 수업·시설 사진은 촬영 후 업로드 예정입니다.</p>
         </div>
       </section>
@@ -136,7 +138,8 @@ export default function HomePage() {
       {/* 커리큘럼 (요약 — 전체 내용은 /curriculum) */}
       <section id="curriculum" className="curriculum">
         <div className="wrap">
-          <h2 className="sec-title">📚 수강 과정 안내</h2>
+          <span className="sec-tag">📚 커리큘럼</span>
+          <h2 className="sec-title">수강 과정 안내</h2>
           <div className="course-grid">
             {courses.map((course) => (
               <article key={course.slug} className="course-card">
@@ -159,7 +162,8 @@ export default function HomePage() {
       {/* 수강생 후기 — 실제 후기 없어 구조만 설계, 예시 문구로 명시 */}
       <section id="reviews">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">⭐ 수강생 후기</h2>
+          <span className="sec-tag">⭐ 수강생 후기</span>
+          <h2 className="sec-title">수강생들의 생생한 후기</h2>
           <p className="sec-sub">※ 아래는 구성 예시이며, 실제 수강생 후기로 교체될 예정입니다.</p>
           <div className="review-grid">
             {reviews.map((r) => (
@@ -180,7 +184,8 @@ export default function HomePage() {
       {/* 분야별 특강 */}
       <section id="special">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">🎯 분야별 특강</h2>
+          <span className="sec-tag">🎯 스페셜 특강</span>
+          <h2 className="sec-title">분야별 특강</h2>
           <p className="sec-sub">
             정규 과정과 별도로, 관심 있는 주제만 짧게 배워보는 특강도 준비되어 있습니다.
             <br />
@@ -195,7 +200,8 @@ export default function HomePage() {
       {/* FAQ */}
       <section id="faq" className="faq">
         <div className="wrap">
-          <h2 className="sec-title">❓ 자주 묻는 질문</h2>
+          <span className="sec-tag">❓ FAQ</span>
+          <h2 className="sec-title">자주 묻는 질문</h2>
           <div className="faq-list">
             {FAQS.map((item) => (
               <details key={item.q} className="faq-item">

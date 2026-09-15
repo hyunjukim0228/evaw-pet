@@ -24,7 +24,8 @@ export default function AboutPage() {
 
       <section className="about">
         <div className="wrap" style={{ maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
-          <h2 className="sec-title">🏫 기초부터 실전까지</h2>
+          <span className="sec-tag">🏫 학원소개</span>
+          <h2 className="sec-title">기초부터 실전까지</h2>
           <p>
             애견미용학원 대전점은 기초부터 실전까지, 자격증 취득과 실무 역량을 함께 준비하는 애견미용 전문
             교육 공간입니다.
@@ -37,7 +38,8 @@ export default function AboutPage() {
 
       <section>
         <div className="wrap">
-          <h2 className="sec-title">✨ 이런 점이 다릅니다</h2>
+          <span className="sec-tag">✨ 애견미용학원 대전점만의 차이</span>
+          <h2 className="sec-title">이런 점이 다릅니다</h2>
           <ul className="benefit-grid">
             <li>
               <BenefitIcon name="certificate" />
@@ -65,7 +67,8 @@ export default function AboutPage() {
 
       <section id="gallery">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">📸 시설·실습 사진</h2>
+          <span className="sec-tag">📸 수업 현장</span>
+          <h2 className="sec-title">시설·실습 사진</h2>
           <p className="sec-sub">실제 수업·시설 사진은 촬영 후 업로드 예정입니다.</p>
         </div>
       </section>
@@ -73,7 +76,8 @@ export default function AboutPage() {
       {/* 강사진 — 실제 프로필 확보 전까지 구조만 설계, 예시 문구로 명시 */}
       <section id="faculty">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">🧑‍🏫 강사진</h2>
+          <span className="sec-tag">🧑‍🏫 교육진</span>
+          <h2 className="sec-title">강사진</h2>
           <p className="sec-sub">※ 아래는 구성 예시이며, 실제 강사진 소개로 교체될 예정입니다.</p>
           <div className="faculty-grid">
             {["대표 강사", "수석 강사", "실습 강사"].map((role) => (
