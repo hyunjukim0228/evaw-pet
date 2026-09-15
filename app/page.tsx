@@ -53,6 +53,7 @@ export default function HomePage() {
           유지(레퍼런스의 다색 파스텔 카드·네이비는 따라가지 않음). 전화 채널은 아직 없어 HeroCtaRow가 상담모달로
           대체 처리(2026-09-15). */}
       <section id="hero-extras">
+        <PhotoSlideshow images={galleryPhotos} intervalMs={2000} alt="" className="hero-extras-bg" />
         <div className="wrap">
           <ConsultCtaButton className="btn btn-primary btn-lg btn-full hero-main-cta">
             🎓 무료 상담 + 수강료 확인하기
