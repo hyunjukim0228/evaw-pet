@@ -219,12 +219,13 @@ section:nth-of-type(even){background:var(--surface-soft)}
 .two-col{display:grid; grid-template-columns:1.1fr 1fr; gap:40px; align-items:center}
 
 /* 커리큘럼 — property-card 톤(사진 우선, 호버 시 단일 섀도우 계층) */
-.course-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:start}
+/* 2026-09-15: 그리드(아래로 스크롤)에서 가로 스와이프 캐러셀로 전환 — 요청대로 옆으로 넘겨서 확인 */
+.course-grid{display:flex; gap:22px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:10px; -webkit-overflow-scrolling:touch}
 /* flex column 필수 — grid 아이템(article)이 block 레이아웃일 때 다른 열의 카드가 더 길면
    이 카드의 이미지·텍스트가 카드 박스 바깥(다음 행)으로 흘러넘쳐 겹쳐 보이는 버그가 있었음(캡처로 확인).
    flex column으로 바꾸면 카드 자신의 콘텐츠 높이만큼만 박스가 정확히 감싸서 다음 행과 겹치지 않음. */
 .course-card{
-  display:flex; flex-direction:column;
+  display:flex; flex-direction:column; flex:0 0 260px; scroll-snap-align:start;
   background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); padding:18px; text-align:center; transition:box-shadow .15s ease;
 }
 .course-card:hover{box-shadow:var(--shadow-1)}
@@ -277,10 +278,12 @@ section:nth-of-type(even){background:var(--surface-soft)}
 .faq-item[open] summary::after{content:"–"}
 .faq-item p{margin:10px 0 0; color:var(--body); font-size:.92rem}
 
-/* 수강생 후기 */
-.review-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px}
-.review-card{background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); padding:20px; text-align:left}
-.review-photo{width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:var(--radius-sm); margin-bottom:14px}
+/* 수강생 후기 — 2026-09-15: 사진 제거, 그리드(아래로 스크롤)에서 가로 스와이프 캐러셀로 전환 */
+.review-grid{display:flex; gap:16px; margin-top:24px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:10px; -webkit-overflow-scrolling:touch}
+.review-card{
+  flex:0 0 260px; scroll-snap-align:start;
+  background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); padding:20px; text-align:left;
+}
 .review-stars{color:var(--primary); letter-spacing:2px; margin-bottom:8px}
 .review-text{margin:0 0 12px; color:var(--body); font-size:.92rem; line-height:1.6}
 .review-meta{margin:0; font-size:.82rem; color:var(--muted)}
@@ -420,10 +423,8 @@ main section:not(.hero).in-view{opacity:1; transform:none}
   .hero-extras-grid{grid-template-columns:1fr}
   .hero-extras-photo{order:-1; height:auto; aspect-ratio:4/3; min-height:0}
   .benefit-grid{grid-template-columns:repeat(2,1fr)}
-  .course-grid{grid-template-columns:1fr}
   .course-detail-points{grid-template-columns:1fr}
   .branch-grid{grid-template-columns:repeat(2,1fr)}
-  .review-grid{grid-template-columns:1fr}
   .guide-grid{grid-template-columns:repeat(2,1fr)}
   .faculty-grid{grid-template-columns:repeat(2,1fr)}
   .quick-course-nav{grid-template-columns:repeat(2,1fr)}
