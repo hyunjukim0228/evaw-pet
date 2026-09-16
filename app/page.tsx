@@ -182,11 +182,15 @@ export default function HomePage() {
           <div className="review-grid">
             {reviews.map((r) => (
               <div key={r.name + r.course} className="review-card">
-                <div className="review-stars">{"★".repeat(r.rating)}</div>
+                <div className="review-headline">{r.headline}</div>
                 <p className="review-text">{r.text}</p>
-                <p className="review-meta">
-                  <b>{r.name}</b> · {r.course}
-                </p>
+                <div className="review-author">
+                  <div className="review-avatar">{r.avatar}</div>
+                  <div>
+                    <div className="review-name">{r.name}</div>
+                    <div className="review-meta">{r.course}</div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
