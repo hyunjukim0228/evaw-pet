@@ -17,6 +17,7 @@ import GallerySection from "@/components/GallerySection";
 import PhotoSlideshow from "@/components/PhotoSlideshow";
 import FaqSection from "@/components/FaqSection";
 import DifferentiatorGrid from "@/components/DifferentiatorGrid";
+import FacultyGallery from "@/components/FacultyGallery";
 
 export default function HomePage() {
   return (
@@ -84,17 +85,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 학원 소개 (요약 — 전체 내용은 /about) */}
+      {/* 학원 소개 (요약 — 전체 내용은 /about) — 2026-09-16: /about 인트로와 같은 내용을 짧게 요약 */}
       <section id="about" className="about">
         <div className="wrap" style={{ maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
-          <h2 className="sec-title">🏫 학원소개</h2>
+          <span className="sec-tag">🏫 학원소개</span>
+          <h2 className="sec-title">손으로 익히는 일이라, 손을 직접 잡아드립니다</h2>
           <p>
-            애견미용학원 대전점은 기초부터 실전까지, 자격증 취득과 실무 역량을 함께 준비하는 애견미용 전문
-            교육 공간입니다.
+            애견미용학원 대전점은 자격증 한 장을 내드리는 곳이 아니라, 실제로 손을 움직여 미용사가 될 수
+            있게 돕는 곳입니다. 여러 사람이 같은 진도로 가는 수업 대신 1:1 개별 진도로 진행하고, 될 때까지
+            진도를 넘기지 않습니다.
           </p>
-          <p>
-            강사진 소개, 연혁 등 상세 내용은 준비되는 대로 채워 넣습니다. <span className="tbd">[내용 확정 필요]</span>
-          </p>
+          <p>실습은 100% 가정견으로 진행합니다. 실제 현장과 같은 조건에서 배우게 됩니다.</p>
           <Link href="/about" className="btn btn-outline btn-sm">
             학원소개 자세히 보기
           </Link>
@@ -122,18 +123,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* STEP6a: 강사진 요약(홈) — 전체 프로필은 /about#faculty. 단체사진 확보 전까지는 텍스트 중심으로만
-          구성(사진 영역 자체를 생략). 스크롤 리빌 애니메이션은 main section 공통 규칙 자동 적용. */}
+      {/* 강사진(홈) — 2026-09-16: /about#faculty와 동일한 전국 캠퍼스 강사진 실사진(라이트박스 확대)을
+          여기서도 바로 보여줌. 같은 사업자(이바우펫)가 대전점을 포함한 전국 19개 지점을 직영. */}
       <section id="faculty-teaser">
         <div className="wrap" style={{ textAlign: "center" }}>
           <span className="sec-tag">🧑‍🏫 교수진</span>
-          <h2 className="sec-title">전국 지점의 전문 강사진</h2>
+          <h2 className="sec-title">전국 캠퍼스 강사진</h2>
           <p className="sec-sub">
-            전국 19개 지점, 각 지점마다 전문 강사진이 함께합니다.
+            대전점을 포함한 전국 19개 지점에 이 강사님들이 함께합니다. 사진을 누르면 크게 볼 수 있습니다.
           </p>
-          <Link href="/about#faculty" className="btn btn-outline btn-sm">
-            강사진 보기
-          </Link>
+          <FacultyGallery />
         </div>
       </section>
 
