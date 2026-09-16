@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ConsultCtaButton from "@/components/ConsultCtaButton";
 import BenefitIcon from "@/components/BenefitIcon";
-import GalleryCarousel from "@/components/GalleryCarousel";
+import GallerySection from "@/components/GallerySection";
 
 export const metadata: Metadata = {
   title: "학원소개 | 애견미용학원 대전점",
@@ -71,7 +71,7 @@ export default function AboutPage() {
           <span className="sec-tag">📸 수업 현장</span>
           <h2 className="sec-title">시설·실습 사진</h2>
           <p className="sec-sub">실제 실습 현장과 완성 사진입니다.</p>
-          <GalleryCarousel />
+          <GallerySection />
         </div>
       </section>
 

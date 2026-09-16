@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_KR } from "next/font/google";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";

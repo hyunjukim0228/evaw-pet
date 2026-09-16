@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ConsultCtaButton from "@/components/ConsultCtaButton";
-import BranchCard from "@/components/BranchCard";
-import { branches } from "@/lib/branches";
+import BranchMapSection from "@/components/BranchMapSection";
 
 export const metadata: Metadata = {
   title: "전국 지점 | 애견미용학원 대전점",
@@ -25,11 +24,7 @@ export default function BranchesPage() {
 
       <section>
         <div className="wrap">
-          <div className="branch-grid">
-            {branches.map((b) => (
-              <BranchCard key={b.region + b.name} branch={b} />
-            ))}
-          </div>
+          <BranchMapSection />
           <p className="note">※ 신규 지점이 순차적으로 오픈 예정입니다. 지점별 상세 정보는 상담 시 안내해 드립니다.</p>
         </div>
       </section>

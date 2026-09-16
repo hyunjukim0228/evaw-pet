@@ -4,6 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useConsultModal } from "./ConsultModalContext";
+import { contactLinks } from "@/lib/contactLinks";
+import ChannelButton from "./ChannelButton";
 
 const NAV = [
   { href: "/about", label: "학원소개" },
@@ -33,12 +35,33 @@ export default function Header() {
   // 스크롤 시 헤더 배경을 더 또렷하게 — 히어로 바로 아래라 투명한 채로는 대비가 약함.
   useEffect(() => {
     function onScroll() {
-      setScrolled(window.scrollY > 8);
+      setScrolled(window.scrollY > 50);
     }
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // 모바일 드로어 열려있는 동안 배경 스크롤 잠금.
+  useEffect(() => {
+    if (open) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prev;
+      };
+    }
+  }, [open]);
+
+  // ESC로 드로어 닫기.
+  useEffect(() => {
+    if (!open) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   // 홈에서만: 지금 보고 있는 섹션에 맞춰 nav 메뉴 활성화 표시.
   useEffect(() => {
@@ -102,9 +125,11 @@ export default function Header() {
         </nav>
 
         <div className="header-cta">
-          <span className="call-slot" title="전화번호 등록 예정">
-            전화상담 준비중
-          </span>
+          <div className="header-quick-badges">
+            <ChannelButton channel="phone" value={contactLinks.phone} compact />
+            <ChannelButton channel="kakao" value={contactLinks.kakaoUrl} compact />
+            <ChannelButton channel="naver" value={contactLinks.naverUrl} compact />
+          </div>
           <button type="button" onClick={() => openConsult()} className="btn btn-primary btn-sm">
             무료 상담 신청
           </button>
@@ -112,7 +137,7 @@ export default function Header() {
 
         <button
           className="nav-toggle"
-          aria-label="메뉴 열기"
+          aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
@@ -121,6 +146,9 @@ export default function Header() {
           <span />
         </button>
       </div>
+
+      {/* 모바일 드로어 배경 오버레이 — 클릭하면 닫힘 */}
+      <div className={`nav-overlay${open ? " open" : ""}`} onClick={() => setOpen(false)} aria-hidden="true" />
     </header>
   );
 }

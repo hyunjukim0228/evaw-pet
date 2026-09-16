@@ -9,11 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.9.1",
+    "@radix-ui/react-accordion": "^1.2.20",
+    "@radix-ui/react-dialog": "^1.1.23",
+    "@radix-ui/react-toast": "^1.2.23",
     "@supabase/supabase-js": "^2.116.0",
     "framer-motion": "^13.3.0",
     "next": "^16.3.4",
     "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "react-dom": "^19.3.0",
+    "react-hook-form": "^7.88.0",
+    "swiper": "^14.2.0",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@types/node": "^22",

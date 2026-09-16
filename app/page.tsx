@@ -3,6 +3,7 @@ import CourseThumb from "@/components/CourseThumb";
 import ConsultForm from "@/components/ConsultForm";
 import ConsultCtaButton from "@/components/ConsultCtaButton";
 import HeroCarousel from "@/components/HeroCarousel";
+import HeroCopy from "@/components/HeroCopy";
 import HeroCtaRow from "@/components/HeroCtaRow";
 import QuickCourseNav from "@/components/QuickCourseNav";
 import BenefitIcon from "@/components/BenefitIcon";
@@ -10,23 +11,12 @@ import CtaBanner from "@/components/CtaBanner";
 import BranchCard from "@/components/BranchCard";
 import { featuredCourses } from "@/lib/courses";
 import { branches } from "@/lib/branches";
-import { reviews } from "@/lib/reviews";
+import ReviewSlider from "@/components/ReviewSlider";
 import { guideTopics } from "@/lib/guides";
 import { galleryPhotos } from "@/lib/galleryPhotos";
-import GalleryCarousel from "@/components/GalleryCarousel";
+import GallerySection from "@/components/GallerySection";
 import PhotoSlideshow from "@/components/PhotoSlideshow";
-
-const FAQS = [
-  { q: "초보자도 수강 가능한가요?", a: "네, 대부분 처음 시작하시는 분들이며 기초 과정부터 차근차근 진행합니다." },
-  { q: "자격증 취득까지 얼마나 걸리나요?", a: "과정과 개인 진도에 따라 다릅니다. 상담 시 정확한 기간을 안내해 드립니다." },
-  { q: "실견 실습은 어떻게 진행되나요?", a: "실제 반려견을 대상으로 한 실습을 중심으로 진행합니다. 세부 방식은 상담 시 안내해 드립니다." },
-  { q: "직장인·주부도 수강 가능한가요?", a: "시간대별 수업 운영 여부는 상담을 통해 확인해 드립니다." },
-  { q: "수료 후 취업·창업이 가능한가요?", a: "수료 후 취업과 창업 모두 준비하실 수 있도록 안내하고 있습니다. 구체적인 지원 내용은 상담 시 확인해 주세요." },
-  { q: "수강료는 얼마인가요?", a: "과정별로 상이하며, 상담을 통해 정확히 안내해 드립니다." },
-  { q: "온라인으로도 배울 수 있나요?", a: "실습 중심 과정 특성상 오프라인 수업이 기본이며, 자세한 사항은 상담 시 안내합니다." },
-  { q: "국비지원과 교육지원의 차이가 뭔가요?", a: "지원 제도별로 대상과 조건이 다릅니다. 상담 시 어떤 제도에 해당하는지 확인해 드립니다." },
-  { q: "지점이 어디에 있나요?", a: "전국 19개 지점 네트워크 중 하나로 대전점을 운영하고 있습니다. 다른 지역 지점은 아래 전국 지점 안내에서 확인하실 수 있습니다." },
-];
+import FaqSection from "@/components/FaqSection";
 
 export default function HomePage() {
   return (
@@ -34,18 +24,7 @@ export default function HomePage() {
       {/* 히어로 배너 캐러셀 (PC/모바일 별도 이미지, 6슬라이드 — 켈리스 방식). */}
       <section className="hero" aria-label="메인 배너">
         <HeroCarousel />
-        <div className="hero-copy">
-          <p className="eyebrow hero-badge">📍 대전 · 애견미용학원</p>
-          <h1>
-            처음 배우는 애견미용,
-            <br />
-            <em>자격증부터 실전 실습까지</em>
-          </h1>
-          <p className="lead">애견미용학원 대전점에서 기초부터 차근차근 시작하세요.</p>
-          <Link href="#consult" className="btn btn-primary btn-lg">
-            🎓 무료 상담 신청하기
-          </Link>
-        </div>
+        <HeroCopy />
       </section>
 
       {/* 히어로 보조 CTA·신뢰지표·빠른 과정 탐색 — evaw-pet-grooming.co.kr 홈 히어로 구조(큰 CTA버튼·채널행·신뢰바·
@@ -145,7 +124,7 @@ export default function HomePage() {
           <span className="sec-tag">📸 수업 현장</span>
           <h2 className="sec-title">시설·실습 사진</h2>
           <p className="sec-sub">실제 실습 현장과 완성 사진입니다.</p>
-          <GalleryCarousel />
+          <GallerySection />
         </div>
       </section>
 
@@ -179,21 +158,7 @@ export default function HomePage() {
           <span className="sec-tag">⭐ 수강생 후기</span>
           <h2 className="sec-title">수강생들의 생생한 후기</h2>
           <p className="sec-sub">※ 아래는 구성 예시이며, 실제 수강생 후기로 교체될 예정입니다.</p>
-          <div className="review-grid">
-            {reviews.map((r) => (
-              <div key={r.name + r.course} className="review-card">
-                <div className="review-headline">{r.headline}</div>
-                <p className="review-text">{r.text}</p>
-                <div className="review-author">
-                  <div className="review-avatar">{r.avatar}</div>
-                  <div>
-                    <div className="review-name">{r.name}</div>
-                    <div className="review-meta">{r.course}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ReviewSlider />
         </div>
       </section>
 
@@ -220,14 +185,7 @@ export default function HomePage() {
         <div className="wrap">
           <span className="sec-tag">❓ FAQ</span>
           <h2 className="sec-title">자주 묻는 질문</h2>
-          <div className="faq-list">
-            {FAQS.map((item) => (
-              <details key={item.q} className="faq-item">
-                <summary>{item.q}</summary>
-                <p>{item.a}</p>
-              </details>
-            ))}
-          </div>
+          <FaqSection />
         </div>
       </section>
 
