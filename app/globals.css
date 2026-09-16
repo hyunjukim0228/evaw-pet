@@ -423,12 +423,11 @@ section:nth-of-type(even){background:var(--surface-soft)}
 .guide-card b{display:block; margin-bottom:6px; color:var(--ink); font-size:.98rem}
 .guide-card p{margin:0; color:var(--muted); font-size:.85rem}
 
-/* 강사진 */
-.faculty-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px}
-.faculty-card{background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); padding:20px; text-align:center}
-.faculty-card b{display:block; margin:4px 0 2px; color:var(--ink)}
-.faculty-card .faculty-role{display:block; font-size:.82rem; color:var(--primary); margin-bottom:8px}
-.faculty-card p{margin:0; color:var(--muted); font-size:.85rem}
+/* 강사진 — 전국 캠퍼스 강사진 시트 2장씩(모바일 1장씩), 클릭하면 라이트박스로 확대 */
+.faculty-sheets{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:24px}
+.faculty-sheet{padding:0; border:1px solid var(--hairline); border-radius:var(--radius); overflow:hidden; cursor:zoom-in; background:none; line-height:0}
+.faculty-sheet img{width:100%; height:auto; display:block; transition:transform .3s ease}
+.faculty-sheet:hover img{transform:scale(1.03)}
 
 /* 오시는길 */
 .location-info p{margin:0 0 16px}
@@ -593,7 +592,6 @@ main section:not(.hero).in-view{opacity:1; transform:none}
   .course-detail-points{grid-template-columns:1fr}
   .branch-grid{grid-template-columns:repeat(2,1fr)}
   .guide-grid{grid-template-columns:repeat(2,1fr)}
-  .faculty-grid{grid-template-columns:repeat(2,1fr)}
   .diff-grid{grid-template-columns:repeat(2,1fr)}
   .quick-course-nav{grid-template-columns:repeat(2,1fr)}
   .gallery-grid{grid-template-columns:repeat(3,1fr)}
@@ -641,6 +639,7 @@ main section:not(.hero).in-view{opacity:1; transform:none}
   .benefit-grid{grid-template-columns:1fr 1fr}
   .diff-grid{grid-template-columns:1fr}
   .guide-grid{grid-template-columns:1fr}
+  .faculty-sheets{grid-template-columns:1fr}
   .news-grid{grid-template-columns:1fr}
   section{padding:44px 0}
   /* STEP1: 히어로 신뢰지표 3개(지점·수강생·실습률)가 375px에서도 한 줄에 들어가도록 축소 */

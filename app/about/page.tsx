@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ConsultCtaButton from "@/components/ConsultCtaButton";
-import BenefitIcon from "@/components/BenefitIcon";
 import GallerySection from "@/components/GallerySection";
+import DifferentiatorGrid from "@/components/DifferentiatorGrid";
+import FacultyGallery from "@/components/FacultyGallery";
 
 export const metadata: Metadata = {
   title: "학원소개 | 애견미용학원 대전점",
@@ -23,16 +24,28 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* 2026-09-16: 학원 소개 문구 — 같은 사업자(이바우펫, 사업자등록번호 211-87-42130·대표 김명자)의
+          공식 소개 페이지 내용을 참고해, 문장 구조·순서를 다르게 다시 써서 반영(그대로 복사 아님). */}
       <section className="about">
         <div className="wrap" style={{ maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
           <span className="sec-tag">🏫 학원소개</span>
-          <h2 className="sec-title">기초부터 실전까지</h2>
+          <h2 className="sec-title">손으로 익히는 일이라, 손을 직접 잡아드립니다</h2>
           <p>
-            애견미용학원 대전점은 기초부터 실전까지, 자격증 취득과 실무 역량을 함께 준비하는 애견미용 전문
-            교육 공간입니다.
+            애견미용학원 대전점은 자격증 한 장을 내드리는 곳이 아니라, 실제로 손을 움직여 미용사가 될 수 있게
+            돕는 곳입니다.
           </p>
           <p>
-            강사진 소개, 연혁 등 상세 내용은 준비되는 대로 채워 넣습니다. <span className="tbd">[내용 확정 필요]</span>
+            여러 사람이 같은 진도로 함께 가는 수업 대신 1:1 개별 진도로 진행합니다. 손이 빠른 분도, 느린 분도
+            있습니다. 느린 건 실력이 없어서가 아니라 속도의 차이라고 생각하기 때문에, 강사가 매 수업 직접
+            손을 잡아드리며 될 때까지 진도를 넘기지 않습니다.
+          </p>
+          <p>
+            실습은 100% 가정견으로 진행합니다. 공장견·농장견이 아니라 보호자와 함께 사는 반려견을 대상으로
+            하기 때문에, 실제 현장과 같은 조건에서 배우게 됩니다.
+          </p>
+          <p>
+            수료증을 드리는 날이 목표가 아닙니다. 자격증을 딴 다음 취업이든 창업이든, 실제로 일을 시작하는
+            날까지 함께하는 과정이라고 생각합니다.
           </p>
         </div>
       </section>
@@ -41,28 +54,7 @@ export default function AboutPage() {
         <div className="wrap">
           <span className="sec-tag">✨ 애견미용학원 대전점만의 차이</span>
           <h2 className="sec-title">이런 점이 다릅니다</h2>
-          <ul className="benefit-grid">
-            <li>
-              <BenefitIcon name="certificate" />
-              <b>자격증 3급·2급</b>
-              <p>단계별 자격증 과정 운영</p>
-            </li>
-            <li>
-              <BenefitIcon name="heart" />
-              <b>실견 실습 중심</b>
-              <p>실제 반려견 대상 실습 위주 수업</p>
-            </li>
-            <li>
-              <BenefitIcon name="briefcase" />
-              <b>취업·창업 지원</b>
-              <p>수료 후 진로까지 함께 안내</p>
-            </li>
-            <li>
-              <BenefitIcon name="chat" />
-              <b>1:1 상담</b>
-              <p>등록 전 궁금한 점 미리 확인</p>
-            </li>
-          </ul>
+          <DifferentiatorGrid />
         </div>
       </section>
 
@@ -75,21 +67,16 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 강사진 — 실제 프로필 확보 전까지 구조만 설계, 예시 문구로 명시 */}
+      {/* 강사진 — 대전점 단독 프로필이 아직 없어, 대전점을 포함한 전국 19개 지점을 함께 운영하는
+          같은 사업자의 전체 강사진 명단으로 대체(정직한 표기: "전국 캠퍼스 강사진"). */}
       <section id="faculty">
         <div className="wrap" style={{ textAlign: "center" }}>
           <span className="sec-tag">🧑‍🏫 교육진</span>
-          <h2 className="sec-title">강사진</h2>
-          <p className="sec-sub">※ 아래는 구성 예시이며, 실제 강사진 소개로 교체될 예정입니다.</p>
-          <div className="faculty-grid">
-            {["대표 강사", "수석 강사", "실습 강사"].map((role) => (
-              <div key={role} className="faculty-card">
-                <b>○○○</b>
-                <span className="faculty-role">{role}</span>
-                <p>[예시] 경력·자격 소개가 들어갈 자리입니다.</p>
-              </div>
-            ))}
-          </div>
+          <h2 className="sec-title">전국 캠퍼스 강사진</h2>
+          <p className="sec-sub">
+            대전점을 포함한 전국 19개 지점에 이 강사님들이 함께합니다. 사진을 누르면 크게 볼 수 있습니다.
+          </p>
+          <FacultyGallery />
         </div>
       </section>
 
