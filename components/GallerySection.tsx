@@ -2,11 +2,14 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 import { galleryPhotos } from "@/lib/galleryPhotos";
 
-// 2026-09-16 스펙: 그리드(모바일 2열/태블릿 3열/PC 4열, 총 12장) + 라이트박스(ESC/배경클릭/방향키 탐색,
-// 열림 시 배경 스크롤 잠금, z-50). 어제 설치한 캐러셀(Originkit) 대신 이 그리드+라이트박스로 교체.
-const PHOTOS = galleryPhotos.slice(0, 12);
+// 2026-09-16(2차): 사용자 지적 — 레퍼런스는 시설·실습 사진이 정지된 그리드가 아니라 옆으로 자연스럽게
+// 계속 넘어가는 형태(마퀴/캐러셀). 처음 스펙의 "그리드+라이트박스" 지시보다 이 실제 요청을 우선해
+// Swiper 캐러셀(자동재생, loop, grabCursor)로 교체하되, 클릭하면 확대해서 보는 라이트박스 기능은 유지.
+const PHOTOS = galleryPhotos;
 
 export default function GallerySection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -33,25 +36,35 @@ export default function GallerySection() {
 
   return (
     <>
-      <div className="gallery-grid">
+      <Swiper
+        className="gallery-slider"
+        modules={[Autoplay]}
+        slidesPerView={2}
+        spaceBetween={12}
+        breakpoints={{ 640: { slidesPerView: 3 }, 1024: { slidesPerView: 4 } }}
+        grabCursor
+        loop
+        autoplay={{ delay: 2200, disableOnInteraction: false }}
+      >
         {PHOTOS.map((src, i) => (
-          <button
-            key={src}
-            type="button"
-            className="gallery-thumb"
-            onClick={() => setOpenIndex(i)}
-            aria-label={`애견미용학원 대전점 실습 현장 사진 ${i + 1}번 크게 보기`}
-          >
-            <Image
-              src={src}
-              alt={`애견미용학원 대전점 실습 현장 사진 ${i + 1}`}
-              fill
-              sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 25vw"
-              style={{ objectFit: "cover" }}
-            />
-          </button>
+          <SwiperSlide key={src}>
+            <button
+              type="button"
+              className="gallery-thumb"
+              onClick={() => setOpenIndex(i)}
+              aria-label={`애견미용학원 대전점 실습 현장 사진 ${i + 1}번 크게 보기`}
+            >
+              <Image
+                src={src}
+                alt={`애견미용학원 대전점 실습 현장 사진 ${i + 1}`}
+                fill
+                sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 25vw"
+                style={{ objectFit: "cover" }}
+              />
+            </button>
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
 
       {openIndex !== null && (
         <div className="lightbox-overlay" role="dialog" aria-modal="true" aria-label="사진 확대 보기" onClick={close}>
