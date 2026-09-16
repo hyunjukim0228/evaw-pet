@@ -3,17 +3,19 @@
 import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import BranchCard from "./BranchCard";
+import BranchMarquee from "./BranchMarquee";
 import { branches } from "@/lib/branches";
 
-// 2026-09-16 스펙: 지점 필터 탭(전체/서울경기/충청대전/경상대구/전라광주) + framer-motion layout 애니메이션.
+// 2026-09-16 스펙: 지점 필터 탭(전체/서울경기·인천/충청대전/경상대구·부산/전라광주) + framer-motion layout 애니메이션.
 // 지역 그룹핑은 lib/branches.ts의 실제 region 값(서울/경기/인천/대전/충남/대구/부산/경남/광주)을 4개 권역으로 묶음.
-const TABS = ["전체", "서울/경기", "충청/대전", "경상/대구", "전라/광주"] as const;
+// 탭 라벨의 "·인천"/"·부산"은 표시 텍스트일 뿐, 그룹핑 로직(regionGroup)은 그대로 서울/경기 쪽·경상/대구 쪽에 포함.
+const TABS = ["전체", "서울/경기·인천", "충청/대전", "경상/대구·부산", "전라/광주"] as const;
 type Tab = (typeof TABS)[number];
 
 function regionGroup(region: string): Exclude<Tab, "전체"> {
-  if (region === "서울" || region === "경기" || region === "인천") return "서울/경기";
+  if (region === "서울" || region === "경기" || region === "인천") return "서울/경기·인천";
   if (region === "대전" || region === "충남") return "충청/대전";
-  if (region === "대구" || region === "부산" || region === "경남") return "경상/대구";
+  if (region === "대구" || region === "부산" || region === "경남") return "경상/대구·부산";
   return "전라/광주";
 }
 
@@ -24,6 +26,7 @@ export default function BranchMapSection() {
 
   return (
     <div>
+      <BranchMarquee />
       <div className="branch-tabs" role="tablist" aria-label="지역 필터">
         {TABS.map((t) => (
           <button

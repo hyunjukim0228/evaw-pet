@@ -9,9 +9,9 @@ create table if not exists consult_requests (
   created_at timestamptz not null default now(),
   name text not null,
   phone text not null,
-  course_interests text[] not null default '{}',  -- 선택한 과정 slug 배열 (예: ["level-3","home-grooming"])
+  course_interests text[] not null default '{}',  -- 선택한 과정 slug 배열 (예: ["certificate","practice"], 2026-09-16부터 STEP4 6분류 slug)
   branch_interest text,                             -- 상담·수강료조회 폼의 지점 선택 드롭다운 값 (예: "대전 애견미용학원 (대전)", 2026-09-15부터 상시 필드)
-  source_page text                                  -- 어느 화면에서 신청했는지 (예: "home", "curriculum/level-3")
+  source_page text                                  -- 어느 화면에서 신청했는지 (예: "home", "curriculum/certificate")
 );
 
 alter table consult_requests enable row level security;

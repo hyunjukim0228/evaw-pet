@@ -11,6 +11,7 @@ import FloatingCta from "@/components/FloatingCta";
 import MobileCtaBar from "@/components/MobileCtaBar";
 import QuickMenu from "@/components/QuickMenu";
 import ConsultModal from "@/components/ConsultModal";
+import EventPopup from "@/components/EventPopup";
 import ScrollTopButton from "@/components/ScrollTopButton";
 import ScrollReveal from "@/components/ScrollReveal";
 import { ConsultModalProvider } from "@/components/ConsultModalContext";
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <MobileCtaBar />
           <ScrollTopButton />
           <ConsultModal />
+          <EventPopup />
           <ScrollReveal />
         </ConsultModalProvider>
       </body>

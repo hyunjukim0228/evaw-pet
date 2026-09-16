@@ -11,7 +11,7 @@ export default function CoursePreviewModal({
   onClose,
 }: {
   slug: string | null;
-  icon: string;
+  icon?: string; // 없으면(컴팩트 리스트 등 아이콘이 마땅치 않은 호출부) 아이콘 영역을 생략
   onClose: () => void;
 }) {
   const { open } = useConsultModal();
@@ -26,7 +26,7 @@ export default function CoursePreviewModal({
           <button className="modal-close" aria-label="닫기" onClick={onClose}>
             ×
           </button>
-          <img src={icon} alt="" className="course-preview-icon-img" />
+          {icon && <img src={icon} alt="" className="course-preview-icon-img" />}
           <h3>{course.title}</h3>
           <p>{course.summary}</p>
         </div>

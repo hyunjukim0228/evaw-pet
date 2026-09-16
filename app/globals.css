@@ -196,7 +196,7 @@ h1,h2,h3{line-height:1.3; margin:0 0 12px}
   display:flex; background:var(--surface-soft); border-radius:var(--radius);
   overflow:hidden;
 }
-.trust-stat{flex:1; text-align:center; padding:16px 8px}
+.trust-stat{flex:1; text-align:center; padding:16px 8px; min-width:0}
 .trust-stat + .trust-stat{border-left:1px solid var(--hairline)}
 .trust-stat b{display:block; font-size:1.15rem; color:var(--primary); margin-bottom:2px}
 .trust-stat span{font-size:.78rem; color:var(--muted)}
@@ -219,7 +219,7 @@ h1,h2,h3{line-height:1.3; margin:0 0 12px}
 .course-preview-body{padding:8px 24px 4px}
 .course-preview-row{display:flex; gap:14px; padding:12px 0; border-bottom:1px solid var(--hairline-soft)}
 .course-preview-row:last-child{border-bottom:none}
-.course-preview-label{flex:0 0 44px; font-size:.8rem; font-weight:700; color:var(--muted)}
+.course-preview-label{flex:0 0 60px; font-size:.8rem; font-weight:700; color:var(--muted); white-space:nowrap}
 .course-preview-row p{margin:0; font-size:.88rem; color:var(--body); line-height:1.5}
 .course-preview-actions{padding:20px 24px 24px; display:flex; flex-direction:column; gap:8px}
 
@@ -238,6 +238,22 @@ section:nth-of-type(even){background:var(--surface-soft)}
 .benefit-grid{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center}
 .benefit-grid li b{display:block; margin-bottom:4px; color:var(--ink); font-weight:600}
 .benefit-grid li p{margin:0; color:var(--muted); font-size:.88rem}
+
+/* STEP3: 차별점 6카드 그리드 — 모바일1/태블릿2/PC3, hover 시 떠오름 + 그림자, 300ms */
+.diff-grid{list-style:none; margin:24px 0 0; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+.diff-card{
+  width:100%; text-align:center; font-family:inherit; cursor:pointer; background:var(--card);
+  border:1px solid var(--hairline); border-radius:var(--radius); padding:24px 18px;
+  transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.diff-card:hover, .diff-card:focus-visible{transform:translateY(-4px); box-shadow:var(--shadow-1); border-color:var(--primary)}
+.diff-badge{display:inline-block; margin:0 0 8px; padding:3px 10px; border-radius:var(--radius-full); background:var(--primary-disabled); color:var(--primary); font-size:.72rem; font-weight:700}
+.diff-card b{display:block; margin-bottom:4px; color:var(--ink); font-weight:600}
+.diff-card p{margin:0; color:var(--muted); font-size:.88rem}
+
+/* 차별점 상세 모달의 태그 칩 */
+.diff-modal-tags{display:flex; flex-wrap:wrap; gap:8px; padding:0 24px 4px}
+.diff-tag-chip{background:var(--surface-soft); color:var(--muted); font-size:.78rem; font-weight:600; padding:4px 10px; border-radius:var(--radius-full)}
 /* 강점·차별점 아이콘 — evaw 사이트의 "차별점" 섹션(아이콘+텍스트) 구조 참고, 이모지 대신 인라인 SVG로 통일 */
 .benefit-icon{width:56px; height:56px; margin:0 auto 14px; border-radius:var(--radius-full); background:var(--surface-soft); display:flex; align-items:center; justify-content:center; color:var(--ink)}
 .benefit-emoji{font-size:1.6rem; line-height:1}
@@ -262,6 +278,24 @@ section:nth-of-type(even){background:var(--surface-soft)}
 .course-card p{font-size:.88rem; color:var(--muted); margin:0 0 10px}
 .course-card .price{font-weight:700; color:var(--ink)}
 .course-card .btn{margin-top:auto}
+.course-card-highlight{border-color:var(--primary); box-shadow:0 0 0 1px var(--primary)}
+.course-badge{display:inline-block; padding:2px 9px; border-radius:var(--radius-full); background:var(--primary-disabled); color:var(--primary); font-size:.7rem; font-weight:700; vertical-align:middle}
+
+/* STEP4: 홈 "수강 과정 안내" 컴팩트 리스트 — 번호+제목+한줄설명, 클릭 시 상세 모달 */
+.course-compact-list{list-style:none; margin:24px 0 0; padding:0; max-width:720px; margin-left:auto; margin-right:auto; display:flex; flex-direction:column; gap:10px}
+.course-compact-item{
+  display:flex; align-items:center; gap:16px; width:100%; text-align:left; font-family:inherit; cursor:pointer;
+  background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); padding:16px 18px;
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+.course-compact-item:hover, .course-compact-item:focus-visible{border-color:var(--primary); box-shadow:var(--shadow-1)}
+.course-compact-item.highlight{border-color:var(--primary); background:var(--primary-disabled)}
+.course-compact-num{flex:0 0 auto; font-family:var(--font-inter),sans-serif; font-size:1.1rem; font-weight:700; color:var(--muted-soft); font-variant-numeric:tabular-nums}
+.course-compact-item.highlight .course-compact-num{color:var(--primary)}
+.course-compact-body{flex:1; min-width:0}
+.course-compact-title{display:block; font-weight:600; color:var(--ink); margin-bottom:2px}
+.course-compact-desc{display:block; font-size:.85rem; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.course-compact-arrow{flex:0 0 auto; color:var(--muted-soft)}
 
 /* 커리큘럼 상세 */
 .course-detail-points{list-style:none; margin:20px 0 0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:12px}
@@ -284,6 +318,23 @@ section:nth-of-type(even){background:var(--surface-soft)}
 /* 상담 모달 — 2026-09-16: Radix Dialog로 전환(포커스 트랩·ESC·배경스크롤 잠금은 Radix가 제공).
    Dialog.Overlay·Dialog.Content가 Portal 안에서 형제 요소로 렌더되므로(겹쳐쓴 자식 아님),
    패널을 오버레이의 flex 자식이 아니라 직접 fixed+transform으로 화면 중앙에 배치. */
+/* STEP7: 첫 방문 이벤트 팝업 — 모달과 같은 z-index 계층(50). ConsultModal이 열리면 EventPopup 쪽에서
+   스스로 닫으므로 동시에 뜨지 않음. */
+.popup-overlay{position:fixed; inset:0; z-index:50; background:rgba(0,0,0,.5); display:flex; align-items:center; justify-content:center; padding:20px; animation:popupFadeIn .25s ease}
+.popup-panel{
+  position:relative; width:100%; max-width:380px; max-height:90vh; overflow-y:auto;
+  background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow-1);
+  animation:popupScaleIn .25s ease;
+}
+.popup-image{width:100%; display:block; border-radius:var(--radius) var(--radius) 0 0}
+.popup-actions{display:flex; flex-direction:column; gap:8px; padding:16px}
+.popup-dismiss-today{background:none; border:none; color:var(--muted); font-size:.82rem; font-family:inherit; cursor:pointer; padding:6px; text-align:center}
+.popup-dismiss-today:hover{color:var(--ink)}
+@keyframes popupFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes popupScaleIn{from{opacity:0; transform:scale(.94)}to{opacity:1; transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){
+  .popup-overlay, .popup-panel{animation:none}
+}
 .modal-overlay{position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:50}
 .modal-panel{
   position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); z-index:50;
@@ -349,13 +400,23 @@ section:nth-of-type(even){background:var(--surface-soft)}
 .review-headline{position:relative; font-weight:700; font-size:1rem; color:var(--ink); margin-bottom:10px; line-height:1.4}
 .review-text{margin:0 0 16px; color:var(--body); font-size:.9rem; line-height:1.6; flex:1}
 .review-footer{display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:auto}
-.review-name{font-size:.88rem; font-weight:700; color:var(--ink)}
+.review-who{display:flex; align-items:center; gap:8px; min-width:0}
+.review-avatar{flex:0 0 auto; font-size:1.3rem; line-height:1}
+.review-name{font-size:.88rem; font-weight:700; color:var(--ink); overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 .review-course-badge{
   font-size:.74rem; font-weight:700; color:var(--primary); background:var(--primary-disabled);
   border-radius:var(--radius-full); padding:3px 10px; white-space:nowrap;
 }
 
 /* 가이드 콘텐츠 */
+/* STEP6b: 새소식 카드 — 모바일1/PC2 */
+.news-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:24px; text-align:left; max-width:820px; margin-left:auto; margin-right:auto}
+.news-card{background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); padding:20px}
+.news-branch-badge{display:inline-block; margin-bottom:8px; padding:3px 10px; border-radius:var(--radius-full); background:var(--surface-soft); color:var(--muted); font-size:.72rem; font-weight:700}
+.news-card h3{font-size:.98rem; margin:0 0 6px; font-weight:600; color:var(--ink)}
+.news-card p{margin:0 0 10px; color:var(--muted); font-size:.85rem}
+.news-date{font-size:.76rem; color:var(--muted-soft); font-variant-numeric:tabular-nums}
+
 .guide-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px; text-align:left}
 .guide-card{display:block; background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); padding:20px; transition:all .3s ease}
 .guide-card:hover, .guide-card:focus-visible{border-color:var(--primary); box-shadow:var(--shadow-1); transform:translateY(-4px)}
@@ -375,6 +436,18 @@ section:nth-of-type(even){background:var(--surface-soft)}
 /* 전국 지점 — 2026-09-16: 지역 필터 탭 추가(BranchMapSection.tsx).
    2026-09-16(2차): 탭 버튼 확대(가독성), "지금 보고 계신 지점" 뱃지·빨간 테두리 강조 제거 —
    선택 표시는 은은한 텍스트 하나만 남김(사용자 요청). */
+/* STEP2: 지점명 무한 마퀴 — 목록을 2벌 이어붙여 -50% 이동하면 이음매 없이 순환.
+   prefers-reduced-motion에서는 animation을 꺼서 정지된 목록으로 보이게 함. */
+.branch-marquee{overflow:hidden; margin-bottom:24px; -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.branch-marquee-track{display:flex; width:max-content; gap:12px; animation:branchMarquee 34s linear infinite}
+.branch-marquee-item{
+  flex:0 0 auto; padding:8px 18px; border-radius:var(--radius-full); background:var(--surface-soft);
+  color:var(--muted); font-size:.85rem; font-weight:600; white-space:nowrap;
+}
+@keyframes branchMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  .branch-marquee-track{animation:none}
+}
 .branch-tabs{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:28px}
 .branch-tab{
   padding:11px 22px; border-radius:var(--radius-full); border:1px solid var(--hairline); background:var(--canvas);
@@ -409,6 +482,25 @@ section:nth-of-type(even){background:var(--surface-soft)}
 .agree{display:flex; align-items:flex-start; gap:8px; font-size:.82rem; color:var(--muted); margin:14px 0}
 .agree input{margin-top:3px}
 .form-note{font-size:.76rem; color:var(--muted); text-align:center; margin-top:12px}
+
+/* STEP8: 상담모달 2-STEP 플로우 */
+.consult-step-indicator{text-align:center; font-size:.76rem; font-weight:700; color:var(--muted-soft); letter-spacing:.04em; margin:0 0 16px}
+.consult-steps{overflow:hidden}
+.consult-step-track{display:flex; transition:transform .3s ease}
+.consult-step-pane{flex:0 0 100%; min-width:0}
+@media (prefers-reduced-motion:reduce){
+  .consult-step-track{transition:none}
+}
+.consult-purpose-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:8px}
+.consult-purpose-btn{
+  padding:12px 8px; border:1px solid var(--hairline); border-radius:var(--radius-sm); background:var(--canvas);
+  color:var(--ink); font-family:inherit; font-size:.88rem; font-weight:600; cursor:pointer; transition:all .2s ease;
+}
+.consult-purpose-btn:hover{border-color:var(--primary)}
+.consult-purpose-btn.active{background:var(--primary); border-color:var(--primary); color:#fff}
+.consult-selected-purpose{font-size:.8rem; color:var(--muted); margin:0 0 14px}
+.consult-step-actions{display:flex; gap:10px; margin-top:4px}
+.consult-success-channels{display:flex; flex-direction:column; gap:8px; max-width:280px; margin:0 auto}
 
 /* 푸터 — Airbnb는 대비 없는 흰 푸터(다크모드 없음) */
 .site-footer{background:var(--canvas); color:var(--muted); padding:36px 0; font-size:.85rem; border-top:1px solid var(--hairline)}
@@ -460,8 +552,8 @@ main section:not(.hero).in-view{opacity:1; transform:none}
 @media (prefers-reduced-motion:reduce){
   main section:not(.hero){opacity:1; transform:none; transition:none}
   /* 2026-09-16 스펙: 카드·버튼 hover 이동 애니메이션도 motion 감소 설정 시 비활성화 */
-  .course-card, .quick-course-card, .guide-card, .branch-card, .review-card, .floating-cta-main,
-  .course-card:hover, .quick-course-card:hover, .guide-card:hover, .branch-card:hover, .review-card:hover, .floating-cta-main:hover{
+  .course-card, .quick-course-card, .guide-card, .branch-card, .review-card, .floating-cta-main, .diff-card,
+  .course-card:hover, .quick-course-card:hover, .guide-card:hover, .branch-card:hover, .review-card:hover, .floating-cta-main:hover, .diff-card:hover{
     transition:none; transform:none;
   }
 }
@@ -502,6 +594,7 @@ main section:not(.hero).in-view{opacity:1; transform:none}
   .branch-grid{grid-template-columns:repeat(2,1fr)}
   .guide-grid{grid-template-columns:repeat(2,1fr)}
   .faculty-grid{grid-template-columns:repeat(2,1fr)}
+  .diff-grid{grid-template-columns:repeat(2,1fr)}
   .quick-course-nav{grid-template-columns:repeat(2,1fr)}
   .gallery-grid{grid-template-columns:repeat(3,1fr)}
 }
@@ -526,6 +619,10 @@ main section:not(.hero).in-view{opacity:1; transform:none}
   .nav-toggle{margin-left:auto}
   .mobile-only-cta{display:flex; margin-top:6px}
 
+  /* STEP2: 지역 탭이 모바일에서 줄바꿈 대신 가로 스크롤되게 함(칩이 5개라 줄바꿈보다 스크롤이 자연스러움) */
+  .branch-tabs{flex-wrap:nowrap; overflow-x:auto; justify-content:flex-start; padding-bottom:4px; -webkit-overflow-scrolling:touch}
+  .branch-tab{flex:0 0 auto}
+
   /* 모바일 하단 고정 CTA 바 — 항상 노출(데스크톱은 .floating-cta가 대신함).
      대신 데스크톱용 원형 플로팅 그룹은 숨기고(겹침 방지), 맨위로가기 버튼은 바 위로 올림 */
   .mobile-cta-bar{
@@ -542,7 +639,14 @@ main section:not(.hero).in-view{opacity:1; transform:none}
 }
 @media (max-width:480px){
   .benefit-grid{grid-template-columns:1fr 1fr}
+  .diff-grid{grid-template-columns:1fr}
+  .guide-grid{grid-template-columns:1fr}
+  .news-grid{grid-template-columns:1fr}
   section{padding:44px 0}
+  /* STEP1: 히어로 신뢰지표 3개(지점·수강생·실습률)가 375px에서도 한 줄에 들어가도록 축소 */
+  .trust-stat{padding:12px 4px}
+  .trust-stat b{font-size:.92rem}
+  .trust-stat span{font-size:.66rem}
   .hero-channel-row{gap:6px}
   .btn-channel{font-size:.78rem; padding:10px 4px}
   .gallery-grid{grid-template-columns:repeat(2,1fr)}

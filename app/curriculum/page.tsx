@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CourseThumb from "@/components/CourseThumb";
 import ConsultCtaButton from "@/components/ConsultCtaButton";
-import { featuredCourses } from "@/lib/courses";
+import { courses } from "@/lib/courses";
 
 export const metadata: Metadata = {
   title: "커리큘럼 | 애견미용학원 대전점",
@@ -26,9 +26,10 @@ export default function CurriculumPage() {
       <section>
         <div className="wrap">
           <div className="course-grid">
-            {featuredCourses.map((course) => (
-              <article key={course.slug} className="course-card">
+            {courses.map((course) => (
+              <article key={course.slug} className={`course-card${course.highlight ? " course-card-highlight" : ""}`}>
                 <CourseThumb src={course.cardImage} alt={course.title} className="ph-course" />
+                <span className="course-badge">{course.badge}</span>
                 <h3>{course.title}</h3>
                 <p>{course.summary}</p>
                 <p className="price">
