@@ -164,10 +164,13 @@ export default function ConsultModal() {
                 </p>
                 <p className="consult-step-indicator">STEP {step} / 2</p>
 
+                {/* 2026-09-16(2차): 두 STEP을 flex-row로 나란히 두고 translateX로 밀던 방식을 버림 —
+                    높이가 다른 두 STEP이 같은 트랙 안에서 서로의 높이만큼 강제로 늘어나면서(align-items:
+                    stretch 기본값) STEP1에 불필요한 빈 공간이 생기고 모달이 과하게 커지는 버그가 있었음
+                    (사용자 스크린샷으로 확인). 활성 STEP 하나만 렌더링하고 key로 전환 애니메이션만 재생. */}
                 <div className="consult-steps">
-                  <div className="consult-step-track" style={{ transform: `translateX(-${(step - 1) * 100}%)` }}>
-                    {/* STEP1: 수강 목적 + 희망 지점 */}
-                    <div className="consult-step-pane" aria-hidden={step !== 1}>
+                  {step === 1 ? (
+                    <div key="step1" className="consult-step-pane">
                       <div className="field">
                         <label>수강 목적</label>
                         <div className="consult-purpose-grid">
@@ -191,7 +194,7 @@ export default function ConsultModal() {
                           {branches.map((b) => (
                             <option key={b.name} value={branchLabel(b)}>
                               {branchLabel(b)}
-                              {b.isCurrent ? " · 지금 보고 계신 지점" : ""}
+                              {b.isCurrent ? " (현재 지점)" : ""}
                             </option>
                           ))}
                         </select>
@@ -202,9 +205,8 @@ export default function ConsultModal() {
                         무료 상담 가능 여부 확인하기
                       </button>
                     </div>
-
-                    {/* STEP2: 이름·연락처·문의사항·동의 */}
-                    <div className="consult-step-pane" aria-hidden={step !== 2}>
+                  ) : (
+                    <div key="step2" className="consult-step-pane">
                       {purpose && <p className="consult-selected-purpose">선택하신 목적: {PURPOSE_LABEL[purpose]}</p>}
                       <div className="field">
                         <label htmlFor="m-name">이름</label>
@@ -255,7 +257,7 @@ export default function ConsultModal() {
                         </button>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </form>
             )}

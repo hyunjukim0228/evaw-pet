@@ -482,13 +482,16 @@ section:nth-of-type(even){background:var(--surface-soft)}
 .agree input{margin-top:3px}
 .form-note{font-size:.76rem; color:var(--muted); text-align:center; margin-top:12px}
 
-/* STEP8: 상담모달 2-STEP 플로우 */
+/* STEP8: 상담모달 2-STEP 플로우 — 2026-09-16(2차): 두 STEP을 한 flex-row 트랙에 같이 두고 밀던 방식은
+   높이가 짧은 STEP도 긴 STEP 높이만큼 강제로 늘어나(align-items:stretch 기본값) 모달 하단에 불필요한
+   빈 공간이 생기고 모달 전체가 과하게 커지는 버그가 있었음(사용자 스크린샷으로 확인). 활성 STEP 하나만
+   렌더링하고(각자 자기 콘텐츠 높이만큼만 차지) key 전환 시 페이드+슬라이드 애니메이션만 재생하는 방식으로 교체. */
 .consult-step-indicator{text-align:center; font-size:.76rem; font-weight:700; color:var(--muted-soft); letter-spacing:.04em; margin:0 0 16px}
 .consult-steps{overflow:hidden}
-.consult-step-track{display:flex; transition:transform .3s ease}
-.consult-step-pane{flex:0 0 100%; min-width:0}
+.consult-step-pane{animation:consultStepIn .25s ease}
+@keyframes consultStepIn{from{opacity:0; transform:translateX(12px)}to{opacity:1; transform:translateX(0)}}
 @media (prefers-reduced-motion:reduce){
-  .consult-step-track{transition:none}
+  .consult-step-pane{animation:none}
 }
 .consult-purpose-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:8px}
 .consult-purpose-btn{
@@ -575,7 +578,7 @@ main section:not(.hero).in-view{opacity:1; transform:none}
      자연스럽게 사진 아래로 흐름(overlay 관련 스타일도 전부 해제). */
   .hero-copy{
     position:static; inset:auto; display:block; padding:28px 20px 8px; color:var(--ink);
-    text-shadow:none; background:var(--canvas); pointer-events:auto;
+    text-shadow:none; background:var(--canvas); pointer-events:auto; text-align:center;
   }
   .hero-copy .lead{color:var(--muted)}
   .hero-copy .eyebrow.hero-badge{
