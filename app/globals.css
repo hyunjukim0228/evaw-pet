@@ -238,6 +238,9 @@ section:nth-of-type(even){background:var(--surface-soft)}
 .benefit-grid{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center}
 .benefit-grid li b{display:block; margin-bottom:4px; color:var(--ink); font-weight:600}
 .benefit-grid li p{margin:0; color:var(--muted); font-size:.88rem}
+/* 2026-09-16(3차): 과정상세의 차별점(courseDifferentiators, 6개)이 4열 그리드에 4+2로 어중간하게
+   걸치던 걸 3열로 맞춤(898px 이하는 기존 .benefit-grid 2열 규칙 그대로 물려받음 — 2×3이라 이미 균등). */
+.benefit-grid-3col{grid-template-columns:repeat(3,1fr)}
 
 /* STEP3: 차별점 6카드 그리드 — 모바일1/태블릿2/PC3, hover 시 떠오름 + 그림자, 300ms */
 .diff-grid{list-style:none; margin:24px 0 0; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
@@ -263,13 +266,14 @@ section:nth-of-type(even){background:var(--surface-soft)}
 .two-col{display:grid; grid-template-columns:1.1fr 1fr; gap:40px; align-items:center}
 
 /* 커리큘럼 — property-card 톤(사진 우선, 호버 시 단일 섀도우 계층) */
-/* 2026-09-15: 그리드(아래로 스크롤)에서 가로 스와이프 캐러셀로 전환 — 요청대로 옆으로 넘겨서 확인 */
-.course-grid{display:flex; gap:22px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:10px; -webkit-overflow-scrolling:touch}
-/* flex column 필수 — grid 아이템(article)이 block 레이아웃일 때 다른 열의 카드가 더 길면
-   이 카드의 이미지·텍스트가 카드 박스 바깥(다음 행)으로 흘러넘쳐 겹쳐 보이는 버그가 있었음(캡처로 확인).
-   flex column으로 바꾸면 카드 자신의 콘텐츠 높이만큼만 박스가 정확히 감싸서 다음 행과 겹치지 않음. */
+/* 2026-09-15: 그리드(아래로 스크롤)에서 가로 스와이프 캐러셀로 전환 — 그때는 과정이 3~4개라 한 화면에
+   다 들어왔음. 2026-09-16(3차): STEP4로 6개까지 늘면서 PC(1280px)에서 4개만 채워 보이고 나머지 2개
+   (추천 표시된 "종합·심화반" 포함)가 화면 밖으로 완전히 가려지는 문제 발견(더 있다는 힌트도 없었음) —
+   "전체 보기" 페이지는 한 화면에 다 보여야 해서 다시 정적 그리드로 전환(모바일1·태블릿2·PC3열).
+   카드 자신은 여전히 flex column — 카드 높이가 서로 달라도 각자 콘텐츠만큼만 감싸 다음 행과 안 겹침. */
+.course-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
 .course-card{
-  display:flex; flex-direction:column; flex:0 0 260px; scroll-snap-align:start;
+  display:flex; flex-direction:column;
   background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); padding:18px; text-align:center;
   transition:all .3s ease;
 }
@@ -517,16 +521,17 @@ section:nth-of-type(even){background:var(--surface-soft)}
 .footer-links .tbd{cursor:default}
 .copyright{margin-top:10px; color:var(--muted-soft)}
 
-/* 플로팅 CTA — 데스크톱 전용 우측 하단 플로팅 그룹(채널 뱃지 3개 + 메인 CTA). 모바일은 아래 미디어쿼리에서 숨김. */
-.floating-cta{position:fixed; right:18px; bottom:18px; z-index:40; display:flex; flex-direction:column; align-items:flex-end; gap:10px}
-.floating-cta-channels{display:flex; flex-direction:column; gap:8px}
-.floating-cta-channels .btn-channel-badge{width:48px; height:48px; font-size:1.15rem; box-shadow:0 6px 18px rgba(0,0,0,.18)}
-.floating-cta-main{
-  display:inline-flex; align-items:center; gap:6px; white-space:nowrap; padding:14px 20px; border-radius:var(--radius-full);
-  background:var(--primary); color:#fff; font-weight:700; font-size:.85rem; border:none; cursor:pointer; font-family:inherit;
+/* 플로팅 CTA — 데스크톱 전용 우측 하단 원형 아이콘 버튼(FAB). 모바일은 아래 미디어쿼리에서 숨김. */
+/* 2026-09-16(3차): 채널 뱃지 3개(전화/카톡/네이버, Header에 이미 동일하게 있어 중복)를 뺀 문구 버튼으로
+   축소했다가, 그래도 .wrap이 꽉 차는 4열 그리드 마지막 칸과 좌표상 겹침이 남아(직접 측정 확인) 아이콘
+   버튼(52px 원형)으로 최종 축소 — 겹치는 폭을 사실상 0에 가깝게 없앰. */
+.floating-cta.floating-cta-main{
+  position:fixed; right:18px; bottom:18px; z-index:40;
+  display:flex; align-items:center; justify-content:center; width:52px; height:52px; border-radius:var(--radius-full);
+  background:var(--primary); color:#fff; font-size:1.3rem; border:none; cursor:pointer; font-family:inherit;
   box-shadow:0 6px 18px rgba(0,0,0,.22); transition:all .3s ease;
 }
-.floating-cta-main:hover{transform:translateY(-4px); box-shadow:0 10px 24px rgba(0,0,0,.28); background:var(--primary-active)}
+.floating-cta.floating-cta-main:hover{transform:translateY(-4px); box-shadow:0 10px 24px rgba(0,0,0,.28); background:var(--primary-active)}
 
 /* 맨 위로 가기 — 플로팅 CTA(우하단)와 안 겹치게 좌하단 */
 .scroll-top-btn{
@@ -592,6 +597,7 @@ main section:not(.hero).in-view{opacity:1; transform:none}
   .hero-extras-grid{grid-template-columns:1fr}
   .hero-extras-photo{order:-1; height:auto; aspect-ratio:4/3; min-height:0}
   .benefit-grid{grid-template-columns:repeat(2,1fr)}
+  .course-grid{grid-template-columns:repeat(2,1fr)}
   .course-detail-points{grid-template-columns:1fr}
   .branch-grid{grid-template-columns:repeat(2,1fr)}
   .guide-grid{grid-template-columns:repeat(2,1fr)}
@@ -641,6 +647,7 @@ main section:not(.hero).in-view{opacity:1; transform:none}
 @media (max-width:480px){
   .benefit-grid{grid-template-columns:1fr 1fr}
   .diff-grid{grid-template-columns:1fr}
+  .course-grid{grid-template-columns:1fr}
   .guide-grid{grid-template-columns:1fr}
   .faculty-sheets{grid-template-columns:1fr}
   .news-grid{grid-template-columns:1fr}

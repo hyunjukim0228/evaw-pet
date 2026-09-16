@@ -112,7 +112,7 @@ export default async function CourseDetailPage({
       <section>
         <div className="wrap">
           <h2 className="sec-title">✨ 애견미용학원 대전점의 차별점</h2>
-          <ul className="benefit-grid">
+          <ul className="benefit-grid benefit-grid-3col">
             {courseDifferentiators.map((d) => (
               <li key={d.title}>
                 <BenefitIcon name={d.icon} />
