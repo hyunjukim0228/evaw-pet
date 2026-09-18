@@ -22,7 +22,7 @@ export default function Footer() {
           <br />
           운영시간 : 월~목 11:00~21:30 | 토 11:00~19:00
           <br />
-          대표전화 : <span className="tbd">등록 예정</span> · 대표이메일 : sbshyunduu@naver.com
+          대표전화 : 010-4347-7645 · 대표이메일 : sbshyunduu@naver.com
         </p>
         <p className="footer-links">
           <span className="tbd">운영등록증</span>

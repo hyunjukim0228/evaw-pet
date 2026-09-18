@@ -475,15 +475,17 @@ section:nth-of-type(even){background:var(--surface-soft)}
 /* 상담 폼 — Airbnb는 대비되는 어두운 CTA 밴드를 쓰지 않으므로 옅은 surface-soft 밴드 위 흰 카드로 구성 */
 .consult{background:var(--surface-soft)}
 .consult-form{max-width:480px; margin:0 auto; background:var(--canvas); color:var(--ink); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow-1)}
-.field{margin-bottom:16px}
-.field label{display:block; font-weight:600; font-size:.88rem; margin-bottom:6px; color:var(--ink)}
+.field{margin-bottom:18px}
+.field label{display:block; font-weight:700; font-size:1rem; margin-bottom:8px; color:var(--ink)}
+/* 2026-09-18: 모바일 상담폼 가독성·탭 편의성 개선 요청 — 라벨·인풋 글씨를 키우고(16px 미만이면
+   iOS Safari가 탭할 때 자동 확대 줌이 걸리는 부작용도 있어 1rem 이상으로) 터치 영역도 넉넉하게. */
 .field-input,.consult-form input[type=text],.consult-form input[type=tel],.consult-form select{
-  width:100%; padding:13px 14px; border:1px solid var(--hairline); border-radius:var(--radius-sm); font-size:.95rem;
+  width:100%; padding:15px 16px; border:1px solid var(--hairline); border-radius:var(--radius-sm); font-size:1rem;
   background:var(--canvas); color:var(--ink); font-family:inherit;
 }
 .field-input:focus,.consult-form input:focus,.consult-form select:focus{outline:2px solid var(--ink); outline-offset:-1px; border-color:var(--ink)}
-.agree{display:flex; align-items:flex-start; gap:8px; font-size:.82rem; color:var(--muted); margin:14px 0}
-.agree input{margin-top:3px}
+.agree{display:flex; align-items:flex-start; gap:10px; font-size:.92rem; color:var(--muted); margin:16px 0; line-height:1.5}
+.agree input{margin-top:3px; width:20px; height:20px; flex:0 0 20px; accent-color:var(--primary)}
 .form-note{font-size:.76rem; color:var(--muted); text-align:center; margin-top:12px}
 
 /* STEP8: 상담모달 2-STEP 플로우 — 2026-09-16(2차): 두 STEP을 한 flex-row 트랙에 같이 두고 밀던 방식은
@@ -497,15 +499,18 @@ section:nth-of-type(even){background:var(--surface-soft)}
 @media (prefers-reduced-motion:reduce){
   .consult-step-pane{animation:none}
 }
-.consult-purpose-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:8px}
+.consult-purpose-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:10px}
 .consult-purpose-btn{
-  padding:12px 8px; border:1px solid var(--hairline); border-radius:var(--radius-sm); background:var(--canvas);
-  color:var(--ink); font-family:inherit; font-size:.88rem; font-weight:600; cursor:pointer; transition:all .2s ease;
+  min-height:56px; padding:14px 10px; border:1px solid var(--hairline); border-radius:var(--radius-sm); background:var(--canvas);
+  color:var(--ink); font-family:inherit; font-size:1rem; font-weight:600; cursor:pointer; transition:all .2s ease;
 }
 .consult-purpose-btn:hover{border-color:var(--primary)}
 .consult-purpose-btn.active{background:var(--primary); border-color:var(--primary); color:#fff}
-.consult-selected-purpose{font-size:.8rem; color:var(--muted); margin:0 0 14px}
+.consult-selected-purpose{font-size:.9rem; color:var(--muted); margin:0 0 16px}
+/* 2026-09-18: "이전 단계"·제출 버튼 크기가 안 맞아 뒤로가기 버튼만 작고 누르기 애매했던 것 →
+   둘 다 동일 비율(flex:1)로 크게, 높이도 다른 큰 버튼(btn-lg)과 맞춤. */
 .consult-step-actions{display:flex; gap:10px; margin-top:4px}
+.consult-step-actions > button{flex:1; min-height:52px}
 .consult-success-channels{display:flex; flex-direction:column; gap:8px; max-width:280px; margin:0 auto}
 
 /* 푸터 — Airbnb는 대비 없는 흰 푸터(다크모드 없음) */
@@ -645,6 +650,10 @@ main section:not(.hero).in-view{opacity:1; transform:none}
   body{padding-bottom:88px}
 }
 @media (max-width:480px){
+  /* 2026-09-18: 상담모달 수강목적 버튼이 2열이라 좁은 화면에서 글자가 작고 누르기 빡빡했던 것 →
+     1열로 펴서 버튼 하나하나를 화면 폭만큼 크게(더 쉽게 누를 수 있게). */
+  .consult-purpose-grid{grid-template-columns:1fr}
+  .consult-form{padding:24px 18px}
   .benefit-grid{grid-template-columns:1fr 1fr}
   .diff-grid{grid-template-columns:1fr}
   .course-grid{grid-template-columns:1fr}

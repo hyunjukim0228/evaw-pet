@@ -226,7 +226,7 @@ export default function HomePage() {
           <p>
             <b>전화</b>
             <br />
-            <span className="tbd">전화번호 등록 예정</span>
+            <a href="tel:010-4347-7645">010-4347-7645</a>
           </p>
           <p className="note">※ 지도·주차·대중교통 안내는 추후 추가합니다.</p>
         </div>

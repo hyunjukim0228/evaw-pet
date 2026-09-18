@@ -16,8 +16,18 @@ const branchLabel = (b: (typeof branches)[number]) => `${b.name} 애견미용학
 const defaultBranchLabel = branchLabel(branches.find((b) => b.isCurrent) ?? branches[0]);
 
 const INTENT_COPY = {
-  consult: { title: "상담 신청", lead: "수강 목적과 희망 지점을 선택해 주시면 더 정확히 안내해 드립니다.", submit: "상담 신청하기" },
-  tuition: { title: "간편 수강료 조회", lead: "수강 목적과 희망 지점을 선택해 주시면 수강료를 안내해 드립니다.", submit: "수강료 조회하기" },
+  consult: {
+    title: "상담 신청",
+    lead: "수강 목적과 희망 지점을 선택해 주시면 더 정확히 안내해 드립니다.",
+    next: "무료 상담 가능 여부 확인하기",
+    submit: "상담 신청하기",
+  },
+  tuition: {
+    title: "간편 수강료 조회",
+    lead: "수강 목적과 희망 지점을 선택해 주시면 수강료를 안내해 드립니다.",
+    next: "간편하게 수강료 확인하기",
+    submit: "수강료 조회하기",
+  },
 };
 
 // STEP8: 수강 목적 버튼 선택 — 레퍼런스(evaw-pet-grooming.co.kr) 상담모달 STEP1 항목 그대로.
@@ -155,11 +165,11 @@ export default function ConsultModal() {
             ) : (
               <form className="consult-form" style={{ padding: 0 }} onSubmit={handleSubmit(onSubmit)} noValidate>
                 <Dialog.Title asChild>
-                  <h3 className="sec-title" style={{ fontSize: "1.2rem", marginBottom: 4 }}>
+                  <h3 className="sec-title" style={{ fontSize: "1.35rem", marginBottom: 4 }}>
                     {copy.title}
                   </h3>
                 </Dialog.Title>
-                <p className="sec-sub" style={{ marginBottom: 10 }}>
+                <p className="sec-sub" style={{ marginBottom: 10, fontSize: ".95rem" }}>
                   {copy.lead}
                 </p>
                 <p className="consult-step-indicator">STEP {step} / 2</p>
@@ -202,7 +212,7 @@ export default function ConsultModal() {
                       </div>
 
                       <button type="button" className="btn btn-primary btn-lg btn-full" onClick={goToStep2}>
-                        무료 상담 가능 여부 확인하기
+                        {copy.next}
                       </button>
                     </div>
                   ) : (
@@ -252,7 +262,7 @@ export default function ConsultModal() {
                         <button type="button" className="btn btn-outline" onClick={() => setStep(1)}>
                           ← 이전 단계
                         </button>
-                        <button type="submit" className="btn btn-primary btn-lg" disabled={isSubmitting} style={{ flex: 1 }}>
+                        <button type="submit" className="btn btn-primary btn-lg" disabled={isSubmitting}>
                           {isSubmitting ? "접수 중..." : copy.submit}
                         </button>
                       </div>
