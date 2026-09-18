@@ -34,6 +34,13 @@ export const metadata: Metadata = {
   title: "애견미용학원 대전점 | 자격증·실습 과정 안내",
   description:
     "애견미용학원 대전점 — 자격증 3급·2급, 실견 실습 중심 애견미용 과정 안내. 상담 신청은 지금 바로 문의해 주세요.",
+  // 2026-09-18: 네이버 서치어드바이저 사이트 소유확인용(사용자 제공 토큰) — Next Metadata API의
+  // verification.other가 <meta name="naver-site-verification" content="..."> 로 그대로 렌더됨.
+  verification: {
+    other: {
+      "naver-site-verification": "a0064416c6fa3f5146f6f0920a75e93cbbbaffc8",
+    },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
