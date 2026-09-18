@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ConsultCtaButton from "@/components/ConsultCtaButton";
-import { guideTopics } from "@/lib/guides";
+import GuideGrid from "@/components/GuideGrid";
 
 export const metadata: Metadata = {
   title: "가이드 | 애견미용학원 대전점",
@@ -24,15 +24,8 @@ export default function GuidePage() {
 
       <section>
         <div className="wrap">
-          <p className="note">※ 아래 주제는 목차이며, 본문은 순차적으로 채워 넣을 예정입니다.</p>
-          <div className="guide-grid">
-            {guideTopics.map((g) => (
-              <div key={g.slug} className="guide-card">
-                <b>{g.title}</b>
-                <p>{g.teaser}</p>
-              </div>
-            ))}
-          </div>
+          <p className="note">※ 카드를 누르면 핵심 내용을 바로 확인하실 수 있습니다.</p>
+          <GuideGrid />
         </div>
       </section>
 

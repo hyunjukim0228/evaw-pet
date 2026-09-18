@@ -10,7 +10,7 @@ import CtaBanner from "@/components/CtaBanner";
 import BranchCard from "@/components/BranchCard";
 import { branches } from "@/lib/branches";
 import ReviewSlider from "@/components/ReviewSlider";
-import { guideTopics } from "@/lib/guides";
+import GuideGrid from "@/components/GuideGrid";
 import { news } from "@/lib/news";
 import { galleryPhotos } from "@/lib/galleryPhotos";
 import GallerySection from "@/components/GallerySection";
@@ -136,12 +136,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 수강생 후기 — 실제 후기 없어 구조만 설계, 예시 문구로 명시 */}
+      {/* 수강생 후기 — 2026-09-18: 같은 사업자(이바우펫) 공식 후기 데이터 기반으로 교체(lib/reviews.ts 참고) */}
       <section id="reviews">
         <div className="wrap" style={{ textAlign: "center" }}>
           <span className="sec-tag">⭐ 수강생 후기</span>
           <h2 className="sec-title">수강생들의 생생한 후기</h2>
-          <p className="sec-sub">※ 아래는 구성 예시이며, 실제 수강생 후기로 교체될 예정입니다.</p>
           <ReviewSlider />
         </div>
       </section>
@@ -191,19 +190,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 가이드 콘텐츠 미리보기 */}
+      {/* 가이드 콘텐츠 미리보기 — 2026-09-18: 카드 클릭 시 GuidePreviewModal로 실제 정리된 내용 바로 확인 */}
       <section id="guide-preview">
         <div className="wrap" style={{ textAlign: "center" }}>
           <h2 className="sec-title">💡 궁금할 때 보는 가이드</h2>
-          <p className="sec-sub">자격증·비용·취업·창업까지, 자주 궁금해하시는 내용을 정리했습니다.</p>
-          <div className="guide-grid">
-            {guideTopics.map((g) => (
-              <div key={g.slug} className="guide-card">
-                <b>{g.title}</b>
-                <p>{g.teaser}</p>
-              </div>
-            ))}
-          </div>
+          <p className="sec-sub">자격증·비용·취업·창업까지, 자주 궁금해하시는 내용을 정리했습니다. 카드를 누르면 바로 확인하실 수 있습니다.</p>
+          <GuideGrid />
           <div style={{ marginTop: 24 }}>
             <Link href="/guide" className="btn btn-outline btn-sm">
               가이드 전체보기
