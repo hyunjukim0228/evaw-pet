@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Toast from "@radix-ui/react-toast";
 import { useForm } from "react-hook-form";
@@ -11,6 +10,7 @@ import { branches } from "@/lib/branches";
 import { contactLinks } from "@/lib/contactLinks";
 import { supabase } from "@/lib/supabase";
 import ChannelButton from "./ChannelButton";
+import PrivacyPolicyText from "./PrivacyPolicyText";
 import { useConsultModal } from "./ConsultModalContext";
 
 const branchLabel = (b: (typeof branches)[number]) => `${b.name} 애견미용학원 (${b.region})`;
@@ -64,6 +64,7 @@ export default function ConsultModal() {
   const [submitted, setSubmitted] = useState(false);
   const [toastOpen, setToastOpen] = useState(false);
   const [toastMsg, setToastMsg] = useState("");
+  const [showPrivacy, setShowPrivacy] = useState(false);
   const copy = INTENT_COPY[intent];
 
   const {
@@ -92,6 +93,7 @@ export default function ConsultModal() {
     if (isOpen) {
       setStep(1);
       setSubmitted(false);
+      setShowPrivacy(false);
       reset({
         purpose: "",
         branch: presetBranch ?? defaultBranchLabel,
@@ -256,11 +258,16 @@ export default function ConsultModal() {
                       <label className="agree">
                         <input type="checkbox" {...register("agree")} />
                         개인정보 수집·이용에 동의합니다. (
-                        <Link href="/privacy" target="_blank" rel="noopener noreferrer">
-                          개인정보처리방침 보기
-                        </Link>
+                        <button type="button" className="consult-privacy-toggle" onClick={() => setShowPrivacy((v) => !v)}>
+                          {showPrivacy ? "접기" : "개인정보처리방침 보기"}
+                        </button>
                         )
                       </label>
+                      {showPrivacy && (
+                        <div className="consult-privacy-embed policy">
+                          <PrivacyPolicyText />
+                        </div>
+                      )}
                       {errors.agree && <p className="field-error">{errors.agree.message}</p>}
 
                       <div className="consult-step-actions">
