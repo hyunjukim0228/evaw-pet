@@ -1,9 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useConsultModal } from "./ConsultModalContext";
 
 // 사업자정보 고시 — 사용자 제공 실제 등록정보(2026-09-13) 기준, 주소만 대전점으로 교체.
-// 시간표·수강료 안내·운영등록증·배상책임보험약관·인스타그램은 아직 실제 페이지/링크가 없어 tbd로 표시.
+// 운영등록증·배상책임보험약관은 같은 사업자(이바우펫) 홈페이지의 실제 게시 문서로 연결(2026-09-20, 사용자 제공 링크).
+// 시간표·인스타그램은 아직 실제 페이지/링크가 없어 tbd로 표시.
 export default function Footer() {
   const { open } = useConsultModal();
 
@@ -25,8 +27,20 @@ export default function Footer() {
           대표전화 : 010-4347-7645 · 대표이메일 : sbshyunduu@naver.com
         </p>
         <p className="footer-links">
-          <span className="tbd">운영등록증</span>
-          <span className="tbd">배상책임보험약관</span>
+          <a
+            href="https://evawpetkorea.imweb.me/?preview_mode=1&modal_menu=m202512240ea01d7889e84"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            운영등록증
+          </a>
+          <a
+            href="https://evawpetkorea.imweb.me/?preview_mode=1&modal_menu=m20260126c89055763436f"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            배상책임보험약관
+          </a>
           <span className="tbd">시간표</span>
           <button type="button" onClick={() => open()}>
             수강료 안내
@@ -35,9 +49,7 @@ export default function Footer() {
           <a href="https://www.evawpet.com/?mode=policy" target="_blank" rel="noopener noreferrer">
             이용약관
           </a>
-          <a href="https://www.evawpet.com/?mode=privacy" target="_blank" rel="noopener noreferrer">
-            개인정보처리방침
-          </a>
+          <Link href="/privacy">개인정보처리방침</Link>
         </p>
         <p className="copyright">
           이메일무단수집거부 · © 2026 애견미용자격증학원 애견미용학원 대전점. All rights reserved.

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Toast from "@radix-ui/react-toast";
 import { useForm } from "react-hook-form";
@@ -254,7 +255,11 @@ export default function ConsultModal() {
 
                       <label className="agree">
                         <input type="checkbox" {...register("agree")} />
-                        개인정보 수집·이용에 동의합니다. <span className="tbd">[약관 내용 확정 필요]</span>
+                        개인정보 수집·이용에 동의합니다. (
+                        <Link href="/privacy" target="_blank" rel="noopener noreferrer">
+                          개인정보처리방침 보기
+                        </Link>
+                        )
                       </label>
                       {errors.agree && <p className="field-error">{errors.agree.message}</p>}
 
