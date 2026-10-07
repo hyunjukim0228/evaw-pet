@@ -19,6 +19,14 @@ import FaqSection from "@/components/FaqSection";
 import DifferentiatorGrid from "@/components/DifferentiatorGrid";
 import FacultyGallery from "@/components/FacultyGallery";
 
+const CHECKLIST = [
+  { title: "교육과정", desc: "처음 하는 사람도 따라갈 수 있는 단계별 1:1 교육인지 확인하세요." },
+  { title: "100% 가정견 실습", desc: "농장·공장견이 아닌 가정견 실습인지 확인하세요." },
+  { title: "자격증 단기 취득", desc: "필수 교육기간이 필요한지, 자격증별 기간에 대해 확인하세요." },
+  { title: "취업·창업 지원", desc: "수강·수료 이후 취업 및 창업으로 이후 진로까지 고려할 수 있는지 확인하세요." },
+  { title: "비용·장학지원 혜택", desc: "월 수강 기준이 아닌 재료비 및 응시료 포함 총 금액과 지원을 확인하세요." },
+];
+
 export default function HomePage() {
   return (
     <main id="top">
@@ -38,12 +46,12 @@ export default function HomePage() {
           <div className="hero-extras-grid">
             <div>
               <ConsultCtaButton className="btn btn-primary btn-lg btn-full hero-main-cta">
-                🎓 무료 상담 + 수강료 확인하기
+                🎓 애견미용학원 장학지원 신청하기
               </ConsultCtaButton>
               <HeroCtaRow />
               <div className="hero-trust-bar">
                 <div className="trust-stat">
-                  <b>전국 19개</b>
+                  <b>전국 21개</b>
                   <span>직영지점 운영</span>
                 </div>
                 <div className="trust-stat">
@@ -56,7 +64,13 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <PhotoSlideshow images={galleryPhotos} intervalMs={2000} alt="애견미용학원 대전점" className="hero-extras-photo" />
+            {/* 2026-10-07: 사진 슬라이드쇼 → 장학지원 안내 이미지(사용자 제공). 이미지 속 버튼 그래픽 때문에 전체를 상담 버튼으로 */}
+            <ConsultCtaButton className="hero-scholarship">
+              <img
+                src="/images/scholarship/scholarship-hero.webp"
+                alt="애견미용의 시작, 장학지원으로 더 가볍게 — 수강비 지원·미용도구 풀세트·온라인 강의. 장학지원 혜택 확인하기"
+              />
+            </ConsultCtaButton>
           </div>
           <QuickCourseNav />
         </div>
@@ -65,37 +79,34 @@ export default function HomePage() {
       {/* 가정견미용 과정 하이라이트 사진 */}
       <section id="home-grooming-highlight">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">🛁 가정견미용 과정</h2>
-          <p className="sec-sub">내 반려견을 집에서 직접 관리하고 싶은 분들을 위한 과정입니다.</p>
+          <h2 className="sec-title">🛁 가정견 친구들이 미용 오는 학원</h2>
+          <p className="sec-sub">보호자와 함께 오는 가정견으로 실제 미용실 업무 흐름을 그대로 배웁니다.</p>
           <PhotoSlideshow images={galleryPhotos} intervalMs={2000} alt="가정견미용 과정" />
           <div style={{ marginTop: 20 }}>
             <Link href="/curriculum/practice" className="btn btn-outline btn-sm">
-              가정견미용 과정 자세히 보기
+              가정견 100% 실견수업 살펴보기
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 강점 섹션 — STEP3: 4카드 정적 목록 → 6카드 인터랙티브 그리드(클릭 시 상세 모달)로 확장 */}
-      <section className="benefits">
-        <div className="wrap">
-          <span className="sec-tag">✨ 애견미용학원 대전점만의 차이</span>
-          <h2 className="sec-title">이런 점이 다릅니다</h2>
-          <DifferentiatorGrid />
-        </div>
-      </section>
-
-      {/* 학원 소개 (요약 — 전체 내용은 /about) — 2026-09-16: /about 인트로와 같은 내용을 짧게 요약 */}
+      {/* 학원 소개 — 2026-10-07: 제목 교체 + "애견미용학원 선택 시 체크리스트" 5카드(사용자 Word 메모) */}
       <section id="about" className="about">
-        <div className="wrap" style={{ maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
+        <div className="wrap" style={{ textAlign: "center" }}>
           <span className="sec-tag">🏫 학원소개</span>
-          <h2 className="sec-title">손으로 익히는 일이라, 손을 직접 잡아드립니다</h2>
-          <p>
-            애견미용학원 대전점은 자격증 한 장을 내드리는 곳이 아니라, 실제로 손을 움직여 미용사가 될 수
-            있게 돕는 곳입니다. 여러 사람이 같은 진도로 가는 수업 대신 1:1 개별 진도로 진행하고, 될 때까지
-            진도를 넘기지 않습니다.
+          <h2 className="sec-title">강아지를 사랑하는 마음이 기술의 기준이 되도록</h2>
+          <p className="sec-sub">
+            애견미용학원 선택 시, 이 부분은 꼭 확인하세요
           </p>
-          <p>실습은 100% 가정견으로 진행합니다. 실제 현장과 같은 조건에서 배우게 됩니다.</p>
+          <ol className="check-grid">
+            {CHECKLIST.map((c, i) => (
+              <li key={c.title} className="check-card">
+                <span className="check-num">{String(i + 1).padStart(2, "0")}</span>
+                <b>{c.title}</b>
+                <p>{c.desc}</p>
+              </li>
+            ))}
+          </ol>
           <Link href="/about" className="btn btn-outline btn-sm">
             학원소개 자세히 보기
           </Link>
@@ -106,8 +117,12 @@ export default function HomePage() {
       <section id="gallery" className="gallery">
         <div className="wrap" style={{ textAlign: "center" }}>
           <span className="sec-tag">📸 수업 현장</span>
-          <h2 className="sec-title">시설·실습 사진</h2>
-          <p className="sec-sub">실제 실습 현장과 완성 사진입니다.</p>
+          <h2 className="sec-title">이바우펫 현장스토리</h2>
+          <p className="sec-sub">
+            강아지가 좋아서 애견미용을 배우기 시작했다면,
+            <br />
+            그 마음은 교육과정 안에서도 이어져야 합니다.
+          </p>
           <GallerySection />
         </div>
       </section>
@@ -117,20 +132,86 @@ export default function HomePage() {
       <section id="curriculum" className="curriculum">
         <div className="wrap">
           <span className="sec-tag">📚 커리큘럼</span>
-          <h2 className="sec-title">수강 과정 안내</h2>
+          <h2 className="sec-title">내 상황에 맞춰 진행하는 커리큘럼</h2>
           <CourseCompactList />
           <p className="note">※ 위 과정 구성은 초안 예시입니다. 실제 개설 과정명·커리큘럼은 확정되는 대로 교체합니다.</p>
         </div>
       </section>
 
+      {/* 강점 섹션 — STEP3: 4카드 정적 목록 → 6카드 인터랙티브 그리드(클릭 시 상세 모달)로 확장 */}
+      <section className="benefits">
+        <div className="wrap">
+          <span className="sec-tag">✨ 애견미용학원 대전점만의 차이</span>
+          <h2 className="sec-title">왜 이바우펫에서 해야 할까요?</h2>
+          <DifferentiatorGrid />
+        </div>
+      </section>
+
+      {/* 장학지원 — 2026-10-07 신설(사용자 Word 메모 예시 구성) */}
+      <section id="scholarship" className="scholarship">
+        <div className="wrap" style={{ textAlign: "center" }}>
+          <span className="sec-tag">🎁 장학지원</span>
+          <h2 className="scholarship-title">
+            수강료가 걱정된다면
+            <br />
+            <em>장학지원 가능 여부</em>부터 확인하세요.
+          </h2>
+          <p className="sec-sub">
+            장학지원은 개인의 상황과 교육기관의 기준에 따라 달라질 수 있습니다. 상담을 통해 본인에게 적용 가능한 지원이
+            있는지 먼저 확인해보세요.
+          </p>
+          <div className="scholarship-chips">
+            {["장학지원 가능 여부", "수강료 상담", "교육과정 안내", "취업·창업 상담"].map((t) => (
+              <ConsultCtaButton key={t} className="scholarship-chip">
+                {t}
+              </ConsultCtaButton>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 분야별 특강 — 2026-10-07: 특강 안내 이미지 추가(사용자 메모 "이미지 넣기") */}
+      <section id="special">
+        <div className="wrap" style={{ textAlign: "center" }}>
+          <span className="sec-tag">🎯 스페셜 특강</span>
+          <h2 className="sec-title">분야별 특강</h2>
+          <p className="sec-sub">애견미용 교육 이외에도 반려동물 산업 분야별 특강을 진행합니다.</p>
+          <img
+            src="/images/special/special-1.webp"
+            alt="분야별 특강 — 애견미용 자격증, 펫푸드 레시피, 반려견 행동교정사, 장례지도사, 펫아로마테라피, 펫마사지"
+            className="highlight-photo"
+            style={{ maxWidth: 640 }}
+          />
+          <div style={{ marginTop: 24 }}>
+            <ConsultCtaButton className="btn btn-outline btn-sm">특강 문의하기</ConsultCtaButton>
+          </div>
+        </div>
+      </section>
+
+      {/* 상담 신청 — 2026-10-07: 특강 바로 뒤로 이동, 문구를 예시 스타일로 교체(입력칸은 기존 유지) */}
+      <section id="consult" className="consult">
+        <div className="wrap">
+          <h2 className="sec-title">
+            내게 맞는 애견미용학원,
+            <br />
+            먼저 상담받아보세요.
+          </h2>
+          <p className="sec-sub">등록 전 궁금한 내용을 편하게 남겨주세요.</p>
+          <ConsultForm />
+          <p className="note">
+            전화 상담도 가능합니다. <a href="tel:010-4347-7645">010-4347-7645</a>
+          </p>
+        </div>
+      </section>
+
       {/* 강사진(홈) — 2026-09-16: /about#faculty와 동일한 전국 캠퍼스 강사진 실사진(라이트박스 확대)을
-          여기서도 바로 보여줌. 같은 사업자(이바우펫)가 대전점을 포함한 전국 19개 지점을 직영. */}
+          여기서도 바로 보여줌. 같은 사업자(이바우펫)가 대전점을 포함한 전국 21개 지점을 직영. */}
       <section id="faculty-teaser">
         <div className="wrap" style={{ textAlign: "center" }}>
           <span className="sec-tag">🧑‍🏫 교수진</span>
           <h2 className="sec-title">전국 캠퍼스 강사진</h2>
           <p className="sec-sub">
-            대전점을 포함한 전국 19개 지점에 이 강사님들이 함께합니다. 사진을 누르면 크게 볼 수 있습니다.
+            대전점을 포함한 전국 21개 지점에 이 강사님들이 함께합니다. 사진을 누르면 크게 볼 수 있습니다.
           </p>
           <FacultyGallery />
         </div>
@@ -146,22 +227,6 @@ export default function HomePage() {
       </section>
 
       <CtaBanner text="궁금한 과정이 있으신가요? 지금 무료로 상담받아보세요." />
-
-      {/* 분야별 특강 */}
-      <section id="special">
-        <div className="wrap" style={{ textAlign: "center" }}>
-          <span className="sec-tag">🎯 스페셜 특강</span>
-          <h2 className="sec-title">분야별 특강</h2>
-          <p className="sec-sub">
-            정규 과정과 별도로, 관심 있는 주제만 짧게 배워보는 특강도 준비되어 있습니다.
-            <br />
-            주제·일정은 <span className="tbd">상담 시 안내</span>해 드립니다.
-          </p>
-          <div style={{ marginTop: 24 }}>
-            <ConsultCtaButton className="btn btn-outline btn-sm">특강 문의하기</ConsultCtaButton>
-          </div>
-        </div>
-      </section>
 
       {/* FAQ */}
       <section id="faq" className="faq">
@@ -228,7 +293,7 @@ export default function HomePage() {
       <section id="branches">
         <div className="wrap" style={{ textAlign: "center" }}>
           <h2 className="sec-title">🗺️ 전국 지점</h2>
-          <p className="sec-sub">애견미용학원 대전점은 전국 19개 지점 네트워크 중 하나입니다.</p>
+          <p className="sec-sub">애견미용학원 대전점은 전국 21개 지점 네트워크 중 하나입니다.</p>
           <div className="branch-grid">
             {branches.map((b) => (
               <BranchCard key={b.region + b.name} branch={b} />
@@ -242,14 +307,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 상담 신청 CTA */}
-      <section id="consult" className="consult">
-        <div className="wrap">
-          <h2 className="sec-title">🎓 지금 바로 무료 상담 받으세요</h2>
-          <p className="sec-sub">이름과 연락처만 남겨주시면 담당자가 안내해 드립니다.</p>
-          <ConsultForm />
-        </div>
-      </section>
     </main>
   );
 }

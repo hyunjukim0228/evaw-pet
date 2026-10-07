@@ -5,7 +5,7 @@ import BranchMapSection from "@/components/BranchMapSection";
 
 export const metadata: Metadata = {
   title: "전국 지점 | 애견미용학원 대전점",
-  description: "전국 19개 지점 네트워크 안내 — 애견미용학원 대전점을 포함한 전국 지점 위치를 확인하세요.",
+  description: "전국 21개 지점 네트워크 안내 — 애견미용학원 대전점을 포함한 전국 지점 위치를 확인하세요.",
 };
 
 export default function BranchesPage() {
@@ -18,7 +18,7 @@ export default function BranchesPage() {
           </p>
           <span className="eyebrow">BRANCHES</span>
           <h1>전국 지점</h1>
-          <p>전국 19개 지점 네트워크 — 대전점을 포함한 전국 지점 위치를 확인하실 수 있습니다.</p>
+          <p>전국 21개 지점 네트워크 — 대전점을 포함한 전국 지점 위치를 확인하실 수 있습니다.</p>
         </div>
       </section>
 

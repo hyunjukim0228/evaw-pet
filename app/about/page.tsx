@@ -67,14 +67,14 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 강사진 — 대전점 단독 프로필이 아직 없어, 대전점을 포함한 전국 19개 지점을 함께 운영하는
+      {/* 강사진 — 대전점 단독 프로필이 아직 없어, 대전점을 포함한 전국 21개 지점을 함께 운영하는
           같은 사업자의 전체 강사진 명단으로 대체(정직한 표기: "전국 캠퍼스 강사진"). */}
       <section id="faculty">
         <div className="wrap" style={{ textAlign: "center" }}>
           <span className="sec-tag">🧑‍🏫 교육진</span>
           <h2 className="sec-title">전국 캠퍼스 강사진</h2>
           <p className="sec-sub">
-            대전점을 포함한 전국 19개 지점에 이 강사님들이 함께합니다. 사진을 누르면 크게 볼 수 있습니다.
+            대전점을 포함한 전국 21개 지점에 이 강사님들이 함께합니다. 사진을 누르면 크게 볼 수 있습니다.
           </p>
           <FacultyGallery />
         </div>

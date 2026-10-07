@@ -182,6 +182,23 @@ h1,h2,h3{line-height:1.3; margin:0 0 12px}
    왼쪽 콘텐츠 높이만큼 세로로 긴 사진이라 align-items:stretch + height:100%로 전환(2026-09-15). */
 .hero-extras-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:36px; align-items:stretch; margin-bottom:36px}
 .hero-extras-photo{max-width:none; width:100%; height:100%; aspect-ratio:auto; min-height:340px}
+/* 히어로 오른쪽 장학지원 이미지(2026-10-07) — 이미지 전체가 상담 버튼 */
+.hero-scholarship{display:block; width:100%; padding:0; border:none; background:none; cursor:pointer; align-self:center}
+.hero-scholarship img{display:block; width:100%; height:auto; border-radius:var(--radius); box-shadow:var(--shadow-1); transition:transform .2s}
+.hero-scholarship:hover img{transform:translateY(-3px)}
+/* 학원소개 "선택 시 체크리스트" 5카드 */
+.check-grid{list-style:none; margin:0 0 28px; padding:0; display:grid; grid-template-columns:repeat(5,1fr); gap:14px; text-align:left}
+.check-card{background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); padding:22px 18px}
+.check-num{display:block; font-size:.78rem; font-weight:700; color:var(--muted-soft); margin-bottom:14px}
+.check-card b{display:block; font-size:1.02rem; margin-bottom:8px}
+.check-card p{margin:0; font-size:.84rem; color:var(--muted)}
+/* 장학지원 섹션 */
+.scholarship{background:var(--surface-soft)}
+.scholarship-title{font-size:clamp(1.5rem,3.6vw,2.4rem); font-weight:800; line-height:1.3; margin:0 0 14px; letter-spacing:-.5px}
+.scholarship-title em{font-style:normal; color:var(--primary)}
+.scholarship-chips{display:flex; flex-wrap:wrap; justify-content:center; gap:10px}
+.scholarship-chip{background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius-full); padding:10px 18px; font-size:.85rem; font-weight:700; color:var(--ink); cursor:pointer}
+.scholarship-chip:hover{border-color:var(--primary); color:var(--primary)}
 .hero-main-cta{display:flex; margin-bottom:14px}
 .hero-channel-row{display:flex; gap:10px; margin-bottom:20px}
 .btn-channel{
@@ -620,6 +637,8 @@ main section:not(.hero).in-view{opacity:1; transform:none}
   .two-col{grid-template-columns:1fr}
   .hero-extras-grid{grid-template-columns:1fr}
   .hero-extras-photo{order:-1; height:auto; aspect-ratio:4/3; min-height:0}
+  .hero-scholarship{order:-1}
+  .check-grid{grid-template-columns:1fr 1fr}
   .benefit-grid{grid-template-columns:repeat(2,1fr)}
   .course-grid{grid-template-columns:repeat(2,1fr)}
   .course-detail-points{grid-template-columns:1fr}

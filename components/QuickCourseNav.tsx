@@ -10,11 +10,12 @@ import CoursePreviewModal from "./CoursePreviewModal";
 // 여기는 원래대로 4개 유지.
 // 2026-09-16(3차): STEP4로 courses.ts 슬러그가 5과정→6분류(레퍼런스 taxonomy)로 바뀌면서 매핑 갱신
 // (level-3→certificate, behavior→special, home-grooming→practice, career는 그대로).
+// 2026-10-07: 사용자 Word 메모대로 라벨·순서 변경(자격증취득 / 취업/창업 / 자견케어 / 스페셜특강).
 const QUICK_COURSES: { slug: string; label: string; icon: string }[] = [
-  { slug: "certificate", label: "자격증", icon: "/images/icons3d/scissors.png" },
+  { slug: "certificate", label: "자격증취득", icon: "/images/icons3d/scissors.png" },
+  { slug: "career", label: "취업/창업", icon: "/images/icons3d/briefcase.png" },
+  { slug: "practice", label: "자견케어", icon: "/images/icons3d/bathtub.png" },
   { slug: "special", label: "스페셜특강", icon: "/images/icons3d/paw-prints.png" },
-  { slug: "practice", label: "실견실습", icon: "/images/icons3d/bathtub.png" },
-  { slug: "career", label: "취업창업", icon: "/images/icons3d/briefcase.png" },
 ];
 
 export default function QuickCourseNav() {
