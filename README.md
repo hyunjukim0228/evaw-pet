@@ -51,7 +51,8 @@ npm run build    # 배포 전 반드시 통과 확인 (결과물: out/)
 | 고칠 것 | 파일 |
 |---|---|
 | 홈 화면 섹션 순서·문구 | `app/page.tsx` |
-| 메인 배너 이미지 | `public/images/hero/hero-N-pc.webp`(1920×850) / `hero-N-mo.webp`, 목록은 `components/HeroCarousel.tsx` |
+| 메인 배너 이미지 | `public/images/hero/main-banner.webp`(1920×850, 1장 고정 — 누르면 `/curriculum`), `components/HeroCarousel.tsx`. PC 전용(1024px 이하에선 숨기고 `HeroCopy` 문구 노출) |
+| 가정견 섹션(메인 사진 + 상세 팝업) | `components/HomeGroomingDetail.tsx` |
 | 히어로 아래 퀵메뉴 4칸 | `components/QuickCourseNav.tsx` |
 | 헤더 아래 상시 메뉴 바 | `components/QuickMenu.tsx` |
 | 과정(커리큘럼) 내용 | `lib/courses.ts` (목록·상세 페이지·팝업 전부 여기서 나옴) |
@@ -97,8 +98,6 @@ npm run build    # 배포 전 반드시 통과 확인 (결과물: out/)
 
 ## 6. 남은 일 / 미확정 항목
 
-- [ ] 자격증·실견수업 가로 배너 이미지(1885×834)를 받았지만 위치가 정해지지 않아 미사용
-- [ ] 장학지원 이미지가 메인 배너 1번과 히어로 오른쪽 칸에 **중복** 노출 중. 오른쪽 칸을 다른 사진으로 바꿀지 결정 필요
 - [ ] 커리큘럼 6과정은 **초안 문구**(화면에 "초안 예시" 안내문 노출 중). 실제 과정명·기간·수강료 확정 후 `lib/courses.ts` 교체, 안내문 삭제
 - [ ] 로고 미수령 → 헤더는 텍스트 로고. 받으면 `components/Header.tsx` 교체
 - [ ] 상담폼 동의 문구 옆 `[약관 내용 확정 필요]` 표시(`components/ConsultForm.tsx`)
@@ -123,6 +122,6 @@ npm run build    # 배포 전 반드시 통과 확인 (결과물: out/)
 - 2026-09-14~15 상담폼 Supabase 연동, 텔레그램 알림, Vercel 배포, 커스텀 도메인 연결
 - 2026-09-16~18 레퍼런스 구조(퀵메뉴·상담모달·차이점·후기·가이드·FAQ) 반영
 - 2026-09-20 개인정보처리방침 페이지, 운영등록증·배상책임보험약관 링크
-- 2026-10-07 소유자 Word 메모대로 홈 재구성(섹션 순서·문구·장학지원 섹션), 메인 배너 1번·가정견 이미지 교체, 푸터 정보 수정, 전국 21개
+- 2026-10-07 소유자 Word 메모대로 홈 재구성(섹션 순서·문구·장학지원 섹션), 푸터 정보 수정, 전국 21개, 메인 배너를 자격증·실견수업 배너 1장으로 고정, 가정견 섹션을 메인 사진 + 상세 팝업으로 변경
 
 상세 작업 기록은 기존 작업자의 Obsidian 노트(`AI-Sessions/wiki/projects/홈페이지만들기.md`)에 있습니다. 필요하면 요청하세요.

@@ -1,33 +1,18 @@
-"use client";
+import Link from "next/link";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
-
-// 사용자가 제공한 메인베너 1~6 (PC 1920×850 / 모바일 세로형) — public/images/hero/에 WebP로 최적화해 저장.
-// 2026-09-16: 커스텀 구현 → Swiper(fade 효과, autoplay 4000ms, loop, pagination+네비게이션)로 교체(스펙 고정 슬라이더 라이브러리).
-const SLIDES = Array.from({ length: 6 }, (_, i) => i + 1).map((n) => ({
-  pc: `/images/hero/hero-${n}-pc.webp`,
-  mo: `/images/hero/hero-${n}-mo.webp`,
-}));
-
+// 메인 배너 — 2026-10-07 사용자 지시로 슬라이드 6장 → 배너 1장 고정(자격증·실견수업 배너, 1920×850).
+// 모바일에서는 .hero-carousel 자체가 숨겨지고 HeroCopy 헤드라인부터 시작(globals.css 참고).
+// ponytail: 배너가 다시 여러 장이 되면 git 이력의 Swiper 버전(ead4642)을 되살리면 됨.
 export default function HeroCarousel() {
   return (
-    <Swiper
-      className="hero-carousel"
-      modules={[Autoplay, EffectFade, Navigation, Pagination]}
-      effect="fade"
-      fadeEffect={{ crossFade: true }}
-      autoplay={{ delay: 4000, disableOnInteraction: false }}
-      loop
-      navigation
-      pagination={{ clickable: true }}
-    >
-      {SLIDES.map((slide, i) => (
-        <SwiperSlide key={i}>
-          <img src={slide.pc} alt="애견미용학원 대전점" className="hero-img pc" draggable={false} />
-          <img src={slide.mo} alt="애견미용학원 대전점" className="hero-img mo" draggable={false} />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    // 배너 속 "자격증·실견수업 알아보기" 버튼 그래픽 → 배너 전체를 커리큘럼 링크로
+    <Link href="/curriculum" className="hero-carousel" aria-label="자격증·실견수업 알아보기 — 커리큘럼 보기">
+      <img
+        src="/images/hero/main-banner.webp"
+        alt="자격증 준비는 빠르게, 수업은 현장 실무 그대로 — 3급·2급 동시취득 준비, 개별 진도, 가정견 100% 실습"
+        className="hero-img"
+        draggable={false}
+      />
+    </Link>
   );
 }

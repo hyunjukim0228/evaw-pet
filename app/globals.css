@@ -166,6 +166,8 @@ h1,h2,h3{line-height:1.3; margin:0 0 12px}
   background:linear-gradient(90deg, rgba(20,20,20,.45), rgba(20,20,20,.05) 70%);
 }
 .hero-copy a{pointer-events:auto}
+/* 2026-10-07: PC 배너 이미지에 문구가 이미 들어 있어 겹치는 오버레이 문구는 숨김(모바일은 배너 대신 이 문구가 노출) */
+@media (min-width:1025px){.hero-copy{display:none}}
 .hero-copy .eyebrow{font-weight:700; letter-spacing:.05em; margin-bottom:10px; opacity:.9}
 .hero-copy h1{font-size:clamp(1.5rem,3.2vw,1.9rem); font-weight:700}
 .hero-copy .lead{margin:0 0 20px; font-size:1.05rem}
