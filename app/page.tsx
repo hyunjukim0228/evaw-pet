@@ -19,12 +19,13 @@ import FaqSection from "@/components/FaqSection";
 import DifferentiatorGrid from "@/components/DifferentiatorGrid";
 import FacultyGallery from "@/components/FacultyGallery";
 
+// 학원소개 체크리스트 — **로 감싼 부분은 강조 표시(핵심 확인 포인트만 눈에 먼저 들어오게)
 const CHECKLIST = [
-  { title: "교육과정", desc: "처음 하는 사람도 따라갈 수 있는 단계별 1:1 교육인지 확인하세요." },
-  { title: "100% 가정견 실습", desc: "농장·공장견이 아닌 가정견 실습인지 확인하세요." },
-  { title: "자격증 단기 취득", desc: "필수 교육기간이 필요한지, 자격증별 기간에 대해 확인하세요." },
-  { title: "취업·창업 지원", desc: "수강·수료 이후 취업 및 창업으로 이후 진로까지 고려할 수 있는지 확인하세요." },
-  { title: "비용·장학지원 혜택", desc: "월 수강 기준이 아닌 재료비 및 응시료 포함 총 금액과 지원을 확인하세요." },
+  { title: "교육과정", desc: "처음 하는 사람도 따라갈 수 있는 **단계별 1:1 교육**인지 확인하세요." },
+  { title: "100% 가정견 실습", desc: "농장·공장견이 아닌 **가정견 실습**인지 확인하세요." },
+  { title: "자격증 단기 취득", desc: "**필수 교육기간**이 필요한지, **자격증별 기간**에 대해 확인하세요." },
+  { title: "취업·창업 지원", desc: "수강·수료 이후 **취업 및 창업**까지, 이후 진로를 고려할 수 있는지 확인하세요." },
+  { title: "비용·장학지원 혜택", desc: "월 수강 기준이 아닌 **재료비·응시료 포함 총 금액**과 지원을 확인하세요." },
 ];
 
 export default function HomePage() {
@@ -95,18 +96,23 @@ export default function HomePage() {
         <div className="wrap" style={{ textAlign: "center" }}>
           <span className="sec-tag">🏫 학원소개</span>
           <h2 className="sec-title">강아지를 사랑하는 마음이 기술의 기준이 되도록</h2>
-          <p className="sec-sub">
-            애견미용학원 선택 시, 이 부분은 꼭 확인하세요
-          </p>
-          <ol className="check-grid">
-            {CHECKLIST.map((c, i) => (
-              <li key={c.title} className="check-card">
-                <span className="check-num">{String(i + 1).padStart(2, "0")}</span>
-                <b>{c.title}</b>
-                <p>{c.desc}</p>
-              </li>
-            ))}
-          </ol>
+          <div className="check-box">
+            <p className="check-head">
+              <span>애견미용학원 선택 시,</span>
+              이 부분은 <em>꼭 확인</em>하세요
+            </p>
+            <ol className="check-list">
+              {CHECKLIST.map((c, i) => (
+                <li key={c.title}>
+                  <span className="check-num">{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <b>{c.title}</b>
+                    <p>{c.desc.split("**").map((t, j) => (j % 2 ? <strong key={j}>{t}</strong> : t))}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
           <Link href="/about" className="btn btn-outline btn-sm">
             학원소개 자세히 보기
           </Link>
