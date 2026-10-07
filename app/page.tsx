@@ -16,6 +16,7 @@ import GallerySection from "@/components/GallerySection";
 import FaqSection from "@/components/FaqSection";
 import DifferentiatorGrid from "@/components/DifferentiatorGrid";
 import FacultyGallery from "@/components/FacultyGallery";
+import HomeGroomingDetail from "@/components/HomeGroomingDetail";
 
 // 학원소개 체크리스트 — **로 감싼 부분은 강조 표시(핵심 확인 포인트만 눈에 먼저 들어오게)
 const CHECKLIST = [
@@ -80,18 +81,7 @@ export default function HomePage() {
         <div className="wrap" style={{ textAlign: "center" }}>
           <h2 className="sec-title">🛁 가정견 친구들이 미용 오는 학원</h2>
           <p className="sec-sub">보호자와 함께 오는 가정견으로 실제 미용실 업무 흐름을 그대로 배웁니다.</p>
-          {/* 2026-10-07: 슬라이드쇼 → 사용자 제공 가정견 실견수업 상세 이미지(세로형) */}
-          <img
-            src="/images/home-grooming-practice.webp"
-            alt="가정견 100% 미용실습 — 보호자와 함께 오는 가정견, 상담부터 인계까지(미용 상담·목욕과 드라이·전체 미용·보호자 인계) 직접 배우는 실견수업"
-            className="highlight-photo"
-            style={{ maxWidth: 560 }}
-          />
-          <div style={{ marginTop: 20 }}>
-            <Link href="/curriculum/practice" className="btn btn-outline btn-sm">
-              가정견 100% 실견수업 살펴보기
-            </Link>
-          </div>
+          <HomeGroomingDetail />
         </div>
       </section>
 
