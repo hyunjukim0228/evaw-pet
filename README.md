@@ -51,7 +51,7 @@ npm run build    # 배포 전 반드시 통과 확인 (결과물: out/)
 | 고칠 것 | 파일 |
 |---|---|
 | 홈 화면 섹션 순서·문구 | `app/page.tsx` |
-| 메인 배너 이미지 | `public/images/hero/main-banner.webp`(1920×850, 1장 고정 — 누르면 `/curriculum`), `components/HeroCarousel.tsx`. PC 전용(1024px 이하에선 숨기고 `HeroCopy` 문구 노출) |
+| 메인 배너 이미지 | `public/images/hero/main-banner.webp`(1920×850, 1장 고정 — 누르면 `/curriculum`), `components/HeroCarousel.tsx`. PC·모바일 모두 노출(모바일은 원본 비율 전체 표시, PC에선 겹치는 `HeroCopy` 문구 숨김) |
 | 가정견 섹션(메인 사진 + 상세 팝업) | `components/HomeGroomingDetail.tsx` |
 | 히어로 아래 퀵메뉴 4칸 | `components/QuickCourseNav.tsx` |
 | 헤더 아래 상시 메뉴 바 | `components/QuickMenu.tsx` |
