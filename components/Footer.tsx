@@ -16,7 +16,7 @@ export default function Footer() {
           <b>애견미용학원 대전점</b>
         </p>
         <p className="footer-biz-info">
-          학원명 : 애견미용자격증학원 · 대표 : 김명자
+          학원명 : 애견미용학원대전점 · 대표 : 김명자 · 사이트 소유자 : 김현주
           <br />
           사업자등록번호 : 211-87-42130
           <br />
@@ -52,7 +52,7 @@ export default function Footer() {
           <Link href="/privacy">개인정보처리방침</Link>
         </p>
         <p className="copyright">
-          이메일무단수집거부 · © 2026 애견미용자격증학원 애견미용학원 대전점. All rights reserved.
+          이메일무단수집거부 · © 2026 애견미용학원대전점. All rights reserved.
         </p>
       </div>
     </footer>
