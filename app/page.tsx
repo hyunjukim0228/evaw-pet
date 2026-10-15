@@ -81,7 +81,16 @@ export default function HomePage() {
         <div className="wrap" style={{ textAlign: "center" }}>
           <h2 className="sec-title">🛁 가정견 실습</h2>
           <p className="sec-sub">보호자와 함께 오는 가정견으로 실제 미용실 업무 흐름을 그대로 배웁니다.</p>
+          {/* 2026-10-15 사용자 지정 순서: 자격증 → 실견 → 취미 */}
           <div className="hg-pair">
+            <HomeGroomingDetail
+              mainSrc="/images/license-main.webp"
+              mainAlt="한국애견미용인협회(KAPP) 3급·2급 자격증 동시취득 — 시험 결과에 따라 동시취득 가능. 가위 기초·위그 연습·자격증 준비·개별진도. 자격증 과정 알아보기"
+              detailSrc="/images/license-detail.webp"
+              detailAlt="KAPP 민간자격 3급·2급 자격증 동시취득 — STEP 01 가위 기초 연습, STEP 02 위그로 컷 연습, STEP 03 필기·실기 시험 준비. 필기 80점 이상, 실기 램클립 2시간(3급 75점·2급 90점 이상). 국가공인 자격이 아닌 민간자격"
+              buttonLabel="3급/2급 자격증동시취득"
+              consultLabel="🎓 자격증 과정 상담하기"
+            />
             <HomeGroomingDetail
               mainSrc="/images/home-grooming-main.webp"
               mainAlt="가정견 100% 실습 환경 — 가정견이 미용을 온다?! 미용 상담부터 보호자 인계까지 실무 그대로. 실견수업 현장 보러가기"
