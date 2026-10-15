@@ -79,7 +79,7 @@ export default function HomePage() {
       {/* 가정견미용 과정 하이라이트 사진 */}
       <section id="home-grooming-highlight">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">🛁 가정견 친구들이 미용 오는 학원</h2>
+          <h2 className="sec-title">🛁 가정견 실습</h2>
           <p className="sec-sub">보호자와 함께 오는 가정견으로 실제 미용실 업무 흐름을 그대로 배웁니다.</p>
           <HomeGroomingDetail />
         </div>

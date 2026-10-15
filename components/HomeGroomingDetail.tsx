@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useConsultModal } from "./ConsultModalContext";
 
-// 홈 "가정견 친구들이 미용 오는 학원" — 메인 사진 1장만 노출, 사진이나 버튼을 누르면
+// 홈 "가정견 실습" — 메인 사진 1장만 노출, 사진이나 버튼을 누르면
 // 실견수업 상세 이미지(세로형)를 스크롤 팝업으로 보여줌(2026-10-07 사용자 요청).
 export default function HomeGroomingDetail() {
   const [isOpen, setIsOpen] = useState(false);
