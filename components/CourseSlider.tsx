@@ -1,11 +1,14 @@
 "use client";
 
+import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
 import HomeGroomingDetail from "./HomeGroomingDetail";
 
 // 2026-10-15 사용자 요청: 홈 과정 카드 3장을 슬라이드로 — 좌우 버튼으로 넘기고, 모바일도 세로 나열 대신
 // 손으로 넘기거나 천천히 자동으로 넘어가게. 각 사진 위에 과정 제목. 순서 자격증 → 실견 → 취미.
+// 2026-10-15(2차): 멈춰 있으면 "끝"으로 보인다는 요청 → 멈춤 없이 계속 서서히 흐르는 무한 루프(delay 0 + linear).
 const SLIDES = [
   {
     title: "3급2급 자격증 동시취득 과정",
@@ -37,32 +40,41 @@ const SLIDES = [
 ];
 
 export default function CourseSlider() {
+  const swiperRef = useRef<SwiperType | null>(null);
+  // 자동 흐름은 느리게(5초), 버튼으로 넘길 때만 빠르게(0.6초)
+  const go = (dir: "prev" | "next") => {
+    const sw = swiperRef.current;
+    if (!sw) return;
+    if (dir === "next") sw.slideNext(600);
+    else sw.slidePrev(600);
+  };
+
   return (
     <div className="course-slider">
-      <button type="button" className="cs-nav cs-prev" aria-label="이전 과정">
+      <button type="button" className="cs-nav cs-prev" aria-label="이전 과정" onClick={() => go("prev")}>
         ‹
       </button>
       <Swiper
-        modules={[Autoplay, Navigation, Pagination]}
+        modules={[Autoplay]}
+        onSwiper={(sw) => (swiperRef.current = sw)}
         slidesPerView={1.15}
         centeredSlides
         spaceBetween={16}
         breakpoints={{ 768: { slidesPerView: 2, centeredSlides: false, spaceBetween: 28 } }}
-        navigation={{ prevEl: ".cs-prev", nextEl: ".cs-next" }}
-        pagination={{ clickable: true }}
-        rewind
+        loop
         grabCursor
-        speed={700}
-        autoplay={{ delay: 4500, disableOnInteraction: false, pauseOnMouseEnter: true }}
+        speed={5000}
+        autoplay={{ delay: 0, disableOnInteraction: false, pauseOnMouseEnter: true }}
       >
-        {SLIDES.map(({ title, ...detail }) => (
-          <SwiperSlide key={title}>
+        {/* ponytail: 3장만으론 loop 복제 여유가 부족해 2벌 렌더 */}
+        {[...SLIDES, ...SLIDES].map(({ title, ...detail }, i) => (
+          <SwiperSlide key={i}>
             <h3 className="cs-title">{title}</h3>
             <HomeGroomingDetail {...detail} />
           </SwiperSlide>
         ))}
       </Swiper>
-      <button type="button" className="cs-nav cs-next" aria-label="다음 과정">
+      <button type="button" className="cs-nav cs-next" aria-label="다음 과정" onClick={() => go("next")}>
         ›
       </button>
     </div>

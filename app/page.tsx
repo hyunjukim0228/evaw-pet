@@ -79,8 +79,8 @@ export default function HomePage() {
       {/* 가정견미용 과정 하이라이트 사진 */}
       <section id="home-grooming-highlight">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">🛁 가정견 실습</h2>
-          <p className="sec-sub">보호자와 함께 오는 가정견으로 실제 미용실 업무 흐름을 그대로 배웁니다.</p>
+          <h2 className="sec-title">이바우펫 대표 과정</h2>
+          <p className="sec-sub">자격증 취득부터 가정견 실습, 우리 강아지 케어까지 — 목표에 맞는 과정을 골라보세요.</p>
           <CourseSlider />
         </div>
       </section>
