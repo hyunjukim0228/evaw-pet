@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { useConsultModal } from "./ConsultModalContext";
 
 type Props = {
@@ -41,7 +42,8 @@ export default function HomeGroomingDetail({ mainSrc, mainAlt, detailSrc, detail
         </button>
       </div>
 
-      {isOpen && (
+      {/* 슬라이더(transform) 안에서는 position:fixed가 슬라이드 기준으로 갇혀서 body로 포털 */}
+      {isOpen && createPortal(
         <div className="modal-overlay" role="dialog" aria-modal="true" aria-label={buttonLabel} onClick={() => setIsOpen(false)}>
           <div className="modal-panel hg-detail-panel" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close hg-detail-close" aria-label="닫기" onClick={() => setIsOpen(false)}>
@@ -61,7 +63,8 @@ export default function HomeGroomingDetail({ mainSrc, mainAlt, detailSrc, detail
               </button>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
