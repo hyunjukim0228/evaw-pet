@@ -3,7 +3,6 @@ import CourseCompactList from "@/components/CourseCompactList";
 import ConsultForm from "@/components/ConsultForm";
 import ConsultCtaButton from "@/components/ConsultCtaButton";
 import HeroCarousel from "@/components/HeroCarousel";
-import HeroCopy from "@/components/HeroCopy";
 import HeroCtaRow from "@/components/HeroCtaRow";
 import QuickCourseNav from "@/components/QuickCourseNav";
 import CtaBanner from "@/components/CtaBanner";
@@ -33,7 +32,8 @@ export default function HomePage() {
       {/* 히어로 배너 캐러셀 (PC/모바일 별도 이미지, 6슬라이드 — 켈리스 방식). */}
       <section className="hero" aria-label="메인 배너">
         <HeroCarousel />
-        <HeroCopy />
+        {/* 2026-10-15: 모바일 배너 아래 문구 블록(HeroCopy) 삭제 요청 — 검색엔진용 h1만 화면에 안 보이게 유지 */}
+        <h1 className="sr-only">애견미용학원 자격증 가정견실습 과정 장학지원신청</h1>
       </section>
 
       {/* 히어로 보조 CTA·신뢰지표·빠른 과정 탐색 — evaw-pet-grooming.co.kr 홈 히어로 구조(큰 CTA버튼·채널행·신뢰바·

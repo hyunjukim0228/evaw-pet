@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 // 메인 배너 — 2026-10-07 사용자 지시로 슬라이드 6장 → 배너 1장 고정(자격증·실견수업 배너, 1920×850).
-// 모바일에서는 .hero-carousel 자체가 숨겨지고 HeroCopy 헤드라인부터 시작(globals.css 참고).
+// 모바일도 배너 원본 비율 그대로 노출(globals.css 참고).
 // ponytail: 배너가 다시 여러 장이 되면 git 이력의 Swiper 버전(ead4642)을 되살리면 됨.
 export default function HeroCarousel() {
   return (

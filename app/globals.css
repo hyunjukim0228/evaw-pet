@@ -160,21 +160,7 @@ h1,h2,h3{line-height:1.3; margin:0 0 12px}
 .hero-carousel .swiper-button-next::after{font-size:1.1rem; font-weight:700}
 .hero-carousel .swiper-pagination-bullet{background:rgba(255,255,255,.55); opacity:1; transition:width .2s ease, background-color .2s ease}
 .hero-carousel .swiper-pagination-bullet-active{width:22px; border-radius:4px; background:#fff}
-.hero-copy{
-  position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center;
-  padding:0 8%; color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.35); pointer-events:none;
-  background:linear-gradient(90deg, rgba(20,20,20,.45), rgba(20,20,20,.05) 70%);
-}
-.hero-copy a{pointer-events:auto}
-/* 2026-10-07: PC 배너 이미지에 문구가 이미 들어 있어 겹치는 오버레이 문구는 숨김(모바일은 배너 대신 이 문구가 노출) */
-@media (min-width:1025px){.hero-copy{display:none}}
-.hero-copy .eyebrow{font-weight:700; letter-spacing:.05em; margin-bottom:10px; opacity:.9}
-.hero-copy h1{font-size:clamp(1.5rem,3.2vw,1.9rem); font-weight:700}
-.hero-copy .lead{margin:0 0 20px; font-size:1.05rem}
-.hero-copy .eyebrow.hero-badge{
-  display:inline-flex; width:fit-content; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.4);
-  border-radius:var(--radius-full); padding:6px 14px; opacity:1; backdrop-filter:blur(2px);
-}
+.sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
 
 /* 히어로 보조 CTA·신뢰지표·빠른 과정 탐색 — evaw-pet-grooming.co.kr 구조를 배치까지 그대로 참고:
    왼쪽 CTA버튼+채널행+신뢰바 / 오른쪽 사진(PhotoSlideshow, 반투명 아님 — 레퍼런스처럼 실제 사진), 그 아래
@@ -642,20 +628,6 @@ main section:not(.hero).in-view{opacity:1; transform:none}
   /* 2026-10-07: 모바일에서도 메인 배너 노출(사용자 요청) — 배너에 글자가 들어 있어 잘리지 않게 원본 비율 그대로 전체 표시 */
   .hero-carousel{aspect-ratio:1920/850; height:auto; min-height:0; border-radius:0}
 
-  /* 모바일 가독성 — 레퍼런스(evaw-pet-grooming.co.kr) 모바일 화면 참고(2026-09-15, 카톡 캡처로 비교):
-     사진 위에 흰 글씨를 얹는 대신, 사진 아래에 흰 배경+진한 글씨 블록을 따로 둬서 대비를 확실히 확보.
-     .hero-copy는 DOM상 이미 사진(.hero-carousel) 다음이라 position만 absolute→static으로 바꾸면
-     자연스럽게 사진 아래로 흐름(overlay 관련 스타일도 전부 해제). */
-  .hero-copy{
-    position:static; inset:auto; display:block; padding:28px 20px 8px; color:var(--ink);
-    text-shadow:none; background:var(--canvas); pointer-events:auto; text-align:center;
-  }
-  .hero-copy .lead{color:var(--muted)}
-  .hero-copy .eyebrow.hero-badge{
-    background:var(--primary-disabled); border:none; color:var(--primary); backdrop-filter:none;
-  }
-  /* 2026-09-15: 처음 보이는 이 CTA버튼은 삭제 요청 — 바로 아래 hero-extras의 큰 CTA버튼과 중복이라 정리 */
-  .hero-copy .btn-lg{display:none}
 }
 @media (max-width:900px){
   .two-col{grid-template-columns:1fr}
