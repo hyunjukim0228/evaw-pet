@@ -45,8 +45,15 @@ export default function CourseSlider() {
   const go = (dir: "prev" | "next") => {
     const sw = swiperRef.current;
     if (!sw) return;
+    // 흐르는 중이면 그 자리에서 멈추고(가장 가까운 장에 맞춤) 한 장만 넘긴 뒤 다시 흐르게
+    sw.autoplay.stop();
+    sw.setTranslate(sw.getTranslate());
+    sw.setTransition(0);
+    sw.animating = false;
+    sw.slideToClosest(0);
     if (dir === "next") sw.slideNext(600);
     else sw.slidePrev(600);
+    sw.once("transitionEnd", () => sw.autoplay.start());
   };
 
   return (
@@ -62,6 +69,8 @@ export default function CourseSlider() {
         spaceBetween={16}
         breakpoints={{ 768: { slidesPerView: 2, centeredSlides: false, spaceBetween: 28 } }}
         loop
+        // 계속 흐르는 중(=항상 animating)이라 기본값 true면 좌우 버튼이 전부 무시됨
+        loopPreventsSliding={false}
         grabCursor
         speed={5000}
         autoplay={{ delay: 0, disableOnInteraction: false, pauseOnMouseEnter: true }}

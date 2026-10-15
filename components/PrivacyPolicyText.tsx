@@ -89,7 +89,7 @@ export default function PrivacyPolicyText() {
         <br />
         주소 : 대전광역시 서구 대덕대로 182 10층
         <br />
-        대표전화 : 010-4347-7645 · 대표이메일 : sbshyunduu@naver.com
+        대표전화 : 010-4347-7645 · 대표이메일 : khyunduu@naver.com
       </p>
     </>
   );
