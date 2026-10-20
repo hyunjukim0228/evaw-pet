@@ -82,6 +82,15 @@ export default function HomePage() {
           <h2 className="sec-title">이바우펫 대표 과정</h2>
           <p className="sec-sub">자격증 취득부터 가정견 실습, 우리 강아지 케어까지 — 목표에 맞는 과정을 골라보세요.</p>
           <CourseSlider />
+          {/* 2026-10-20: 장학지원·무료특강 썸네일 → 각 랜딩페이지 */}
+          <div className="promo-thumbs">
+            <Link href="/scholarship">
+              <img src="/images/promo/scholarship-thumb.webp" alt="한국유기견구호연맹 수강비 지원 — 수강비 장학지원 50%, 미용도구 풀세트·온라인 강의. 자세히 보기" />
+            </Link>
+            <Link href="/free-lecture">
+              <img src="/images/promo/free-lecture-thumb.webp" alt="이바우펫과 함께하는 특별한 배움 — 무료특강 및 각종 세미나 진행. 자세히 보기" />
+            </Link>
+          </div>
         </div>
       </section>
 

@@ -24,5 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     { url: `${BASE_URL}/branches`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/guide`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${BASE_URL}/scholarship`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/free-lecture`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
   ];
 }

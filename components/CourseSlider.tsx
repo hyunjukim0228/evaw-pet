@@ -41,7 +41,7 @@ const SLIDES = [
 
 export default function CourseSlider() {
   const swiperRef = useRef<SwiperType | null>(null);
-  // 자동 흐름은 느리게(5초), 버튼으로 넘길 때만 빠르게(0.6초)
+  // 자동 흐름은 느리게(10초 — 2026-10-20 0.5배로 감속), 버튼으로 넘길 때만 빠르게(0.6초)
   const go = (dir: "prev" | "next") => {
     const sw = swiperRef.current;
     if (!sw) return;
@@ -72,7 +72,7 @@ export default function CourseSlider() {
         // 계속 흐르는 중(=항상 animating)이라 기본값 true면 좌우 버튼이 전부 무시됨
         loopPreventsSliding={false}
         grabCursor
-        speed={5000}
+        speed={10000}
         autoplay={{ delay: 0, disableOnInteraction: false, pauseOnMouseEnter: true }}
       >
         {/* ponytail: 3장만으론 loop 복제 여유가 부족해 2벌 렌더 */}
