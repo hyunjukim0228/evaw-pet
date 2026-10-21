@@ -1,13 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useConsultModal } from "./ConsultModalContext";
 
 // 사업자정보 고시 — 사용자 제공 실제 등록정보(2026-09-13) 기준, 주소만 대전점으로 교체.
 // 운영등록증·배상책임보험약관은 같은 사업자(이바우펫) 홈페이지의 실제 게시 문서로 연결(2026-09-20, 사용자 제공 링크).
 // 시간표·인스타그램은 아직 실제 페이지/링크가 없어 tbd로 표시.
 export default function Footer() {
-  const { open } = useConsultModal();
 
   return (
     <footer className="site-footer">
@@ -42,9 +40,10 @@ export default function Footer() {
             배상책임보험약관
           </a>
           <span className="tbd">시간표</span>
-          <button type="button" onClick={() => open()}>
+          {/* 2026-10-21: 상담 모달 대신 교습비 게시표(대전 교습비 게시표.hwpx 미리보기) 이미지 */}
+          <a href="/images/tuition-notice.png" target="_blank" rel="noopener noreferrer">
             수강료 안내
-          </button>
+          </a>
           <span className="tbd">인스타그램</span>
           <a href="https://www.evawpet.com/?mode=policy" target="_blank" rel="noopener noreferrer">
             이용약관
