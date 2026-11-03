@@ -7,8 +7,8 @@ import Image from "next/image";
 // 강사소개 페이지의 강사진 명단 이미지를 그대로 사용. 대전점만의 강사진이 아니라 전국 캠퍼스
 // 강사진 전체이므로 그렇게 정직하게 표기(레퍼런스 사이트도 이 4장을 "전국 캠퍼스 강사진"으로
 // 별도 구분해 소개하는 동일한 방식 — data-zoom 클릭 확대 UX 참고).
+// 2026-11-03: 1번 시트(대표원장·원장진)는 사용자 요청으로 노출 중단 — 3장만 사용.
 const SHEETS = [
-  { src: "/images/faculty/instructors-1.jpg", alt: "이바우펫 강사진 소개 1 — 대표원장 및 원장진" },
   { src: "/images/faculty/instructors-2.jpg", alt: "이바우펫 강사진 소개 2 — 부원장 및 지도교사진" },
   { src: "/images/faculty/instructors-3.jpg", alt: "이바우펫 강사진 소개 3 — 지도교사진" },
   { src: "/images/faculty/instructors-4.jpg", alt: "이바우펫 강사진 소개 4 — 지도교사진" },
