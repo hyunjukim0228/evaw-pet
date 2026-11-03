@@ -486,12 +486,6 @@ section:nth-of-type(even){background:var(--surface-soft)}
 .guide-modal-summary li{position:relative; padding-left:16px; font-size:.88rem; color:var(--body); line-height:1.5}
 .guide-modal-summary li::before{content:"·"; position:absolute; left:2px; color:var(--primary); font-weight:700}
 
-/* 강사진 — 전국 캠퍼스 강사진 시트 2장씩(모바일 1장씩), 클릭하면 라이트박스로 확대 */
-.faculty-sheets{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:24px}
-.faculty-sheet{padding:0; border:1px solid var(--hairline); border-radius:var(--radius); overflow:hidden; cursor:zoom-in; background:none; line-height:0}
-.faculty-sheet img{width:100%; height:auto; display:block; transition:transform .3s ease}
-.faculty-sheet:hover img{transform:scale(1.03)}
-@media (min-width:769px){.faculty-sheet:last-child:nth-child(odd){grid-column:1/-1; justify-self:center; width:calc(50% - 8px)}}
 
 /* 오시는길 */
 .location-info p{margin:0 0 16px}
@@ -702,7 +696,6 @@ main section:not(.hero).in-view{opacity:1; transform:none}
   .diff-grid{grid-template-columns:1fr}
   .course-grid{grid-template-columns:1fr}
   .guide-grid{grid-template-columns:1fr}
-  .faculty-sheets{grid-template-columns:1fr}
   .news-grid{grid-template-columns:1fr}
   section{padding:44px 0}
   /* STEP1: 히어로 신뢰지표 3개(지점·수강생·실습률)가 375px에서도 한 줄에 들어가도록 축소 */

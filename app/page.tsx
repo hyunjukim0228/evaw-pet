@@ -14,7 +14,6 @@ import { news } from "@/lib/news";
 import GallerySection from "@/components/GallerySection";
 import FaqSection from "@/components/FaqSection";
 import DifferentiatorGrid from "@/components/DifferentiatorGrid";
-import FacultyGallery from "@/components/FacultyGallery";
 import CourseSlider from "@/components/CourseSlider";
 
 // 학원소개 체크리스트 — **로 감싼 부분은 강조 표시(핵심 확인 포인트만 눈에 먼저 들어오게)
@@ -210,19 +209,6 @@ export default function HomePage() {
           <p className="note">
             전화 상담도 가능합니다. <a href="tel:010-4347-7645">010-4347-7645</a>
           </p>
-        </div>
-      </section>
-
-      {/* 강사진(홈) — 2026-09-16: /about#faculty와 동일한 전국 캠퍼스 강사진 실사진(라이트박스 확대)을
-          여기서도 바로 보여줌. 같은 사업자(이바우펫)가 대전점을 포함한 전국 21개 지점을 직영. */}
-      <section id="faculty-teaser">
-        <div className="wrap" style={{ textAlign: "center" }}>
-          <span className="sec-tag">🧑‍🏫 교수진</span>
-          <h2 className="sec-title">전국 캠퍼스 강사진</h2>
-          <p className="sec-sub">
-            대전점을 포함한 전국 21개 지점에 이 강사님들이 함께합니다. 사진을 누르면 크게 볼 수 있습니다.
-          </p>
-          <FacultyGallery />
         </div>
       </section>
 
