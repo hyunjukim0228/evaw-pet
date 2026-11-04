@@ -39,14 +39,22 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://evawacademy.com"),
   title: siteTitle,
   description: siteDescription,
-  // 2026-10-15: og:image가 없으면 카톡·네이버가 페이지 사진을 임의로 골라 썸네일이 강사진으로 바뀜 →
-  // 장학지원 배너로 고정. 카톡 호환 위해 webp 대신 jpg.
+  // 2026-10-15: og:image가 없으면 카톡·네이버가 페이지 사진을 임의로 골라 썸네일이 바뀜 → 고정 배너 사용.
+  // 카톡 호환 위해 webp 대신 jpg. 2026-11-04: 겨울 수강혜택 배너로 교체(1200x630 권장 규격).
+  // ⚠️ "26년 마지막 수강혜택" 문구가 박혀 있어 2027년에는 교체 필요.
   openGraph: {
     type: "website",
     siteName: "애견미용학원 대전점",
     title: siteTitle,
     description: siteDescription,
-    images: [{ url: "/og-image.jpg", width: 1458, height: 1079 }],
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "이바우펫 애견미용학원 — 26년 마지막 수강혜택: 수강비지원 50%, 미용도구 풀세트, 온라인 강의, 무료 특강",
+      },
+    ],
   },
   // 2026-09-18: 네이버 서치어드바이저 사이트 소유확인용(사용자 제공 토큰) — Next Metadata API의
   // verification.other가 <meta name="naver-site-verification" content="..."> 로 그대로 렌더됨.
