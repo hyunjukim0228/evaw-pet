@@ -42,6 +42,10 @@ export const metadata: Metadata = {
   // 2026-10-15: og:image가 없으면 카톡·네이버가 페이지 사진을 임의로 골라 썸네일이 바뀜 → 고정 배너 사용.
   // 카톡 호환 위해 webp 대신 jpg. 2026-11-04: 겨울 수강혜택 배너로 교체(1200x630 권장 규격).
   // ⚠️ "26년 마지막 수강혜택" 문구가 박혀 있어 2027년에는 교체 필요.
+  // 2026-11-04(2차): 네이버가 새 이미지를 안 가져가서 파일명을 og-image-2611.jpg 로 버전업.
+  // 네이버는 카카오와 달리 og 캐시 삭제 도구가 없고 이미지 URL 단위로도 캐시하므로,
+  // 이미지를 바꿀 때는 내용만 덮어쓰지 말고 **파일명을 함께 바꾼다**(og-image-<연월>.jpg).
+  // 옛 og-image.jpg 는 외부 캐시가 다시 받아갈 때를 대비해 같은 내용으로 남겨 둠(404 방지).
   openGraph: {
     type: "website",
     siteName: "애견미용학원 대전점",
@@ -49,7 +53,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image-2611.jpg",
         width: 1200,
         height: 630,
         alt: "이바우펫 애견미용학원 — 26년 마지막 수강혜택: 수강비지원 50%, 미용도구 풀세트, 온라인 강의, 무료 특강",
