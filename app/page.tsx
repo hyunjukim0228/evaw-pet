@@ -9,11 +9,15 @@ import BranchCard from "@/components/BranchCard";
 import { branches } from "@/lib/branches";
 import ReviewSlider from "@/components/ReviewSlider";
 import GuideGrid from "@/components/GuideGrid";
-import { news } from "@/lib/news";
 import GallerySection from "@/components/GallerySection";
 import FaqSection from "@/components/FaqSection";
 import DifferentiatorGrid from "@/components/DifferentiatorGrid";
 import CourseSlider from "@/components/CourseSlider";
+// 2026-11-04 켈리스(코리아펫) 홈 부품 이식분 — 브리프: AI-Sessions/wiki/briefs/evawacademy-켈리스부품이식-20261104.md
+import CourseTabs from "@/components/CourseTabs";
+import NewsSlider from "@/components/NewsSlider";
+import FacilityTour from "@/components/FacilityTour";
+import SupportPrograms from "@/components/SupportPrograms";
 
 // 학원소개 체크리스트 — **로 감싼 부분은 강조 표시(핵심 확인 포인트만 눈에 먼저 들어오게)
 const CHECKLIST = [
@@ -30,6 +34,12 @@ export default function HomePage() {
       {/* 히어로 배너 캐러셀 (PC/모바일 별도 이미지, 6슬라이드 — 켈리스 방식). */}
       <section className="hero" aria-label="메인 배너">
         <HeroCarousel />
+        {/* 2026-11-04: 배너 하단 물결 — 켈리스 `waves` 대응. 순수 CSS/SVG, 장식이므로 aria-hidden. */}
+        <div className="hero-waves" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+            <path d="M0,40 C240,80 480,0 720,30 C960,60 1200,10 1440,40 L1440,80 L0,80 Z" />
+          </svg>
+        </div>
         {/* 2026-10-15: 모바일 배너 아래 문구 블록(HeroCopy) 삭제 요청 — 검색엔진용 h1만 화면에 안 보이게 유지 */}
         <h1 className="sr-only">애견미용학원 자격증 가정견실습 과정 장학지원신청</h1>
       </section>
@@ -77,6 +87,7 @@ export default function HomePage() {
       {/* 가정견미용 과정 하이라이트 사진 */}
       <section id="home-grooming-highlight">
         <div className="wrap" style={{ textAlign: "center" }}>
+          <span className="sec-tag">🐩 대표 과정</span>
           <h2 className="sec-title">이바우펫 대표 과정</h2>
           <p className="sec-sub">자격증 취득부터 가정견 실습, 우리 강아지 케어까지 — 목표에 맞는 과정을 골라보세요.</p>
           <CourseSlider />
@@ -86,7 +97,7 @@ export default function HomePage() {
               <img src="/images/promo/scholarship-thumb.webp" alt="한국유기견구호연맹 수강비 지원 — 수강비 장학지원 50%, 미용도구 풀세트·온라인 강의. 자세히 보기" />
             </Link>
             <Link href="/free-lecture">
-              <img src="/images/promo/free-lecture-thumb.webp" alt="이바우펫과 함께하는 특별한 배움 — 무료특강 및 각종 세미나 진행. 자세히 보기" />
+              <img src="/images/promo/free-lecture-thumb.webp" alt="이바우펫과 함께하는 특별한 배움 — 무료특강 및 각종 세미나 진행. 눈 내리는 겨울 배경과 파란 목도리를 한 토이푸들. 자세히 보기" />
             </Link>
           </div>
         </div>
@@ -134,6 +145,22 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 2026-11-04 신설 — 켈리스 `main-fac`(시설 둘러보기) 대응.
+          ⚠️ 공간 라벨은 보유 사진을 직접 열어 확인한 것만 사용(없는 시설 주장 금지) — FacilityTour 주석 참조.
+          섹션 위치는 현장스토리 바로 뒤에 둠(소유자 지정 섹션 순서에 새로 끼운 자리이므로 조정 가능). */}
+      <section id="facility">
+        <div className="wrap" style={{ textAlign: "center" }}>
+          <span className="sec-tag">🏫 시설 안내</span>
+          <h2 className="sec-title">학원 둘러보기</h2>
+          <p className="sec-sub">수업이 어디서, 어떻게 진행되는지 미리 보실 수 있습니다.</p>
+          <FacilityTour />
+        </div>
+      </section>
+
+      {/* 에듀세미나 섹션은 2026-11-04 사용자 요청으로 제거 — 실제 개최 이력이 없어 "준비 중" 안내만 뜨는
+          빈 섹션이었음. 컴포넌트(SeminarSlider.tsx)와 데이터(lib/seminars.ts)는 남겨둠 —
+          실제 세미나 이력이 확정되면 여기에 섹션만 다시 넣으면 된다. */}
+
       {/* 커리큘럼 (요약 — 전체 내용은 /curriculum) — STEP4: 사진카드 그리드 → 번호+제목+한줄설명 컴팩트
           리스트로 변경, 클릭 시 상세 모달(CoursePreviewModal) */}
       <section id="curriculum" className="curriculum">
@@ -146,6 +173,10 @@ export default function HomePage() {
               alt="내 상황에 맞춰 진행하는 커리큘럼 — 01 기초과정(입문), 02 자격증 취득반(3급·2급), 03 실견 심화반(실습), 04 취업·창업반, 05 종합·심화반(추천), 06 스페셜 특강. 위 과정 구성은 초안 예시입니다."
             />
           </Link>
+
+          {/* 2026-11-04 신설: 목표별 탭 + 탭별 과정 카드 — 켈리스 `main-curri`(학과 탭 × 탭별 슬라이더) 참고.
+              데이터는 lib/courses.ts 그대로, 위 로드맵 이미지와 같은 6과정을 눌러서 비교하도록 보조. */}
+          <CourseTabs />
         </div>
       </section>
 
@@ -155,6 +186,9 @@ export default function HomePage() {
           <span className="sec-tag">✨ 애견미용학원 대전점만의 차이</span>
           <h2 className="sec-title">왜 이바우펫에서 해야 할까요?</h2>
           <DifferentiatorGrid />
+          {/* 2026-11-04 신설: 지원 제도 바로가기 — 켈리스 `main-benefit`의 지원제도 카드 대응.
+              이미 사이트가 주장 중인 제도만 추림(새 제도 없음). 상세는 SupportPrograms 주석 참조. */}
+          <SupportPrograms />
         </div>
       </section>
 
@@ -202,6 +236,7 @@ export default function HomePage() {
       {/* 상담 신청 — 2026-10-07: 특강 바로 뒤로 이동, 문구를 예시 스타일로 교체(입력칸은 기존 유지) */}
       <section id="consult" className="consult">
         <div className="wrap">
+          <span className="sec-tag">📝 상담 신청</span>
           <h2 className="sec-title">
             내게 맞는 애견미용학원,
             <br />
@@ -240,23 +275,17 @@ export default function HomePage() {
         <div className="wrap" style={{ textAlign: "center" }}>
           <span className="sec-tag">📰 새소식</span>
           <h2 className="sec-title">지점 새소식</h2>
-          <div className="news-grid">
-            {news.map((n) => (
-              <article key={n.branch + n.title} className="news-card">
-                <span className="news-branch-badge">{n.branch}</span>
-                <h3>{n.title}</h3>
-                <p>{n.summary}</p>
-                <span className="news-date">{n.date}</span>
-              </article>
-            ))}
-          </div>
+          {/* 2026-11-04: 정적 3열 그리드 → 날짜 앞세운 카드 슬라이더(켈리스 `main-photo` 포토스토리 패턴).
+              소식 내용은 lib/news.ts 그대로. */}
+          <NewsSlider />
         </div>
       </section>
 
       {/* 가이드 콘텐츠 미리보기 — 2026-09-18: 카드 클릭 시 GuidePreviewModal로 실제 정리된 내용 바로 확인 */}
       <section id="guide-preview">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">💡 궁금할 때 보는 가이드</h2>
+          <span className="sec-tag">💡 가이드</span>
+          <h2 className="sec-title">궁금할 때 보는 가이드</h2>
           <p className="sec-sub">자격증·비용·취업·창업까지, 자주 궁금해하시는 내용을 정리했습니다. 카드를 누르면 바로 확인하실 수 있습니다.</p>
           <GuideGrid />
           <div style={{ marginTop: 24 }}>
@@ -272,7 +301,8 @@ export default function HomePage() {
       {/* 오시는길 */}
       <section id="location" className="location">
         <div className="wrap location-info" style={{ maxWidth: 480, margin: "0 auto" }}>
-          <h2 className="sec-title">📍 오시는길</h2>
+          <span className="sec-tag">📍 찾아오시는 길</span>
+          <h2 className="sec-title">오시는길</h2>
           <p>
             <b>주소</b>
             <br />
@@ -290,7 +320,8 @@ export default function HomePage() {
       {/* 전국 지점 */}
       <section id="branches">
         <div className="wrap" style={{ textAlign: "center" }}>
-          <h2 className="sec-title">🗺️ 전국 지점</h2>
+          <span className="sec-tag">🗺️ 지점 안내</span>
+          <h2 className="sec-title">전국 지점</h2>
           <p className="sec-sub">애견미용학원 대전점은 전국 21개 지점 네트워크 중 하나입니다.</p>
           <div className="branch-grid">
             {branches.map((b) => (

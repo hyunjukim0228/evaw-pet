@@ -40,7 +40,8 @@
   --radius-sm:8px;      /* 버튼 (rounded.sm) */
   --radius-full:9999px; /* 필·아이콘버튼 (rounded.full) */
   --shadow-1:0 0 0 1px rgba(0,0,0,.02), 0 2px 6px rgba(0,0,0,.04), 0 4px 8px rgba(0,0,0,.1);
-  --wrap:1160px;
+  --sec-pad:76px;  /* 2026-11-04 섹션 상하 여백 단일 토큰 — 리듬 통일 */
+  --wrap:1400px;   /* 2026-11-04 1160→1400: PC 좌우 여백이 과하다는 사용자 지적 반영(켈리스 대비). 시즌 무관 상시 값 */
 }
 
 *{box-sizing:border-box}
@@ -51,7 +52,10 @@ body{
   font-family:var(--font-inter),var(--font-noto-sans-kr),system-ui,-apple-system,sans-serif;
   line-height:1.6;
 }
-.wrap{max-width:var(--wrap); margin:0 auto; padding:0 20px}
+.wrap{max-width:var(--wrap); margin:0 auto; padding:0 24px}
+/* full-bleed: 화면 끝까지 터뜨리는 섹션(배너·슬라이더). 켈리스가 넓어 보이는 실제 이유 —
+   컨테이너는 1200px대인데 배너·슬라이더가 뷰포트 전폭을 쓴다. 2026-11-04 적용. */
+.bleed{width:100vw; max-width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw)}
 img{max-width:100%; display:block}
 a{color:inherit; text-decoration:none}
 h1,h2,h3{line-height:1.3; margin:0 0 12px}
@@ -144,10 +148,10 @@ h1,h2,h3{line-height:1.3; margin:0 0 12px}
 .nav-overlay{display:none}
 
 /* 히어로 캐러셀 (홈) — 사진이 무게를 지고, 헤드라인은 담담하게(28px대)
-   이바우펫(evaw-pet-grooming.co.kr) 참고: PC에서 본문처럼 좌우 여백을 줘서 가독성 확보 —
-   나머지 섹션(.wrap)과 같은 폭으로 맞춰서 1160px 넘는 화면에서만 자연스럽게 여백 생김. */
-.hero{position:relative; max-width:var(--wrap); margin:0 auto; padding:0}
-.hero-carousel{position:relative; overflow:hidden; border-radius:var(--radius); aspect-ratio:1860/845; min-height:220px; background:var(--surface-strong)}
+   2026-11-04 변경: 좌우 여백이 과하다는 사용자 지적으로 full-bleed(뷰포트 전폭)로 전환 —
+   배너 원본이 1920x850이라 전폭에서 열화 없음. 켈리스도 배너는 전폭. */
+.hero{position:relative; width:100%; max-width:none; margin:0; padding:0}
+.hero-carousel{position:relative; overflow:hidden; border-radius:0; aspect-ratio:1860/845; min-height:220px; background:var(--surface-strong)}
 @keyframes heroFadeIn{from{opacity:0} to{opacity:1}}
 .hero-img{width:100%; height:100%; object-fit:cover; display:block}
 .hero-img.mo{display:none}
@@ -287,8 +291,20 @@ h1,h2,h3{line-height:1.3; margin:0 0 12px}
 .consult-privacy-embed h2{font-size:.85rem; margin:16px 0 6px}
 .consult-privacy-embed h2:first-child{margin-top:0}
 
-section{padding:64px 0}
-section:nth-of-type(even){background:var(--surface-soft)}
+/* 2026-11-04 — 섹션 리듬 통일 (사용자: "전체적으로 통일감이 없고 섹션이 나누어져 있는 것 같다")
+   이전: section:nth-of-type(even)으로 회색/흰색 줄무늬가 기계적으로 교대 → 섹션마다 색이 바뀌니
+   페이지가 토막토막 끊겨 보이고, .scholarship/.consult/.cta-banner가 따로 지정한 회색과 엇갈려
+   회색이 연달아 붙는 구간까지 생겼음.
+   이후: 본문은 전부 흰 canvas로 통일하고, 회색 밴드는 "전환 구간"(장학지원·상담·CTA 배너)에만 의도적으로 남김.
+   섹션 구분은 색이 아니라 반복되는 모티프(sec-tag 칩 → 골드 밑줄 제목 → sec-sub)와 같은 상하 여백이 담당. */
+section{padding:var(--sec-pad) 0; background:var(--canvas)}
+/* 의도적 강조 밴드 — 전환(conversion) 구간에만. 연달아 오면 경계가 사라지므로 위아래 헤어라인으로 구분 */
+section.scholarship, section.consult, section.cta-banner{background:var(--surface-soft)}
+section.scholarship + section.consult{border-top:1px solid var(--hairline-soft)}
+
+/* 섹션 머리 블록 — 모든 섹션이 같은 간격을 쓰도록 통일(칩 → 제목 → 부제) */
+.sec-tag + .sec-title{margin-top:0}
+.sec-title + .sec-sub{margin-top:10px}
 
 /* 강점 */
 .benefit-grid{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center}
@@ -702,7 +718,7 @@ main section:not(.hero).in-view{opacity:1; transform:none}
   .course-grid{grid-template-columns:1fr}
   .guide-grid{grid-template-columns:1fr}
   .news-grid{grid-template-columns:1fr}
-  section{padding:44px 0}
+  :root{--sec-pad:48px}
   /* STEP1: 히어로 신뢰지표 3개(지점·수강생·실습률)가 375px에서도 한 줄에 들어가도록 축소 */
   .trust-stat{padding:12px 4px}
   .trust-stat b{font-size:.92rem}
@@ -733,3 +749,281 @@ body::after{
 }
 @keyframes snowfall{from{background-position:0 0} to{background-position:60px 300px}}
 @media (prefers-reduced-motion:reduce){body::after{animation:none}}
+
+/* ===========================================================================
+   2026-11-04 — 켈리스(코리아펫아카데미) 홈 부품 이식분 스타일
+   브리프: AI-Sessions/wiki/briefs/evawacademy-켈리스부품이식-20261104.md
+   색은 전부 기존 겨울 시즌 토큰(--primary 버건디 / --gold / --surface-* 아이스블루)만 사용.
+   =========================================================================== */
+
+/* -- #4 히어로 하단 물결 (켈리스 waves) ----------------------------------- */
+.hero-waves{position:absolute; left:0; right:0; bottom:-1px; line-height:0; pointer-events:none}
+.hero-waves svg{width:100%; height:clamp(28px,4vw,64px); display:block}
+.hero-waves path{fill:var(--canvas)}
+
+/* -- #1·#2 4단계 수강료 조회 폼 ------------------------------------------- */
+.tuition-steps{width:100%}
+.tuition-progress{display:flex; align-items:center; justify-content:center; gap:8px; list-style:none; margin:0 0 14px; padding:0}
+.tuition-progress li{display:flex; align-items:center; gap:8px}
+.tuition-progress li::after{content:""; width:26px; height:2px; background:var(--hairline); border-radius:2px}
+.tuition-progress li:last-child::after{display:none}
+.tuition-progress-num{display:grid; place-items:center; width:28px; height:28px; border-radius:var(--radius-full);
+  background:var(--surface-strong); color:var(--muted); font-size:.85rem; font-weight:700; transition:background .18s,color .18s}
+.tuition-progress li.active .tuition-progress-num{background:var(--primary); color:#fff}
+.tuition-progress li.done .tuition-progress-num{background:var(--gold); color:#fff}
+.tuition-step-title{text-align:center; font-weight:600; color:var(--ink); margin:0 0 16px; font-size:.98rem; word-break:keep-all}
+
+/* Step2 과정 다중선택 카드 */
+.tuition-course-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:10px}
+.tuition-course-btn{display:flex; flex-direction:column; align-items:flex-start; gap:4px; text-align:left; cursor:pointer;
+  padding:12px 14px; border:1px solid var(--hairline); background:var(--card); border-radius:var(--radius); transition:border-color .18s,background .18s}
+.tuition-course-btn:hover{border-color:var(--border-strong)}
+.tuition-course-btn.active{border-color:var(--primary); background:var(--primary-disabled)}
+.tuition-course-badge{font-size:.72rem; font-weight:700; color:var(--primary); background:var(--surface-soft);
+  border:1px solid var(--gold); border-radius:var(--radius-full); padding:1px 8px}
+.tuition-course-title{font-weight:700; font-size:.95rem; color:var(--ink)}
+.tuition-course-sum{font-size:.8rem; color:var(--muted); line-height:1.45; word-break:keep-all}
+
+/* Step3 지역 칩 */
+.tuition-region-chips{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px}
+.tuition-region-chip{cursor:pointer; padding:7px 14px; border-radius:var(--radius-full); border:1px solid var(--hairline);
+  background:var(--card); color:var(--body); font-size:.88rem; transition:border-color .18s,background .18s,color .18s}
+.tuition-region-chip:hover{border-color:var(--border-strong)}
+.tuition-region-chip.active{background:var(--primary); border-color:var(--primary); color:#fff; font-weight:600}
+
+/* Step4 2열 입력 행 */
+.tuition-visit-row{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.tuition-recap{font-size:.85rem; color:var(--muted); background:var(--surface-soft); border:1px solid var(--hairline-soft);
+  border-radius:var(--radius-sm); padding:8px 12px; margin:0 0 14px; text-align:center}
+
+.tuition-done{text-align:center; padding:22px 0 6px}
+.tuition-done-title{font-weight:700; font-size:1.05rem; margin:0 0 4px}
+.tuition-done-sub{font-size:.88rem; color:var(--muted); margin:0 0 20px}
+
+/* 모달은 4단계가 들어가므로 조금 더 넓게 */
+.modal-panel-wide{max-width:620px}
+
+@media (max-width:600px){
+  .tuition-course-grid{grid-template-columns:1fr}
+  .tuition-visit-row{grid-template-columns:1fr}
+}
+
+/* -- #3 우측 세로 퀵바 (켈리스 main-quick-fixed) ---------------------------
+   본문(.wrap 1400px)과 겹치지 않는 폭에서만 노출. 그보다 좁으면 기존 FloatingCta가 담당.
+   (과거 플로팅 요소가 본문 카드 글자를 가린 버그 이력 때문에 보수적으로 잡음) */
+.quick-sidebar{display:none}
+@media (min-width:1560px){
+  .quick-sidebar{display:flex; flex-direction:column; gap:2px; position:fixed; right:18px; top:50%; transform:translateY(-50%);
+    z-index:60; width:84px; background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius);
+    box-shadow:var(--shadow-1); overflow:hidden}
+  .quick-sidebar-item{display:flex; flex-direction:column; align-items:center; gap:4px; padding:12px 6px; cursor:pointer;
+    background:transparent; border:0; border-bottom:1px solid var(--hairline-soft); color:var(--body);
+    font-size:.74rem; font-weight:600; line-height:1.2; text-align:center; transition:background .16s,color .16s}
+  .quick-sidebar-item:hover{background:var(--surface-soft); color:var(--primary)}
+  .quick-sidebar-icon{font-size:1.15rem}
+  .quick-sidebar-tel{padding:10px 6px; text-align:center; background:var(--surface-soft)}
+  .quick-sidebar-tel-label{display:block; font-size:.66rem; color:var(--muted); letter-spacing:.02em}
+  .quick-sidebar-tel-num{display:block; font-size:.76rem; font-weight:700; color:var(--primary); margin-top:2px; word-break:keep-all}
+  /* 둘 다 뜨면 중복이므로 넓은 화면에서는 원형 FAB를 감춘다 */
+  .floating-cta-main{display:none}
+}
+
+/* -- #5 교육과정 탭 (켈리스 main-curri) ----------------------------------- */
+.course-tabs{margin-top:32px}
+.course-tabs-nav{display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-bottom:20px}
+.course-tab{cursor:pointer; padding:8px 18px; border-radius:var(--radius-full); border:1px solid var(--hairline);
+  background:var(--card); color:var(--body); font-size:.9rem; font-weight:600; transition:background .18s,border-color .18s,color .18s}
+.course-tab:hover{border-color:var(--border-strong)}
+.course-tab.active{background:var(--primary); border-color:var(--primary); color:#fff}
+.course-tabs-panel{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; text-align:left}
+@media (prefers-reduced-motion:no-preference){
+  .course-tabs-panel{animation:courseTabIn .28s ease both}
+  @keyframes courseTabIn{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
+}
+.course-tab-card{display:flex; flex-direction:column; background:var(--card); border:1px solid var(--hairline);
+  border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-1)}
+.course-tab-photo{width:100%; height:180px; object-fit:cover}
+.course-tab-body{padding:16px 18px 18px; display:flex; flex-direction:column; gap:8px; flex:1}
+.course-tab-badge{align-self:flex-start; font-size:.72rem; font-weight:700; color:var(--primary);
+  border:1px solid var(--gold); border-radius:var(--radius-full); padding:2px 10px}
+.course-tab-title{font-size:1.05rem; margin:0}
+.course-tab-sum{font-size:.88rem; color:var(--muted); margin:0; word-break:keep-all}
+.course-tab-points{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:6px}
+.course-tab-points li{font-size:.76rem; color:var(--body); background:var(--surface-soft);
+  border-radius:var(--radius-full); padding:3px 10px}
+.course-tab-actions{display:flex; gap:8px; margin-top:auto; padding-top:6px}
+/* 2026-11-04: 카드가 1장뿐인 탭(입문·자격증·취업창업·특강)에서 세로형 카드가 1400px 폭을 혼자 쓰면
+   오른쪽이 통째로 비어 보인다는 지적 → 1장일 때만 가로형(사진 왼쪽 / 내용 오른쪽)으로 전환하고
+   폭을 900px로 묶어 가운데 정렬. 2장 이상인 탭은 기존 그리드 그대로. */
+.course-tab-card:only-child{flex-direction:row; max-width:900px; margin:0 auto; width:100%}
+.course-tab-card:only-child .course-tab-photo{flex:0 0 320px; width:320px; height:auto; align-self:stretch; object-fit:cover}
+.course-tab-card:only-child .course-tab-body{justify-content:center}
+@media (max-width:768px){
+  .course-tab-card:only-child{flex-direction:column}
+  .course-tab-card:only-child .course-tab-photo{flex:none; width:100%; height:180px}
+}
+
+/* -- #6 포토스토리(새소식) 날짜 카드 슬라이더 (켈리스 main-photo) ---------- */
+.news-slider{padding-bottom:6px; text-align:left}
+.news-slide-card{height:100%; background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius);
+  padding:18px 18px 20px; display:flex; flex-direction:column; gap:8px; box-shadow:var(--shadow-1)}
+.news-slide-head{display:flex; align-items:center; justify-content:space-between; gap:8px}
+.news-slide-date{font-size:.78rem; color:var(--muted-soft); font-variant-numeric:tabular-nums}
+.news-slide-title{font-size:1rem; margin:0; word-break:keep-all}
+.news-slide-sum{font-size:.86rem; color:var(--muted); margin:0; line-height:1.55; word-break:keep-all}
+
+/* -- #10 시설 둘러보기 (켈리스 main-fac) ---------------------------------- */
+.facility-grid{list-style:none; margin:0; padding:0; display:grid; gap:18px;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); text-align:left}
+.facility-card{background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius);
+  overflow:hidden; box-shadow:var(--shadow-1)}
+.facility-photo{position:relative; width:100%; aspect-ratio:4/3; background:var(--surface-strong)}
+.facility-body{padding:14px 16px 18px}
+.facility-title{font-size:1rem; margin:0 0 6px}
+.facility-desc{font-size:.85rem; color:var(--muted); margin:0; line-height:1.55; word-break:keep-all}
+
+/* -- #8 지원 제도 바로가기 (켈리스 main-benefit) -------------------------- */
+.support-row{list-style:none; margin:28px 0 0; padding:0; display:grid; gap:12px;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.support-item{width:100%; height:100%; display:flex; flex-direction:column; align-items:center; gap:6px; cursor:pointer;
+  padding:18px 14px; background:var(--surface-soft); border:1px solid var(--hairline); border-radius:var(--radius);
+  color:var(--body); text-align:center; transition:border-color .18s,transform .18s,background .18s}
+.support-item:hover{border-color:var(--gold); background:var(--card); transform:translateY(-2px)}
+.support-icon{font-size:1.5rem}
+.support-item b{font-size:.95rem; color:var(--ink)}
+.support-desc{font-size:.78rem; color:var(--muted); line-height:1.45; word-break:keep-all}
+@media (prefers-reduced-motion:reduce){.support-item:hover{transform:none}}
+
+/* -- #7 에듀세미나 (켈리스 main-seminar) ---------------------------------- */
+.seminar-slider{text-align:left}
+.seminar-card{height:100%; background:var(--card); border:1px solid var(--hairline); border-left:3px solid var(--gold);
+  border-radius:var(--radius); padding:18px; display:flex; flex-direction:column; gap:6px}
+.seminar-date{font-size:.78rem; color:var(--primary); font-weight:700; font-variant-numeric:tabular-nums}
+.seminar-title{font-size:1rem; margin:0; word-break:keep-all}
+.seminar-sum{font-size:.85rem; color:var(--muted); margin:0; word-break:keep-all}
+.seminar-empty{background:var(--surface-soft); border:1px dashed var(--border-strong); border-radius:var(--radius);
+  padding:28px 20px; display:flex; flex-direction:column; align-items:center; gap:8px}
+.seminar-empty-title{font-weight:700; margin:0}
+.seminar-empty-sub{font-size:.86rem; color:var(--muted); margin:0 0 6px; word-break:keep-all}
+
+/* ===========================================================================
+   2026-11-04 — 커리큘럼 페이지를 코리아펫아카데미 과정 템플릿 구조로 재구성
+   분석 근거: ai-website-cloner/docs/research/kelispetacademy/page-brief.md
+   ⚠️ 구조만 참고. 색·폰트는 겨울 시즌 토큰(버건디 --primary / 골드 --gold /
+      아이스블루 --surface-*)을 그대로 유지한다(사용자 확정). 코리아펫 오렌지 미사용.
+   =========================================================================== */
+
+/* -- 과정 타이틀 (코리아펫 curri-top / sub-top) --------------------------- */
+.curri-top{padding:48px 0 32px; background:var(--surface-soft); border-bottom:1px solid var(--hairline); text-align:center}
+.curri-top .breadcrumb{margin-bottom:14px}
+.curri-top-en{margin:0 0 6px; font-size:.82rem; font-weight:700; letter-spacing:.18em;
+  color:var(--gold); text-transform:uppercase}
+.curri-top-title{margin:0 0 10px; font-size:clamp(1.5rem,3.2vw,2rem); font-weight:700; color:var(--ink); word-break:keep-all}
+.curri-top-badge{display:inline-block; vertical-align:middle; margin-left:8px; font-size:.72rem; font-weight:700;
+  color:var(--primary); background:var(--card); border:1px solid var(--gold); border-radius:var(--radius-full); padding:3px 11px}
+.curri-top-sum{margin:0; color:var(--muted); font-size:.95rem; word-break:keep-all}
+
+/* -- 과정 서브메뉴 (코리아펫 sub-menu-list) -------------------------------- */
+.course-subnav{margin:22px 0 -10px}
+.course-subnav-list{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; justify-content:center; gap:8px}
+.course-subnav-item{display:inline-block; padding:8px 16px; border-radius:var(--radius-full);
+  border:1px solid var(--hairline); background:var(--card); color:var(--body);
+  font-size:.88rem; font-weight:600; transition:border-color .18s,background .18s,color .18s}
+.course-subnav-item:hover{border-color:var(--border-strong)}
+.course-subnav-item.active{background:var(--primary); border-color:var(--primary); color:#fff}
+
+/* -- 왜 이 과정인가 -------------------------------------------------------- */
+.curri-why{max-width:760px; margin:0 auto}
+.curri-why.has-photo{max-width:none; display:grid; grid-template-columns:minmax(0,420px) 1fr; gap:32px; align-items:start}
+.curri-why-media .photo{width:100%; border-radius:var(--radius); box-shadow:var(--shadow-1)}
+.curri-why-desc{margin:0 0 16px; color:var(--body); line-height:1.75; word-break:keep-all}
+.curri-why-points{list-style:none; margin:0 0 16px; padding:0; display:flex; flex-wrap:wrap; gap:8px}
+.curri-why-points li{font-size:.82rem; font-weight:600; color:var(--primary);
+  background:var(--surface-soft); border:1px solid var(--gold); border-radius:var(--radius-full); padding:5px 13px}
+.curri-why-for{margin:0; font-size:.9rem; color:var(--muted); background:var(--surface-soft);
+  border-left:3px solid var(--gold); border-radius:var(--radius-sm); padding:10px 14px; word-break:keep-all}
+.curri-why-for b{color:var(--ink); margin-right:6px}
+
+/* -- 처음 해도 따라갈 수 있나요? ------------------------------------------- */
+.curri-starter{list-style:none; margin:0; padding:0; display:grid; gap:14px;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); text-align:left}
+.curri-starter li{background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius); padding:18px 20px}
+.curri-starter-q{margin:0 0 8px; font-weight:700; color:var(--ink); word-break:keep-all}
+.curri-starter-q::before{content:"Q. "; color:var(--primary); font-weight:800}
+.curri-starter-a{margin:0; font-size:.88rem; color:var(--muted); line-height:1.7; word-break:keep-all}
+
+/* -- 교육 과정 단계표 ------------------------------------------------------ */
+.curri-table{list-style:none; margin:0; padding:0; max-width:880px; margin-inline:auto;
+  border:1px solid var(--hairline); border-radius:var(--radius); overflow:hidden; background:var(--card)}
+.curri-table li{display:flex; gap:16px; align-items:center; padding:16px 20px; border-bottom:1px solid var(--hairline-soft)}
+.curri-table li:last-child{border-bottom:0}
+.curri-table li:nth-child(odd){background:var(--surface-soft)}
+.curri-table-num{flex:0 0 auto; font-size:.74rem; font-weight:800; letter-spacing:.06em; color:var(--primary);
+  background:var(--card); border:1px solid var(--gold); border-radius:var(--radius-full); padding:4px 11px}
+.curri-table-text{color:var(--body); word-break:keep-all; text-align:left}
+
+/* -- 수강 안내 표 ---------------------------------------------------------- */
+.curri-info{max-width:760px; margin:0 auto; display:grid; gap:0;
+  border:1px solid var(--hairline); border-radius:var(--radius); overflow:hidden; background:var(--card)}
+.curri-info > div{display:grid; grid-template-columns:140px 1fr; border-bottom:1px solid var(--hairline-soft)}
+.curri-info > div:last-child{border-bottom:0}
+.curri-info dt{padding:14px 18px; background:var(--surface-soft); font-weight:700; font-size:.88rem; color:var(--ink)}
+.curri-info dd{margin:0; padding:14px 18px; font-size:.9rem; color:var(--body); word-break:keep-all; text-align:left}
+.curri-info dd a{color:var(--primary); text-decoration:underline; text-underline-offset:2px}
+.curri-info-en{font-size:.74rem; font-weight:700; letter-spacing:.1em; color:var(--muted-soft); margin-left:6px}
+
+/* -- 과정 카드 열 (코리아펫 curri-curri-col) ------------------------------- */
+.curri-col{list-style:none; margin:0; padding:0; display:grid; gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.curri-col-card{background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius);
+  overflow:hidden; box-shadow:var(--shadow-1); transition:border-color .18s,transform .18s}
+.curri-col-card:hover{border-color:var(--gold); transform:translateY(-3px)}
+.curri-col-card.highlight{border-color:var(--primary)}
+.curri-col-link{display:flex; flex-direction:column; height:100%}
+.curri-col-media{background:var(--surface-strong)}
+.curri-col-media .photo{width:100%; height:190px; object-fit:cover}
+.curri-col-body{padding:18px 20px 20px; display:flex; flex-direction:column; gap:7px; flex:1; text-align:left}
+.curri-col-en{margin:0; font-size:.7rem; font-weight:800; letter-spacing:.14em; color:var(--gold); text-transform:uppercase}
+.curri-col-title{margin:0; font-size:1.08rem; color:var(--ink); word-break:keep-all}
+.curri-col-badge{display:inline-block; vertical-align:middle; margin-left:6px; font-size:.68rem; font-weight:700;
+  color:var(--primary); border:1px solid var(--gold); border-radius:var(--radius-full); padding:2px 9px}
+.curri-col-sum{margin:0; font-size:.88rem; color:var(--muted); line-height:1.6; word-break:keep-all}
+.curri-col-for{margin:0; font-size:.78rem; color:var(--muted-soft); word-break:keep-all}
+.curri-col-more{margin-top:auto; padding-top:10px; font-size:.84rem; font-weight:700; color:var(--primary)}
+@media (prefers-reduced-motion:reduce){.curri-col-card:hover{transform:none}}
+
+@media (max-width:900px){
+  .curri-why.has-photo{grid-template-columns:1fr; gap:20px}
+}
+@media (max-width:600px){
+  .curri-info > div{grid-template-columns:1fr}
+  .curri-info dt{padding-bottom:4px}
+  .curri-info dd{padding-top:4px}
+  .curri-table li{flex-direction:column; align-items:flex-start; gap:8px}
+}
+
+/* 2026-11-04 — 퀵메뉴를 "자격증" 카테고리 드롭다운으로 정리(행동교정·펫뷰티·취미반 칩 삭제).
+   ponytail: JS 없이 :hover/:focus-within 만으로 여닫는다. */
+.quick-menu-cat{position:relative}
+.quick-menu-cat-btn{display:inline-flex; align-items:center; gap:4px}
+.quick-menu-sub{
+  position:absolute; top:calc(100% + 6px); left:50%; transform:translateX(-50%) translateY(-4px);
+  min-width:180px; list-style:none; margin:0; padding:6px; z-index:30;
+  background:var(--card); border:1px solid var(--hairline); border-radius:var(--radius);
+  box-shadow:var(--shadow-2,0 10px 30px rgba(0,0,0,.12));
+  opacity:0; visibility:hidden; pointer-events:none; transition:opacity .15s,transform .15s,visibility .15s}
+.quick-menu-cat:hover .quick-menu-sub,
+.quick-menu-cat:focus-within .quick-menu-sub{
+  opacity:1; visibility:visible; pointer-events:auto; transform:translateX(-50%) translateY(0)}
+.quick-menu-sub a{
+  display:block; padding:8px 12px; border:0; border-radius:var(--radius-sm);
+  font-size:.88rem; font-weight:600; color:var(--body); white-space:nowrap; text-align:left}
+.quick-menu-sub a:hover,.quick-menu-sub a:focus-visible{background:var(--surface-soft); color:var(--primary)}
+.quick-menu-sub-all{margin-top:4px; padding-top:4px; border-top:1px solid var(--hairline-soft)}
+.quick-menu-sub-all a{color:var(--primary); font-size:.82rem}
+@media (max-width:640px){
+  .quick-menu-sub{left:0; transform:none; min-width:160px}
+  .quick-menu-cat:hover .quick-menu-sub,
+  .quick-menu-cat:focus-within .quick-menu-sub{transform:none}
+}
+@media (prefers-reduced-motion:reduce){.quick-menu-sub{transition:none}}

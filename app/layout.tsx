@@ -8,6 +8,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingCta from "@/components/FloatingCta";
+import QuickSideBar from "@/components/QuickSideBar"; // 2026-11-04 켈리스 우측 세로 퀵바 대응(넓은 화면 전용)
 import MobileCtaBar from "@/components/MobileCtaBar";
 import QuickMenu from "@/components/QuickMenu";
 import ConsultModal from "@/components/ConsultModal";
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <QuickMenu />
           {children}
           <Footer />
+          <QuickSideBar />
           <FloatingCta />
           <MobileCtaBar />
           <ScrollTopButton />

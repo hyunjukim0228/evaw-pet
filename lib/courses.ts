@@ -6,6 +6,9 @@ export type Course = {
   slug: string;
   title: string;
   badge: string; // 레퍼런스 대괄호 라벨 — 카드 뱃지로 노출
+  // 과정 상세 상단에 얹는 영문 라벨(켈리스/코리아펫의 "GROOMING BASIC" 자리).
+  // ⚠️ 장식용 표기일 뿐 공인된 레벨명이 아님 — 실제 과정명이 확정되면 함께 정리할 것.
+  enName: string;
   highlight?: boolean; // "종합·심화반"(🔥추천) 강조 카드
   summary: string;
   description: string;
@@ -25,6 +28,7 @@ export type Course = {
 export const courses: Course[] = [
   {
     slug: "basic",
+    enName: "GROOMING BASIC",
     title: "기초과정",
     badge: "입문",
     summary: "애견미용을 처음 시작하는 분을 위한 기초 과정입니다.",
@@ -40,6 +44,7 @@ export const courses: Course[] = [
   },
   {
     slug: "certificate",
+    enName: "GROOMING CERTIFICATE",
     title: "자격증 취득반",
     badge: "자격증",
     summary: "3급·2급 자격증을 단계별로 취득하는 과정입니다.",
@@ -49,11 +54,12 @@ export const courses: Course[] = [
     steps: ["견종별 스타일링 이론", "심화 클리핑·가위컷 실습", "보호자 상담부터 인계까지 현장 실무", "자격증 실기 대비"],
     duration: "1:1 개별 맞춤 진도로 필수 교육기간 없이 진행",
     recommendFor: "3급·2급 자격증을 단계별로 취득하고 싶은 분",
-    cardImage: "/images/gallery/facility-9.jpg",
+    cardImage: "/images/courses/certificate.webp",
     detailImage: "/images/gallery/facility-13.jpg",
   },
   {
     slug: "practice",
+    enName: "PRACTICAL TRAINING",
     title: "실견 심화반",
     badge: "실습",
     summary: "실제 가정견을 대상으로 심화 실습을 진행하는 과정입니다.",
@@ -64,12 +70,13 @@ export const courses: Course[] = [
     recommendFor: "실전 실습 위주로 실력을 다지고 싶은 분",
     // 2026-09-11: 사용자가 타사(EVAW/이바우펫) 브랜드·수상 문구 포함 사실을 인지한 상태에서 그대로 사용하기로 확정(상호명은 "애견미용학원 대전점" 유지).
     // 2026-09-15: 네이버 플레이스에서 확보한 실제 사진으로 교체 — 브랜드 문구 없는 순수 사진.
-    cardImage: "/images/gallery/facility-7.jpg",
+    cardImage: "/images/courses/practice.webp",
     detailImage: "/images/gallery/facility-3.jpg",
     detailImageMo: "/images/gallery/facility-8.jpg",
   },
   {
     slug: "career",
+    enName: "CAREER & STARTUP",
     title: "취업·창업반",
     badge: "취업",
     summary: "수료 후 취업 또는 창업까지 준비하는 과정입니다.",
@@ -78,11 +85,12 @@ export const courses: Course[] = [
     points: ["실무 역량 강화", "취업 연계 안내", "창업 준비 안내", "포트폴리오 준비"],
     steps: ["실무 역량 점검·보강", "포트폴리오 준비", "취업 연계 안내", "창업 준비 안내"],
     recommendFor: "자격증 취득 후 취업·창업을 준비하는 분",
-    cardImage: "/images/gallery/facility-10.jpg",
+    cardImage: "/images/courses/career.webp",
     detailImage: "/images/gallery/facility-15.jpg",
   },
   {
     slug: "advanced",
+    enName: "GROOMING ADVANCED",
     title: "종합·심화반",
     badge: "🔥추천",
     highlight: true,
@@ -92,11 +100,12 @@ export const courses: Course[] = [
     points: ["3급·2급 자격증", "실견 심화 실습", "취업·창업 준비", "1:1 맞춤 진도"],
     steps: ["기초 도구·이론", "자격증 실기 대비", "실견 심화 실습", "취업·창업 준비"],
     recommendFor: "자격증부터 진로까지 한 번에 준비하고 싶은 분",
-    cardImage: "/images/gallery/facility-14.jpg",
+    cardImage: "/images/courses/advanced.webp",
     detailImage: "/images/gallery/facility-17.jpg",
   },
   {
     slug: "special",
+    enName: "SPECIAL CLASS",
     title: "스페셜 특강",
     badge: "특강",
     summary: "행동교정 등 관심 있는 주제만 짧게 배우는 스페셜 특강입니다.",
@@ -105,7 +114,7 @@ export const courses: Course[] = [
     points: ["문제행동 원인 이해", "교정 실습", "보호자 상담법", "행동교정 세미나 연계"],
     steps: ["반려견 행동 이해 기초", "문제행동 유형별 접근법", "교정 실습", "보호자 상담·사후관리"],
     recommendFor: "반려견 문제행동 등 특정 주제를 짧게 배우고 싶은 분",
-    cardImage: "/images/gallery/facility-5.jpg",
+    cardImage: "/images/courses/special.webp",
     detailImage: "/images/gallery/facility-16.jpg",
   },
 ];
