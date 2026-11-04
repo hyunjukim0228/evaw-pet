@@ -114,7 +114,7 @@ export const courses: Course[] = [
     points: ["문제행동 원인 이해", "교정 실습", "보호자 상담법", "행동교정 세미나 연계"],
     steps: ["반려견 행동 이해 기초", "문제행동 유형별 접근법", "교정 실습", "보호자 상담·사후관리"],
     recommendFor: "반려견 문제행동 등 특정 주제를 짧게 배우고 싶은 분",
-    cardImage: "/images/courses/special.webp",
+    cardImage: "/images/gallery/facility-5.jpg",
     detailImage: "/images/gallery/facility-16.jpg",
   },
 ];
