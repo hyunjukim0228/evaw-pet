@@ -1,5 +1,4 @@
 import Link from "next/link";
-import CourseCompactList from "@/components/CourseCompactList";
 import ConsultForm from "@/components/ConsultForm";
 import ConsultCtaButton from "@/components/ConsultCtaButton";
 import HeroCarousel from "@/components/HeroCarousel";
@@ -139,10 +138,14 @@ export default function HomePage() {
           리스트로 변경, 클릭 시 상세 모달(CoursePreviewModal) */}
       <section id="curriculum" className="curriculum">
         <div className="wrap">
-          <span className="sec-tag">📚 커리큘럼</span>
-          <h2 className="sec-title">내 상황에 맞춰 진행하는 커리큘럼</h2>
-          <CourseCompactList />
-          <p className="note">※ 위 과정 구성은 초안 예시입니다. 실제 개설 과정명·커리큘럼은 확정되는 대로 교체합니다.</p>
+          {/* 2026-11-04: 목록(CourseCompactList) → 겨울 로드맵 이미지 1장(제목·초안 안내문 포함). 누르면 과정 페이지 */}
+          <h2 className="sr-only">내 상황에 맞춰 진행하는 커리큘럼</h2>
+          <Link href="/curriculum" className="curriculum-roadmap">
+            <img
+              src="/images/curriculum-roadmap.webp"
+              alt="내 상황에 맞춰 진행하는 커리큘럼 — 01 기초과정(입문), 02 자격증 취득반(3급·2급), 03 실견 심화반(실습), 04 취업·창업반, 05 종합·심화반(추천), 06 스페셜 특강. 위 과정 구성은 초안 예시입니다."
+            />
+          </Link>
         </div>
       </section>
 

@@ -144,7 +144,7 @@ h1,h2,h3{line-height:1.3; margin:0 0 12px}
    이바우펫(evaw-pet-grooming.co.kr) 참고: PC에서 본문처럼 좌우 여백을 줘서 가독성 확보 —
    나머지 섹션(.wrap)과 같은 폭으로 맞춰서 1160px 넘는 화면에서만 자연스럽게 여백 생김. */
 .hero{position:relative; max-width:var(--wrap); margin:0 auto; padding:0}
-.hero-carousel{position:relative; overflow:hidden; border-radius:var(--radius); aspect-ratio:1920/850; min-height:220px; background:var(--surface-strong)}
+.hero-carousel{position:relative; overflow:hidden; border-radius:var(--radius); aspect-ratio:1860/845; min-height:220px; background:var(--surface-strong)}
 @keyframes heroFadeIn{from{opacity:0} to{opacity:1}}
 .hero-img{width:100%; height:100%; object-fit:cover; display:block}
 .hero-img.mo{display:none}
@@ -194,6 +194,8 @@ h1,h2,h3{line-height:1.3; margin:0 0 12px}
 .modal-panel.hg-detail-panel{max-width:600px; padding:0; max-height:92vh}
 .hg-detail-panel > img{display:block; width:100%; height:auto}
 .hg-detail-close{position:sticky; top:8px; float:right; margin:8px 8px -48px 0; z-index:1; width:40px; height:40px; border-radius:var(--radius-full); background:rgba(255,255,255,.9); color:var(--ink)}
+.curriculum-roadmap{display:block; max-width:560px; margin:0 auto}
+.curriculum-roadmap img{display:block; width:100%; height:auto; border-radius:var(--radius); box-shadow:var(--shadow-1)}
 .promo-thumbs{display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:788px; margin:48px auto 0}
 .promo-thumbs img{display:block; width:100%; height:auto; border-radius:var(--radius); box-shadow:var(--shadow-1); transition:transform .2s}
 .promo-thumbs a:hover img{transform:translateY(-4px)}
@@ -629,7 +631,7 @@ main section:not(.hero).in-view{opacity:1; transform:none}
   .hero-img.pc{display:none}
   .hero-img.mo{display:block}
   /* 2026-10-07: 모바일에서도 메인 배너 노출(사용자 요청) — 배너에 글자가 들어 있어 잘리지 않게 원본 비율 그대로 전체 표시 */
-  .hero-carousel{aspect-ratio:1920/850; height:auto; min-height:0; border-radius:0}
+  .hero-carousel{aspect-ratio:1860/845; height:auto; min-height:0; border-radius:0}
 
 }
 @media (max-width:900px){
