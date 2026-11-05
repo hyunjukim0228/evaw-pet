@@ -97,7 +97,7 @@ export default function HomePage() {
               <img src="/images/promo/scholarship-thumb.webp" alt="한국유기견구호연맹 수강비 지원 — 수강비 장학지원 50%, 미용도구 풀세트·온라인 강의. 자세히 보기" />
             </Link>
             <Link href="/free-lecture">
-              <img src="/images/promo/free-lecture-thumb.webp" alt="이바우펫과 함께하는 특별한 배움 — 무료특강 및 각종 세미나 진행. 눈 내리는 겨울 배경과 파란 목도리를 한 토이푸들. 자세히 보기" />
+              <img src="/images/promo/free-lecture-thumb.webp" alt="이바우펫과 함께하는 특별한 배움 — 무료특강 및 각종 세미나 진행. 눈 내리는 겨울 배경, 선물상자 안에 앉은 크림색 니트 토이푸들. CLICK" />
             </Link>
           </div>
         </div>
