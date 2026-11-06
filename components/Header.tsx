@@ -88,11 +88,9 @@ export default function Header() {
   return (
     <header className={`site-header${scrolled ? " scrolled" : ""}`}>
       <div className="wrap header-inner">
-        <Link href="/" className="logo-slot" aria-label="애견미용학원 대전점 홈">
+        <Link href="/" className="logo-slot" aria-label="애견미용학원 홈">
           {/* 로고 준비되면 이 자리를 <Image src="/images/logo.png" .../> 로 교체 */}
-          <span className="logo-text">
-            애견미용학원<em>대전점</em>
-          </span>
+          <span className="logo-text">애견미용학원</span>
         </Link>
 
         <nav className={`nav-links${open ? " open" : ""}`} aria-label="주요 메뉴">

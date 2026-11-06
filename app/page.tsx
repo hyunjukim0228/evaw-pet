@@ -41,7 +41,7 @@ export default function HomePage() {
           </svg>
         </div>
         {/* 2026-10-15: 모바일 배너 아래 문구 블록(HeroCopy) 삭제 요청 — 검색엔진용 h1만 화면에 안 보이게 유지 */}
-        <h1 className="sr-only">애견미용학원 자격증 가정견실습 과정 장학지원신청</h1>
+        <h1 className="sr-only">애견미용학원</h1>
       </section>
 
       {/* 히어로 보조 CTA·신뢰지표·빠른 과정 탐색 — evaw-pet-grooming.co.kr 홈 히어로 구조(큰 CTA버튼·채널행·신뢰바·
@@ -183,7 +183,7 @@ export default function HomePage() {
       {/* 강점 섹션 — STEP3: 4카드 정적 목록 → 6카드 인터랙티브 그리드(클릭 시 상세 모달)로 확장 */}
       <section className="benefits">
         <div className="wrap">
-          <span className="sec-tag">✨ 애견미용학원 대전점만의 차이</span>
+          <span className="sec-tag">✨ 애견미용학원만의 차이</span>
           <h2 className="sec-title">왜 이바우펫에서 해야 할까요?</h2>
           <DifferentiatorGrid />
           {/* 2026-11-04 신설: 지원 제도 바로가기 — 켈리스 `main-benefit`의 지원제도 카드 대응.
@@ -322,7 +322,7 @@ export default function HomePage() {
         <div className="wrap" style={{ textAlign: "center" }}>
           <span className="sec-tag">🗺️ 지점 안내</span>
           <h2 className="sec-title">전국 지점</h2>
-          <p className="sec-sub">애견미용학원 대전점은 전국 21개 지점 네트워크 중 하나입니다.</p>
+          <p className="sec-sub">애견미용학원은 전국 21개 지점 네트워크 중 하나입니다.</p>
           <div className="branch-grid">
             {branches.map((b) => (
               <BranchCard key={b.region + b.name} branch={b} />

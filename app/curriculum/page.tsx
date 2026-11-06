@@ -12,8 +12,8 @@ import { courses } from "@/lib/courses";
 // 분석 근거: ai-website-cloner/docs/research/kelispetacademy/page-brief.md
 
 export const metadata: Metadata = {
-  title: "커리큘럼 | 애견미용학원 대전점",
-  description: "애견미용학원 대전점 수강 과정 안내 — 3급·2급 자격증 과정부터 취업·창업 준비 과정까지.",
+  title: "커리큘럼 | 애견미용학원",
+  description: "애견미용학원 수강 과정 안내 — 3급·2급 자격증 과정부터 취업·창업 준비 과정까지.",
 };
 
 export default function CurriculumPage() {

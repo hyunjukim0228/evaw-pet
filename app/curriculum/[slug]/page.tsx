@@ -30,7 +30,7 @@ export async function generateMetadata({
   const course = getCourse(slug);
   if (!course) return {};
   return {
-    title: `${course.title} | 애견미용학원 대전점`,
+    title: `${course.title} | 애견미용학원`,
     description: course.summary,
   };
 }

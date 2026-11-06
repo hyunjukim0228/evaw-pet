@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import PromoLanding from "@/components/PromoLanding";
 
 export const metadata: Metadata = {
-  title: "수강비 장학지원 50% | 애견미용학원 대전점",
+  title: "수강비 장학지원 50% | 애견미용학원",
   description: "한국유기견구호연맹 수강비 지원 — 수강비 지원, 미용도구 풀세트, 온라인 강의 세 가지 혜택.",
 };
 

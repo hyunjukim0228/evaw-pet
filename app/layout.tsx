@@ -31,9 +31,11 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const siteTitle = "애견미용학원 자격증 가정견실습 과정 장학지원신청";
+// 2026-11-05 사용자 지시: 메인 타이틀을 키워드 나열에서 "애견미용학원" 한 단어로 축약.
+// ⚠️ 기존 값 "애견미용학원 자격증 가정견실습 과정 장학지원신청" — 되돌릴 일 있으면 이 줄 참고.
+const siteTitle = "애견미용학원";
 const siteDescription =
-  "애견미용학원 대전점 — 자격증 3급·2급, 실견 실습 중심 애견미용 과정 안내. 상담 신청은 지금 바로 문의해 주세요.";
+  "애견미용학원 — 자격증 3급·2급, 실견 실습 중심 애견미용 과정 안내. 상담 신청은 지금 바로 문의해 주세요.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://evawacademy.com"),
@@ -48,7 +50,7 @@ export const metadata: Metadata = {
   // 옛 og-image.jpg 는 외부 캐시가 다시 받아갈 때를 대비해 같은 내용으로 남겨 둠(404 방지).
   openGraph: {
     type: "website",
-    siteName: "애견미용학원 대전점",
+    siteName: "애견미용학원",
     title: siteTitle,
     description: siteDescription,
     images: [

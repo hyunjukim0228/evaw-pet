@@ -52,11 +52,11 @@ export default function GallerySection() {
               type="button"
               className="gallery-thumb"
               onClick={() => setOpenIndex(i)}
-              aria-label={`애견미용학원 대전점 실습 현장 사진 ${i + 1}번 크게 보기`}
+              aria-label={`애견미용학원 실습 현장 사진 ${i + 1}번 크게 보기`}
             >
               <Image
                 src={src}
-                alt={`애견미용학원 대전점 실습 현장 사진 ${i + 1}`}
+                alt={`애견미용학원 실습 현장 사진 ${i + 1}`}
                 fill
                 sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 25vw"
                 style={{ objectFit: "cover" }}
@@ -85,7 +85,7 @@ export default function GallerySection() {
           <div className="lightbox-image-wrap" onClick={(e) => e.stopPropagation()}>
             <Image
               src={PHOTOS[openIndex]}
-              alt={`애견미용학원 대전점 실습 현장 사진 ${openIndex + 1}`}
+              alt={`애견미용학원 실습 현장 사진 ${openIndex + 1}`}
               fill
               sizes="90vw"
               style={{ objectFit: "contain" }}

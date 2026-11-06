@@ -4,7 +4,7 @@ import ConsultCtaButton from "@/components/ConsultCtaButton";
 import GuideGrid from "@/components/GuideGrid";
 
 export const metadata: Metadata = {
-  title: "가이드 | 애견미용학원 대전점",
+  title: "가이드 | 애견미용학원",
   description: "애견미용 자격증·취업·창업을 준비하며 궁금할 만한 주제를 정리했습니다.",
 };
 

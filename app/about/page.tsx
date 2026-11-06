@@ -5,8 +5,8 @@ import GallerySection from "@/components/GallerySection";
 import DifferentiatorGrid from "@/components/DifferentiatorGrid";
 
 export const metadata: Metadata = {
-  title: "학원소개 | 애견미용학원 대전점",
-  description: "애견미용학원 대전점 소개 — 자격증 취득과 실무 역량을 함께 준비하는 애견미용 전문 교육 공간입니다.",
+  title: "학원소개 | 애견미용학원",
+  description: "애견미용학원 소개 — 자격증 취득과 실무 역량을 함께 준비하는 애견미용 전문 교육 공간입니다.",
 };
 
 export default function AboutPage() {
@@ -19,7 +19,7 @@ export default function AboutPage() {
           </p>
           <span className="eyebrow">ABOUT</span>
           <h1>학원소개</h1>
-          <p>애견미용학원 대전점을 소개합니다.</p>
+          <p>애견미용학원을 소개합니다.</p>
         </div>
       </section>
 
@@ -30,7 +30,7 @@ export default function AboutPage() {
           <span className="sec-tag">🏫 학원소개</span>
           <h2 className="sec-title">손으로 익히는 일이라, 손을 직접 잡아드립니다</h2>
           <p>
-            애견미용학원 대전점은 자격증 한 장을 내드리는 곳이 아니라, 실제로 손을 움직여 미용사가 될 수 있게
+            애견미용학원은 자격증 한 장을 내드리는 곳이 아니라, 실제로 손을 움직여 미용사가 될 수 있게
             돕는 곳입니다.
           </p>
           <p>
@@ -51,7 +51,7 @@ export default function AboutPage() {
 
       <section>
         <div className="wrap">
-          <span className="sec-tag">✨ 애견미용학원 대전점만의 차이</span>
+          <span className="sec-tag">✨ 애견미용학원만의 차이</span>
           <h2 className="sec-title">이런 점이 다릅니다</h2>
           <DifferentiatorGrid />
         </div>
